@@ -1,3 +1,5 @@
+import React from "react";
+
 export const javaProgrammingCourse: Course = {
   name: "Java Programming",
   modules: [
@@ -6,37 +8,28 @@ export const javaProgrammingCourse: Course = {
       name: "How to install stuff",
       resources: [
         {
-          type: "video",
-          completed: false,
-          description: "some string yayy",
-          duration: "10m",
-          id: "how to install vscode",
+          resourceType: "guide",
+          id: "how-to-install-vscode",
           name: "How to Install VSCode",
+          completed: false,
+          description: "A guide on installing VSCode.",
+          content: `# How to Install VSCode\n\nThis guide will help you install Visual Studio Code on your computer.\n\n1. Go to [VSCode Downloads](https://code.visualstudio.com/)\n2. Download the installer for your OS\n3. Run the installer and follow the prompts.`,
         },
         {
-          type: "guide",
-          completed: false,
-          description: "This document goes over how to set up git",
+          resourceType: "guide",
           id: "git-setup-fun-time-robot-stuff",
           name: "Git Setup Guide",
-          content: `# Git Setup Guide
-
-This guide will help you set up Git for your development environment.
-
-## Prerequisites
-- None required
-
-## Steps
-1. Download Git from https://git-scm.com/
-2. Install with default settings
-3. Configure your identity
-4. Test the installation
-
-## Configuration
-\`\`\`bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-\`\`\``,
+          completed: false,
+          description: "This guide goes over how to set up git.",
+          content: `# Git Setup Guide\n\nThis guide will help you set up Git for your development environment.\n\n## Prerequisites\n- None required\n\n## Steps\n1. Download Git from https://git-scm.com/\n2. Install with default settings\n3. Configure your identity\n4. Test the installation\n\n## Configuration\n\n\`\`\`bash\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"\n\`\`\``,
+        },
+        {
+          resourceType: "guide",
+          id: "test-mdx-guide",
+          name: "Test MDX Guide",
+          completed: false,
+          description: "A test guide using MDX content.",
+          content: "TEST_MDX_PLACEHOLDER",
         },
       ],
     },
@@ -45,56 +38,37 @@ git config --global user.email "your.email@example.com"
       name: "Java Basics",
       resources: [
         {
-          type: "video",
-          completed: false,
-          description: "Introduction to Java programming fundamentals",
-          duration: "15m",
+          resourceType: "guide",
           id: "java-intro",
           name: "Introduction to Java",
+          completed: false,
+          description: "Introduction to Java programming fundamentals.",
+          content: `# Introduction to Java\n\nLearn the basics of Java programming in this guide.`,
         },
         {
-          type: "document",
-          completed: false,
-          description: "Comprehensive guide to Java syntax and structure",
+          resourceType: "guide",
           id: "java-syntax-guide",
           name: "Java Syntax Guide",
-          pages: 25,
+          completed: false,
+          description: "Comprehensive guide to Java syntax and structure.",
+          content: `# Java Syntax Guide\n\nThis guide covers the syntax and structure of Java programs.`,
         },
         {
-          type: "assignment",
-          completed: false,
-          description: "Create your first Java program",
+          resourceType: "guide",
           id: "first-java-program",
           name: "Hello World Assignment",
-          dueDate: "2024-12-31",
+          completed: false,
+          description: "Create your first Java program.",
+          content: `# Hello World Assignment\n\nWrite and run your first Java program!`,
         },
         {
-          type: "guide",
-          completed: false,
-          description:
-            "Step-by-step tutorial for setting up Java development environment",
+          resourceType: "guide",
           id: "java-dev-setup",
           name: "Java Development Setup",
-          content: `# Java Development Setup
-
-This guide will help you set up your Java development environment.
-
-## Prerequisites
-- Basic computer knowledge
-- Internet connection
-
-## Steps
-1. Download JDK from Oracle or OpenJDK
-2. Install JDK
-3. Set up environment variables
-4. Install an IDE (IntelliJ IDEA, Eclipse, or VSCode)
-5. Test your setup
-
-## Verification
-\`\`\`bash
-java -version
-javac -version
-\`\`\``,
+          completed: false,
+          description:
+            "Step-by-step tutorial for setting up Java development environment.",
+          content: `# Java Development Setup\n\nThis guide will help you set up your Java development environment.\n\n## Prerequisites\n- Basic computer knowledge\n- Internet connection\n\n## Steps\n1. Download JDK from Oracle or OpenJDK\n2. Install JDK\n3. Set up environment variables\n4. Install an IDE (IntelliJ IDEA, Eclipse, or VSCode)\n5. Test your setup\n\n## Verification\n\n\`\`\`bash\njava -version\njavac -version\n\`\`\``,
         },
       ],
     },
@@ -109,20 +83,20 @@ export const dummyCourse: Course = {
       name: "Robotics Environment Setup",
       resources: [
         {
-          type: "video",
+          resourceType: "guide",
+          id: "python-robotics-setup",
+          name: "Python Robotics Setup Guide",
           completed: false,
-          description: "How to set up your robotics Python environment",
-          duration: "8m",
-          id: "python-robotics-setup-video",
-          name: "Python Robotics Setup Video",
+          description: "How to set up your robotics Python environment.",
+          content: `# Python Robotics Setup\n\nInstall Python, pip, and robotics libraries like pyserial, numpy, and matplotlib.\n\n## Steps\n1. Download Python from python.org\n2. Install pip\n3. Install libraries: pip install pyserial numpy matplotlib`,
         },
         {
-          type: "guide",
-          completed: false,
-          description: "Guide to installing Python and robotics libraries",
+          resourceType: "guide",
           id: "python-robotics-guide",
-          name: "Python Robotics Setup Guide",
-          content: `# Python Robotics Setup\n\nInstall Python, pip, and robotics libraries like pyserial, numpy, and matplotlib.\n\n## Steps\n1. Download Python from python.org\n2. Install pip\n3. Install libraries: pip install pyserial numpy matplotlib`,
+          name: "Python Robotics Guide",
+          completed: false,
+          description: "Guide to installing Python and robotics libraries.",
+          content: `# Python Robotics Guide\n\nThis guide covers the basics of Python for robotics.`,
         },
       ],
     },
@@ -131,19 +105,20 @@ export const dummyCourse: Course = {
       name: "Your First Robot Program",
       resources: [
         {
-          type: "code",
-          completed: false,
-          description: "Write your first Python robot control script",
+          resourceType: "guide",
           id: "first-robot-code",
-          name: "First Robot Code",
+          name: "First Robot Guide",
+          completed: false,
+          description: "Write your first Python robot control script.",
+          content: `# First Robot Guide\n\nWrite your first Python robot control script in this guide.`,
         },
         {
-          type: "assignment",
-          completed: false,
-          description: "Control a simulated robot to move in a square",
+          resourceType: "guide",
           id: "robot-square-assignment",
           name: "Move in a Square Assignment",
-          dueDate: "2024-11-15",
+          completed: false,
+          description: "Control a simulated robot to move in a square.",
+          content: `# Move in a Square Assignment\n\nControl a simulated robot to move in a square.`,
         },
       ],
     },
@@ -161,45 +136,13 @@ export type Course = {
   modules: Module[];
 };
 
-export type Resource =
-  | {
-      id: string;
-      name: string;
-      type: "video";
-      duration: string;
-      completed: boolean;
-      description: string;
-    }
-  | {
-      type: "guide";
-      id: string;
-      name: string;
-      completed: boolean;
-      description: string;
-      content: string;
-    }
-  | {
-      id: string;
-      type: "assignment";
-      name: string;
-      dueDate: string;
-      completed: false;
-      description: string;
-    }
-  | {
-      type: "document";
-      id: string;
-      name: string;
-      pages: number;
-      completed: boolean;
-      description: string;
-    }
-  | {
-      type: "code";
-      id: string;
-      name: string;
-      completed: boolean;
-      description: string;
-    };
+export type Resource = {
+  resourceType: "guide";
+  id: string;
+  name: string;
+  completed: boolean;
+  description: string;
+  content: string | React.ComponentType;
+};
 
 export const courses = [javaProgrammingCourse, dummyCourse];

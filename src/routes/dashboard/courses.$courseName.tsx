@@ -196,19 +196,12 @@ function RouteComponent() {
                       }}
                       className="flex items-center space-x-2 p-1.5 rounded-sm w-full text-left transition-colors"
                     >
-                      {getResourceIcon(resource.type)}
+                      {getResourceIcon(resource.resourceType)}
                       <span className="flex-1 text-[#cccccc] text-sm truncate">
                         {resource.name}
                       </span>
                       <div className="flex items-center space-x-1">
-                        {resource.completed && (
-                          <CheckCircle className="w-2.5 h-2.5 text-[#4ec9b0]" />
-                        )}
-                        {resource.type === "assignment" &&
-                          !resource.completed && (
-                            <Clock className="w-2.5 h-2.5 text-[#dcdcaa]" />
-                          )}
-                        {resource.type === "guide" && (
+                        {resource.resourceType === "guide" && (
                           <Badge className="bg-[#3e3e42] px-1.5 text-[#ce9178] text-sm">
                             MD
                           </Badge>
