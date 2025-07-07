@@ -31,16 +31,12 @@ URLs and email addresses become clickable automatically:
 
 ```markdown
 https://www.example.com
-<https://www.example.com>
 user@example.com
-<user@example.com>
 ```
 
 **Result:**
 https://www.example.com
-<https://www.example.com>
 user@example.com
-<user@example.com>
 
 ## Reference Links
 
@@ -412,10 +408,8 @@ provides comprehensive learning resources.
 | --------- | ----------------- | ---------------------------- |
 | Inline    | `[text](url)`     | [Google](https://google.com) |
 | Reference | `[text][ref]`     | [Google][google-ref]         |
-| Automatic | `<url>`           | <https://google.com>         |
+| Automatic | `url`             | https://google.com           |
 | Anchor    | `[text](#header)` | [Top](#top)                  |
-| Email     | `<email>`         | <user@example.com>           |
-
-[google-ref]: https://google.com
+| Email     | `email`           | user@example.com             |
 
 Links are the **connective tissue** of the web – use them to create rich, navigable content that guides your readers exactly where they need to go!
