@@ -1,0 +1,368 @@
+# Text Formatting
+
+Markdown provides simple and intuitive ways to format text. Learn how to make your content **bold**, _italic_, and much more!
+
+## Basic Text Formatting
+
+### Bold Text
+
+Use `**` or `__` to make text bold:
+
+```markdown
+**This is bold text**
+**This is also bold text**
+```
+
+**Result:**
+**This is bold text**
+**This is also bold text**
+
+### Italic Text
+
+Use `*` or `_` to make text italic:
+
+```markdown
+_This is italic text_
+_This is also italic text_
+```
+
+**Result:**
+_This is italic text_
+_This is also italic text_
+
+### Bold and Italic Combined
+
+Combine both for emphasis:
+
+```markdown
+**_Bold and italic_**
+**_Bold and italic_**
+_**Bold and italic**_
+```
+
+**Result:**
+**_Bold and italic_**
+
+## Advanced Formatting
+
+### Strikethrough
+
+Use `~~` to strike through text:
+
+```markdown
+~~This text is crossed out~~
+```
+
+**Result:**
+~~This text is crossed out~~
+
+### Inline Code
+
+Use backticks for inline code:
+
+```markdown
+Use the `console.log()` function to debug.
+```
+
+**Result:**
+Use the `console.log()` function to debug.
+
+### Subscript and Superscript
+
+Some Markdown flavors support these:
+
+```markdown
+H~2~O (subscript)
+X^2^ (superscript)
+```
+
+**Result (if supported):**
+H~2~O (subscript)
+X^2^ (superscript)
+
+## Best Practices
+
+### 1. Consistent Style Choice
+
+Pick one style and stick with it:
+
+✅ **Consistent:**
+
+```markdown
+**Bold text** and _italic text_ throughout document
+```
+
+❌ **Inconsistent:**
+
+```markdown
+**Bold text** and _italic text_ mixed with **bold** and _italic_
+```
+
+### 2. Proper Spacing
+
+Add spaces around formatting when needed:
+
+✅ **Good:**
+
+```markdown
+This is **bold text** in a sentence.
+```
+
+❌ **Problematic:**
+
+```markdown
+This is**bold text**in a sentence.
+```
+
+### 3. Nested Formatting
+
+Be careful with nested formatting:
+
+✅ **Clear:**
+
+```markdown
+**This is bold with _italic_ inside**
+```
+
+❌ **Confusing:**
+
+```markdown
+**_This could be confusing_**
+```
+
+## Practical Examples
+
+### Emphasis in Technical Writing
+
+```markdown
+**Important:** Always backup your data before running this command.
+
+_Note:_ This feature is only available in version 2.0+.
+
+Use the `git commit` command to save your changes.
+
+~~Deprecated:~~ The old API is no longer supported.
+```
+
+### Documentation Formatting
+
+````markdown
+## Function: `calculateTotal()`
+
+**Parameters:**
+
+- `items` (_array_): List of items to calculate
+- `taxRate` (_number_): Tax rate as decimal
+
+**Returns:** _number_ - The total amount including tax
+
+**Example:**
+
+```javascript
+const total = calculateTotal(items, 0.08);
+```
+````
+
+**Note:** This function was added in version 1.2.0.
+
+````
+
+### Blog Post Formatting
+```markdown
+I was **absolutely amazed** by the performance improvements!
+
+The new algorithm is *significantly faster* than the previous version. Here are the key benefits:
+
+- **50% faster** processing time
+- *Reduced* memory usage
+- ~~No more~~ **Eliminated** memory leaks
+
+You can test it yourself using the `benchmark` command.
+````
+
+## Formatting Combinations
+
+### Highlighting Important Information
+
+```markdown
+> **⚠️ Warning:** This action cannot be undone!
+
+> **💡 Tip:** Use _keyboard shortcuts_ to speed up your workflow.
+
+> **📝 Note:** Remember to save your work frequently.
+```
+
+### Code and Formatting Mix
+
+```markdown
+The `useState` hook returns an array with **two elements**:
+
+1. The _current state value_
+2. A **setter function** to update the state
+
+Example: `const [count, setCount] = useState(0);`
+```
+
+### Lists with Formatting
+
+```markdown
+## Prerequisites
+
+Before starting, ensure you have:
+
+- **Node.js** version 16 or higher
+- _Git_ installed and configured
+- A **code editor** (we recommend _VS Code_)
+- ~~Python~~ **Node.js** for backend development
+```
+
+## Platform-Specific Features
+
+### GitHub Flavored Markdown
+
+```markdown
+**GitHub supports:**
+
+- Standard formatting
+- ~~Strikethrough~~
+- `Inline code`
+- Automatic linking of URLs
+
+_Additional features:_
+
+- @mentions
+- #issue-references
+- Emoji :smile:
+```
+
+### Discord/Slack Formatting
+
+````markdown
+**Discord/Slack syntax:**
+
+- **bold** or **bold**
+- _italic_ or _italic_
+- ~~strikethrough~~
+- `inline code`
+- `code blocks`
+````
+
+### Notion Formatting
+
+```markdown
+**Notion supports:**
+
+- **Bold** and _italic_
+- ~~Strikethrough~~
+- `Inline code`
+- ==Highlighting== (Notion-specific)
+```
+
+## Common Mistakes
+
+### 1. Spaces in Formatting
+
+❌ **Wrong:**
+
+```markdown
+** This won't work **
+
+- Neither will this \*
+```
+
+✅ **Correct:**
+
+```markdown
+**This will work**
+_This will too_
+```
+
+### 2. Mixing Syntax Styles
+
+❌ **Inconsistent:**
+
+```markdown
+**Bold** and _italic_ and **bold** and _italic_
+```
+
+✅ **Consistent:**
+
+```markdown
+**Bold** and _italic_ throughout
+```
+
+### 3. Over-formatting
+
+❌ **Too much:**
+
+```markdown
+**This** _is_ **way** _too_ **much** _formatting_!
+```
+
+✅ **Just right:**
+
+```markdown
+This is **important** and this is _emphasized_.
+```
+
+## Accessibility Considerations
+
+### Screen Readers
+
+- **Bold** text is announced as "strong"
+- _Italic_ text is announced as "emphasis"
+- Use formatting meaningfully, not just for appearance
+
+### Semantic Meaning
+
+```markdown
+**Important warning** (strong importance)
+_Technical term_ (emphasis)
+`Code snippet` (literal text)
+```
+
+## Advanced Techniques
+
+### Escaping Characters
+
+Use backslashes to escape formatting characters:
+
+```markdown
+\*This won't be italic\*
+\*\*This won't be bold\*\*
+Use \` to show a literal backtick
+```
+
+**Result:**
+\*This won't be italic\*
+\*\*This won't be bold\*\*
+
+### HTML in Markdown
+
+When Markdown isn't enough, use HTML:
+
+```markdown
+<mark>Highlighted text</mark>
+<small>Small text</small>
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
+```
+
+**Result:**
+
+<mark>Highlighted text</mark>
+<small>Small text</small>
+<kbd>Ctrl</kbd> + <kbd>C</kbd>
+
+## Quick Reference
+
+| Format        | Syntax       | Result     |
+| ------------- | ------------ | ---------- |
+| Bold          | `**text**`   | **text**   |
+| Italic        | `*text*`     | _text_     |
+| Bold + Italic | `***text***` | **_text_** |
+| Strikethrough | `~~text~~`   | ~~text~~   |
+| Inline Code   | `` `text` `` | `text`     |
+| Subscript     | `~text~`     | ~text~     |
+| Superscript   | `^text^`     | ^text^     |
+
+Remember: **Good formatting enhances readability** without overwhelming the reader. Use it _purposefully_ and `consistently`!

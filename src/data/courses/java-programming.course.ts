@@ -1,6 +1,5 @@
 import type { Course } from "../types";
-import TestMdx from "@/data/content/test.mdx";
-import VideoTestMdx from "@/content/video-test.mdx";
+import VideoTestMdx from "@/data/content/video-test.mdx";
 import JavaTestMdx from "@/data/content/java-test.mdx";
 import TypeScriptTestMdx from "@/data/content/typescript-test.mdx";
 
@@ -26,14 +25,6 @@ export const javaProgrammingCourse: Course = {
           completed: false,
           description: "This guide goes over how to set up git.",
           content: `# Git Setup Guide\n\nThis guide will help you set up Git for your development environment.\n\n## Prerequisites\n- None required\n\n## Steps\n1. Download Git from https://git-scm.com/\n2. Install with default settings\n3. Configure your identity\n4. Test the installation\n\n## Configuration\n\n\`\`\`bash\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"\n\`\`\``,
-        },
-        {
-          resourceType: "guide",
-          id: "test-mdx-guide",
-          name: "Test MDX Guide",
-          completed: false,
-          description: "A test guide using MDX content.",
-          content: TestMdx,
         },
         {
           resourceType: "guide",

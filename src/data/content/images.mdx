@@ -1,0 +1,332 @@
+# Images and Media
+
+Learn how to embed **images**, **videos**, and other media in your Markdown documents.
+
+## Basic Image Syntax
+
+### Simple Image
+
+```markdown
+![Alt text](image-url.jpg)
+```
+
+### Image with Title
+
+```markdown
+![Alt text](image-url.jpg "Image title")
+```
+
+### Example
+
+```markdown
+![Markdown Logo](https://markdown-here.com/img/icon256.png "Markdown Logo")
+```
+
+**Result:**
+![Markdown Logo](https://markdown-here.com/img/icon256.png "Markdown Logo")
+
+## Image Sources
+
+### Local Images
+
+```markdown
+![Local image](./images/screenshot.png)
+![Relative path](../assets/logo.svg)
+![From root](/public/banner.jpg)
+```
+
+### Web Images
+
+```markdown
+![Web image](https://example.com/image.jpg)
+![CDN image](https://cdn.example.com/photos/nature.jpg)
+```
+
+### Base64 Images (for small images)
+
+```markdown
+![Inline image](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==)
+```
+
+## Reference Style Images
+
+### Basic Reference
+
+```markdown
+![Alt text][image-ref]
+
+[image-ref]: https://example.com/image.jpg "Optional title"
+```
+
+### Multiple References
+
+```markdown
+![Logo][logo]
+![Banner][banner]
+
+[logo]: ./images/logo.png "Company Logo"
+[banner]: ./images/banner.jpg "Website Banner"
+```
+
+## Advanced Image Techniques
+
+### Clickable Images (Image Links)
+
+```markdown
+[![Alt text](image.jpg)](https://example.com)
+```
+
+### Images with Captions
+
+```markdown
+![Chart showing growth](./charts/growth.png "Sales Growth 2024")
+_Figure 1: Sales growth over the past year_
+```
+
+### Responsive Images (HTML)
+
+```html
+<img src="image.jpg" alt="Description" style="max-width: 100%; height: auto;" />
+```
+
+## Practical Examples
+
+### Documentation Screenshots
+
+```markdown
+## Installation Process
+
+1. Download the installer:
+   ![Download button](./screenshots/download.png "Click the download button")
+
+2. Run the installation:
+   ![Installation wizard](./screenshots/install.png "Follow the installation wizard")
+
+3. Verify installation:
+   ![Success screen](./screenshots/success.png "Installation complete")
+```
+
+### Before/After Comparisons
+
+```markdown
+## UI Redesign
+
+### Before
+
+![Old design](./images/ui-before.png "Previous user interface")
+
+### After
+
+![New design](./images/ui-after.png "Improved user interface")
+```
+
+### Product Gallery
+
+```markdown
+## Product Images
+
+| View  | Image                               |
+| ----- | ----------------------------------- |
+| Front | ![Front view](./products/front.jpg) |
+| Side  | ![Side view](./products/side.jpg)   |
+| Back  | ![Back view](./products/back.jpg)   |
+```
+
+## Image Organization
+
+### Folder Structure
+
+```
+project/
+├── README.md
+├── docs/
+│   ├── guide.md
+│   └── images/
+│       ├── screenshots/
+│       ├── diagrams/
+│       └── logos/
+└── assets/
+    └── media/
+```
+
+### Naming Conventions
+
+```markdown
+<!-- Good naming -->
+
+![User dashboard](./images/user-dashboard-overview.png)
+![Login flow](./diagrams/login-flow-diagram.svg)
+
+<!-- Avoid generic names -->
+
+![Image](./image1.jpg)
+![Picture](./pic.png)
+```
+
+## Image Formats
+
+### Common Formats
+
+| Format | Best For               | Pros                   | Cons                    |
+| ------ | ---------------------- | ---------------------- | ----------------------- |
+| PNG    | Screenshots, logos     | Lossless, transparency | Large file size         |
+| JPG    | Photos                 | Small file size        | Lossy compression       |
+| SVG    | Icons, simple graphics | Scalable, small        | Limited browser support |
+| GIF    | Simple animations      | Animation support      | Limited colors          |
+| WebP   | Modern web             | Small size, quality    | Limited support         |
+
+### Format Examples
+
+```markdown
+![PNG Logo](./logo.png "Crisp logo with transparency")
+![JPG Photo](./photo.jpg "Compressed photograph")
+![SVG Icon](./icon.svg "Scalable vector icon")
+![GIF Animation](./demo.gif "Animated demonstration")
+```
+
+## Accessibility
+
+### Alt Text Best Practices
+
+```markdown
+<!-- Good alt text -->
+
+![Bar chart showing 40% increase in sales from Q1 to Q2](./chart.png)
+
+<!-- Poor alt text -->
+
+![Chart](./chart.png)
+![](./chart.png)
+```
+
+### Descriptive Alt Text
+
+```markdown
+![Screenshot of the login form with username and password fields, and a blue "Sign In" button](./login-form.png)
+```
+
+## Platform-Specific Features
+
+### GitHub
+
+```markdown
+<!-- GitHub supports -->
+
+![Relative images](./docs/images/screenshot.png)
+![Issues and PRs](https://user-images.githubusercontent.com/...)
+
+<!-- GitHub automatically resizes large images -->
+```
+
+### GitLab
+
+```markdown
+<!-- GitLab features -->
+
+![Relative paths](./images/diagram.png)
+![Wiki images](uploads/image.png)
+```
+
+### Notion
+
+```markdown
+<!-- Notion supports -->
+
+![Uploaded images](notion://image-url)
+![Web images](https://example.com/image.jpg)
+```
+
+## Embedding Videos
+
+### YouTube (using HTML)
+
+```html
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/VIDEO_ID"
+  frameborder="0"
+  allowfullscreen
+>
+</iframe>
+```
+
+### Video Thumbnails
+
+```markdown
+[![Video thumbnail](./video-thumb.jpg)](https://youtube.com/watch?v=VIDEO_ID)
+_Click to watch the tutorial video_
+```
+
+## Image Optimization
+
+### File Size Tips
+
+1. **Compress images** before adding to repository
+2. **Use appropriate formats** (PNG for graphics, JPG for photos)
+3. **Resize images** to actual display size
+4. **Consider WebP** for modern browsers
+
+### Tools for Optimization
+
+- **TinyPNG**: Online PNG/JPG compression
+- **ImageOptim**: Mac image optimization
+- **Squoosh**: Google's web-based optimizer
+
+## Common Issues
+
+### 1. Broken Image Links
+
+❌ **Problematic:**
+
+```markdown
+![Broken](./wrong-path.jpg)
+![Missing](http://broken-link.com/image.jpg)
+```
+
+✅ **Check paths:**
+
+```markdown
+![Working](./images/correct-path.jpg)
+![Verified](https://reliable-cdn.com/image.jpg)
+```
+
+### 2. Missing Alt Text
+
+❌ **Inaccessible:**
+
+```markdown
+![](./image.jpg)
+```
+
+✅ **Accessible:**
+
+```markdown
+![Descriptive alt text](./image.jpg)
+```
+
+### 3. Large File Sizes
+
+❌ **Slow loading:**
+
+```markdown
+![Huge file](./uncompressed-4mb-image.jpg)
+```
+
+✅ **Optimized:**
+
+```markdown
+![Optimized](./compressed-image.jpg)
+```
+
+## Quick Reference
+
+| Syntax                | Purpose           |
+| --------------------- | ----------------- |
+| `![alt](url)`         | Basic image       |
+| `![alt](url "title")` | Image with title  |
+| `[![alt](img)](link)` | Clickable image   |
+| `![alt][ref]`         | Reference image   |
+| `<img>` tag           | HTML with styling |
+
+Images make your content **visual and engaging** – use them to clarify concepts, show examples, and enhance understanding!

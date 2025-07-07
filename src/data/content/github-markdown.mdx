@@ -1,0 +1,490 @@
+# GitHub Flavored Markdown
+
+GitHub Flavored Markdown (GFM) extends standard Markdown with **powerful features** specifically designed for software development and collaboration.
+
+## What is GitHub Flavored Markdown?
+
+### Overview
+
+GFM is GitHub's dialect of Markdown that adds:
+
+- **Tables** for structured data
+- **Task lists** for project management
+- **Strikethrough** text formatting
+- **Automatic linking** of URLs
+- **Syntax highlighting** for code
+- **@mentions** and **#references**
+
+### Where GFM is Used
+
+- **README files** in repositories
+- **Issues** and **pull requests**
+- **Wiki pages** and documentation
+- **Comments** and discussions
+- **Gist** descriptions
+
+## GFM-Specific Features
+
+### Tables
+
+```markdown
+| Feature       | Standard MD | GFM |
+| ------------- | ----------- | --- |
+| Tables        | ❌          | ✅  |
+| Task Lists    | ❌          | ✅  |
+| Strikethrough | ❌          | ✅  |
+| Auto-linking  | ❌          | ✅  |
+```
+
+**Result:**
+| Feature | Standard MD | GFM |
+|---------|-------------|-----|
+| Tables | ❌ | ✅ |
+| Task Lists | ❌ | ✅ |
+| Strikethrough | ❌ | ✅ |
+| Auto-linking | ❌ | ✅ |
+
+### Task Lists
+
+```markdown
+## Sprint Backlog
+
+- [x] Set up repository
+- [x] Create initial documentation
+- [ ] Implement user authentication
+- [ ] Add unit tests
+- [ ] Deploy to staging
+```
+
+**Result:**
+
+## Sprint Backlog
+
+- [x] Set up repository
+- [x] Create initial documentation
+- [ ] Implement user authentication
+- [ ] Add unit tests
+- [ ] Deploy to staging
+
+### Strikethrough
+
+```markdown
+~~This feature is deprecated~~
+Use the new API instead.
+
+~~Old price: $99~~
+**New price: $79**
+```
+
+**Result:**
+~~This feature is deprecated~~
+Use the new API instead.
+
+~~Old price: $99~~
+**New price: $79**
+
+### Automatic URL Linking
+
+```markdown
+Visit https://github.com for more information.
+Check out the docs at https://docs.github.com.
+Email us at support@github.com.
+```
+
+**Result:**
+Visit https://github.com for more information.
+Check out the docs at https://docs.github.com.
+Email us at support@github.com.
+
+## GitHub-Specific Integrations
+
+### @Mentions
+
+```markdown
+@username can you review this?
+@team/frontend please check the UI changes.
+```
+
+**Features:**
+
+- **User mentions**: `@username`
+- **Team mentions**: `@org/team-name`
+- **Notifications** sent automatically
+- **Autocomplete** in GitHub interface
+
+### Issue and PR References
+
+```markdown
+Fixes #123
+Related to #456
+See pull request #789
+
+This addresses issue #42 and closes #43.
+```
+
+**Automatic linking:**
+
+- `#123` → Links to issue/PR #123
+- `GH-123` → Alternative syntax
+- `user/repo#123` → Cross-repository references
+- `SHA` → Links to specific commits
+
+### Commit References
+
+```markdown
+See commit a1b2c3d for the implementation.
+Fixed in commit abc123def456.
+```
+
+**Features:**
+
+- **SHA linking**: Automatic commit links
+- **Short SHA**: First 7 characters
+- **Full SHA**: Complete hash supported
+- **Cross-repo**: `user/repo@sha` syntax
+
+## Advanced GFM Features
+
+### Syntax Highlighting
+
+````markdown
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+```
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+```
+
+```bash
+#!/bin/bash
+echo "Hello, World!"
+```
+````
+
+**Supported languages:**
+
+- JavaScript, TypeScript, Python, Java
+- C, C++, C#, Go, Rust, Ruby
+- HTML, CSS, SQL, JSON, YAML
+- Shell, PowerShell, Dockerfile
+- And 100+ more languages
+
+### Emoji Support
+
+```markdown
+:smile: :heart: :thumbsup: :rocket:
+:warning: :information_source: :heavy_check_mark:
+
+GitHub supports :octocat: and many others!
+```
+
+**Result:**
+:smile: :heart: :thumbsup: :rocket:
+:warning: :information_source: :heavy_check_mark:
+
+GitHub supports :octocat: and many others!
+
+### Keyboard Shortcuts
+
+```markdown
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
+Use <kbd>Cmd</kbd> + <kbd>V</kbd> on Mac.
+```
+
+**Result:**
+Press <kbd>Ctrl</kbd> + <kbd>C</kbd> to copy.
+Use <kbd>Cmd</kbd> + <kbd>V</kbd> on Mac.
+
+## Practical Examples
+
+### README Documentation
+
+````markdown
+# My Awesome Project
+
+[![Build Status](https://travis-ci.org/user/repo.svg?branch=main)](https://travis-ci.org/user/repo)
+[![Coverage](https://codecov.io/gh/user/repo/branch/main/graph/badge.svg)](https://codecov.io/gh/user/repo)
+
+## Features
+
+- [x] User authentication
+- [x] Data persistence
+- [ ] Real-time updates
+- [ ] Mobile app
+
+## Installation
+
+```bash
+npm install my-awesome-project
+```
+````
+
+## Usage
+
+```javascript
+import { MyAwesome } from "my-awesome-project";
+
+const app = new MyAwesome();
+app.start();
+```
+
+## Contributing
+
+See our [contributing guidelines](CONTRIBUTING.md).
+Found a bug? [Open an issue](https://github.com/user/repo/issues/new).
+
+## License
+
+MIT © [Your Name](https://github.com/username)
+
+````
+
+### Issue Templates
+```markdown
+## Bug Report
+
+**Describe the bug**
+A clear description of what the bug is.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+What you expected to happen.
+
+**Screenshots**
+If applicable, add screenshots.
+
+**Environment:**
+- OS: [e.g. iOS]
+- Browser: [e.g. chrome, safari]
+- Version: [e.g. 22]
+
+**Additional context**
+Any other context about the problem.
+
+/cc @maintainer-team
+````
+
+### Pull Request Templates
+
+```markdown
+## Changes Made
+
+- [ ] Added new feature X
+- [ ] Fixed bug Y
+- [ ] Updated documentation
+- [ ] Added tests
+
+## Testing
+
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing completed
+
+## Screenshots
+
+Before:
+![Before](url-to-before-screenshot)
+
+After:
+![After](url-to-after-screenshot)
+
+## Related Issues
+
+Closes #123
+Related to #456
+
+## Checklist
+
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Documentation updated
+- [ ] Tests added/updated
+
+/cc @reviewer1 @reviewer2
+```
+
+### Project Documentation
+
+```markdown
+# Project Roadmap
+
+## Q1 2024
+
+### Completed ✅
+
+- [x] User authentication system
+- [x] Basic dashboard
+- [x] API documentation
+
+### In Progress 🔄
+
+- [ ] Advanced search (#123)
+  - [x] Backend implementation
+  - [ ] Frontend UI
+  - [ ] Testing
+- [ ] Mobile app (#124)
+
+### Planned 📋
+
+- [ ] Real-time notifications
+- [ ] Third-party integrations
+- [ ] Performance optimizations
+
+## Q2 2024
+
+### Planned Features
+
+| Feature   | Priority | Assignee       | Status   |
+| --------- | -------- | -------------- | -------- |
+| Dark mode | High     | @frontend-team | Planning |
+| API v2    | Medium   | @backend-team  | Research |
+| Analytics | Low      | @data-team     | Backlog  |
+
+---
+
+For questions, contact @project-lead or open an issue.
+```
+
+## GitHub-Specific Markdown Tips
+
+### 1. Use Task Lists for Project Management
+
+```markdown
+## Sprint Goals
+
+- [x] Complete user stories 1-5
+- [ ] Implement feature A
+  - [x] Backend API
+  - [x] Database schema
+  - [ ] Frontend UI
+  - [ ] Tests
+- [ ] Bug fixes
+  - [x] Fix login issue #123
+  - [ ] Resolve performance problem #124
+```
+
+### 2. Leverage @mentions for Collaboration
+
+```markdown
+@designer Could you review the UI mockups?
+@devops-team Please check the deployment configuration.
+@security-team This needs a security review before merging.
+```
+
+### 3. Cross-Reference Issues and PRs
+
+```markdown
+This PR addresses the following issues:
+
+- Fixes #123: Login button not working
+- Resolves #124: Performance issues on mobile
+- Related to #125: UI improvements
+
+Previous attempts:
+
+- See PR #120 for initial implementation
+- Supersedes PR #121
+```
+
+### 4. Use Proper Code Blocks
+
+````markdown
+**Installation:**
+
+```bash
+npm install --save my-package
+```
+
+**Configuration:**
+
+```json
+{
+  "name": "my-app",
+  "dependencies": {
+    "my-package": "^1.0.0"
+  }
+}
+```
+
+**Usage:**
+
+```javascript
+import { myFunction } from "my-package";
+
+const result = myFunction("hello");
+console.log(result);
+```
+````
+
+## GFM vs Standard Markdown
+
+### Compatibility
+
+| Feature       | Standard MD | GFM | Notes                        |
+| ------------- | ----------- | --- | ---------------------------- |
+| Headers       | ✅          | ✅  | Same syntax                  |
+| Bold/Italic   | ✅          | ✅  | Same syntax                  |
+| Links         | ✅          | ✅  | GFM adds auto-linking        |
+| Code blocks   | ✅          | ✅  | GFM adds syntax highlighting |
+| Tables        | ❌          | ✅  | GFM extension                |
+| Task lists    | ❌          | ✅  | GFM extension                |
+| Strikethrough | ❌          | ✅  | GFM extension                |
+
+### Migration Considerations
+
+- **GFM features** won't work in standard Markdown
+- **Tables** need alternative formatting
+- **Task lists** become regular lists
+- **@mentions** become plain text
+
+## Best Practices
+
+### 1. Use Tables for Structured Data
+
+```markdown
+<!-- Good for comparisons -->
+
+| Tool    | Language   | Stars | License |
+| ------- | ---------- | ----- | ------- |
+| React   | JavaScript | 200k+ | MIT     |
+| Vue     | JavaScript | 200k+ | MIT     |
+| Angular | TypeScript | 90k+  | MIT     |
+```
+
+### 2. Task Lists for Project Tracking
+
+```markdown
+<!-- Great for README project status -->
+
+## Project Status
+
+- [x] Initial setup
+- [x] Core features
+- [ ] Advanced features
+- [ ] Documentation
+- [ ] Testing
+```
+
+### 3. Proper Issue Linking
+
+```markdown
+<!-- Clear issue relationships -->
+
+This PR:
+
+- Fixes #123 (critical bug)
+- Addresses #124 (feature request)
+- Partially resolves #125 (will need follow-up)
+```
+
+GitHub Flavored Markdown **enhances collaboration** and **project management** – perfect for software development teams and open source projects!

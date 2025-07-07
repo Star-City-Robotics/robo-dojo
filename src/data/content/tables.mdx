@@ -1,0 +1,241 @@
+# Tables
+
+Tables are perfect for organizing **data**, **comparisons**, and **structured information** in Markdown.
+
+## Basic Table Syntax
+
+### Simple Table
+
+```markdown
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Row 1    | Data     | More     |
+| Row 2    | Info     | Content  |
+```
+
+**Result:**
+| Header 1 | Header 2 | Header 3 |
+|----------|----------|----------|
+| Row 1 | Data | More |
+| Row 2 | Info | Content |
+
+### Column Alignment
+
+Control text alignment with colons:
+
+```markdown
+| Left         |     Center     |         Right |
+| :----------- | :------------: | ------------: |
+| Left aligned | Center aligned | Right aligned |
+| More text    |  More content  |  Numbers: 123 |
+```
+
+**Result:**
+| Left | Center | Right |
+|:-----|:------:|------:|
+| Left aligned | Center aligned | Right aligned |
+| More text | More content | Numbers: 123 |
+
+## Advanced Table Features
+
+### Tables with Code
+
+```markdown
+| Method | Syntax       | Example         |
+| ------ | ------------ | --------------- |
+| Bold   | `**text**`   | **bold**        |
+| Italic | `*text*`     | _italic_        |
+| Code   | `` `code` `` | `console.log()` |
+```
+
+**Result:**
+| Method | Syntax | Example |
+|--------|--------|---------|
+| Bold | `**text**` | **bold** |
+| Italic | `*text*` | _italic_ |
+| Code | `` `code` `` | `console.log()` |
+
+### Tables with Links
+
+```markdown
+| Tool    | Website                                                | Description        |
+| ------- | ------------------------------------------------------ | ------------------ |
+| GitHub  | [github.com](https://github.com)                       | Version control    |
+| VS Code | [code.visualstudio.com](https://code.visualstudio.com) | Code editor        |
+| Node.js | [nodejs.org](https://nodejs.org)                       | JavaScript runtime |
+```
+
+**Result:**
+| Tool | Website | Description |
+|------|---------|-------------|
+| GitHub | [github.com](https://github.com) | Version control |
+| VS Code | [code.visualstudio.com](https://code.visualstudio.com) | Code editor |
+| Node.js | [nodejs.org](https://nodejs.org) | JavaScript runtime |
+
+## Practical Examples
+
+### API Documentation
+
+```markdown
+| Endpoint      | Method | Description    | Parameters            |
+| ------------- | ------ | -------------- | --------------------- |
+| `/users`      | GET    | List all users | `limit`, `offset`     |
+| `/users`      | POST   | Create user    | `name`, `email`       |
+| `/users/{id}` | GET    | Get user by ID | `id` (required)       |
+| `/users/{id}` | PUT    | Update user    | `id`, `name`, `email` |
+| `/users/{id}` | DELETE | Delete user    | `id` (required)       |
+```
+
+### Feature Comparison
+
+```markdown
+| Feature        | Free Plan | Pro Plan  | Enterprise |
+| -------------- | :-------: | :-------: | :--------: |
+| Users          |     5     |    50     | Unlimited  |
+| Storage        |    1GB    |   100GB   |    1TB     |
+| Support        |   Email   | Priority  | 24/7 Phone |
+| API Access     |    ❌     |    ✅     |     ✅     |
+| Custom Domains |    ❌     |    ✅     |     ✅     |
+| Analytics      |   Basic   | Advanced  |   Custom   |
+| Price          | $0/month  | $29/month | Contact Us |
+```
+
+### Project Status
+
+```markdown
+| Task                | Assignee | Status         | Due Date   | Priority |
+| ------------------- | -------- | -------------- | ---------- | -------- |
+| User Authentication | @john    | ✅ Complete    | 2024-01-15 | High     |
+| Dashboard UI        | @sarah   | 🔄 In Progress | 2024-01-20 | Medium   |
+| API Integration     | @mike    | 📋 Planned     | 2024-01-25 | High     |
+| Testing             | @team    | ⏳ Pending     | 2024-01-30 | Low      |
+```
+
+## Best Practices
+
+### 1. Keep Headers Clear
+
+Use descriptive column headers:
+
+✅ **Good:**
+
+```markdown
+| Product Name | Price (USD) | Availability | Rating |
+```
+
+❌ **Vague:**
+
+```markdown
+| Name | Cost | Stock | Stars |
+```
+
+### 2. Consistent Data Format
+
+Format similar data consistently:
+
+✅ **Consistent:**
+
+```markdown
+| Item     | Price   | Discount |
+| -------- | ------- | -------- |
+| Laptop   | $999.00 | 10%      |
+| Mouse    | $29.99  | 5%       |
+| Keyboard | $79.50  | 15%      |
+```
+
+### 3. Use Alignment Appropriately
+
+- **Left**: Text content
+- **Center**: Short labels, status
+- **Right**: Numbers, prices
+
+```markdown
+| Product |  Status   |   Price |
+| :------ | :-------: | ------: |
+| Laptop  | Available | $999.00 |
+| Mouse   | Sold Out  |  $29.99 |
+```
+
+## Advanced Formatting
+
+### Multi-line Content
+
+Use `<br>` for line breaks in cells:
+
+```markdown
+| Feature        | Description                                        |
+| -------------- | -------------------------------------------------- |
+| Authentication | Secure login<br>Password reset<br>2FA support      |
+| Dashboard      | Real-time data<br>Custom widgets<br>Export options |
+```
+
+### Empty Cells
+
+Leave cells empty when appropriate:
+
+```markdown
+| Version | Feature          | Bug Fixes | Breaking Changes |
+| ------- | ---------------- | --------- | ---------------- |
+| 1.0.0   | Initial release  |           | ✅               |
+| 1.1.0   | New dashboard    | 5 fixes   |                  |
+| 2.0.0   | Complete rewrite | 12 fixes  | ✅               |
+```
+
+## Common Mistakes
+
+### 1. Inconsistent Column Count
+
+❌ **Wrong:**
+
+```markdown
+| A   | B   | C   |
+| --- | --- | --- | --- |
+| 1   | 2   |
+| 3   | 4   | 5   | 6   |
+```
+
+✅ **Correct:**
+
+```markdown
+| A   | B   | C   |
+| --- | --- | --- |
+| 1   | 2   | 3   |
+| 4   | 5   | 6   |
+```
+
+### 2. Missing Alignment Row
+
+❌ **Missing:**
+
+```markdown
+| Header 1 | Header 2 |
+| Row 1 | Data |
+```
+
+✅ **Complete:**
+
+```markdown
+| Header 1 | Header 2 |
+| -------- | -------- |
+| Row 1    | Data     |
+```
+
+### 3. Pipe Character Issues
+
+❌ **Unescaped:**
+
+```markdown
+| Code | Description |
+| ---- | ----------- | -------------- |
+| a    | b           | Pipe character |
+```
+
+✅ **Escaped:**
+
+```markdown
+| Code | Description    |
+| ---- | -------------- |
+| a\|b | Pipe character |
+```
+
+Tables make your content **organized and scannable** – perfect for comparisons, specifications, and structured data!
