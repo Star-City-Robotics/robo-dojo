@@ -233,15 +233,35 @@ function RouteComponent() {
                 {
                   id: activeCourse.name,
                   name: activeCourse.name,
-                  type: "course",
+                  type: "course" as const,
+                  link:
+                    !activeModule && !activeResource
+                      ? undefined
+                      : `/dashboard/courses/${encodeURIComponent(activeCourse.name)}`,
                 },
+                ...(activeModule
+                  ? [
+                      {
+                        id: activeModule.id,
+                        name: activeModule.name,
+                        type: "module" as const,
+                        link: !activeResource
+                          ? undefined
+                          : `/dashboard/courses/${encodeURIComponent(activeCourse.name)}/module/${encodeURIComponent(activeModule.id)}`,
+                      },
+                    ]
+                  : []),
+                ...(activeResource
+                  ? [
+                      {
+                        id: activeResource.id,
+                        name: activeResource.name,
+                        type: "resource" as const,
+                        link: undefined, // last item, no link
+                      },
+                    ]
+                  : []),
               ]}
-              onNavigate={(item) => {
-                navigate({
-                  to: "/dashboard/courses/$courseName",
-                  params: { courseName: item.name },
-                });
-              }}
             />
           )}
         </div>
