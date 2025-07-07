@@ -3,6 +3,7 @@ import TestMdx from "@/data/content/test.mdx";
 import JavaTestMdx from "@/data/content/java-test.mdx";
 import PythonTestMdx from "@/data/content/python-test.mdx";
 import TypeScriptTestMdx from "@/data/content/typescript-test.mdx";
+import VideoTestMdx from "@/content/video-test.mdx";
 
 export const javaProgrammingCourse: Course = {
   name: "Java Programming",
@@ -34,6 +35,14 @@ export const javaProgrammingCourse: Course = {
           completed: false,
           description: "A test guide using MDX content.",
           content: TestMdx,
+        },
+        {
+          resourceType: "guide",
+          id: "video-tutorial-guide",
+          name: "Video Tutorial Guide",
+          completed: false,
+          description: "A guide with embedded video content.",
+          content: VideoTestMdx,
         },
       ],
     },
