@@ -2,17 +2,17 @@ import { createFileRoute, useParams, Link } from "@tanstack/react-router";
 import { courses } from "@/data/constants";
 
 export const Route = createFileRoute(
-  "/dashboard/courses/$courseName/module/$moduleName/"
+  "/dashboard/courses/$courseName/module/$moduleId/"
 )({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   const params = useParams({
-    from: "/dashboard/courses/$courseName/module/$moduleName/",
+    from: "/dashboard/courses/$courseName/module/$moduleId/",
   });
   const course = courses.find((c) => c.name === params.courseName);
-  const module = course?.modules.find((m) => m.id === params.moduleName);
+  const module = course?.modules.find((m) => m.id === params.moduleId);
 
   if (!course || !module) {
     return <div className="p-8 text-[#cccccc]">Module not found.</div>;
@@ -26,11 +26,11 @@ function RouteComponent() {
         {module.resources.map((resource) => (
           <li key={resource.id}>
             <Link
-              to="/dashboard/courses/$courseName/module/$moduleName/resources/$resourceName"
+              to="/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId"
               params={{
                 courseName: course.name,
-                moduleName: module.id,
-                resourceName: resource.id,
+                moduleId: module.id,
+                resourceId: resource.id,
               }}
               className="text-[#4ec9b0] hover:underline"
             >

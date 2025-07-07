@@ -5,8 +5,6 @@ import {
   useLoaderData,
   useNavigate,
   useParams,
-  useRouter,
-  useRouterState,
 } from "@tanstack/react-router";
 import {
   Badge,
@@ -33,6 +31,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { courses, type Module } from "@/data/constants";
+import { BreadcrumbNav } from "@/components/breadcrumb-nav";
+import { useActiveEntities } from "@/hooks/use-active-entities";
 
 export const Route = createFileRoute("/dashboard/courses/$courseName")({
   component: RouteComponent,
@@ -51,7 +51,12 @@ export const Route = createFileRoute("/dashboard/courses/$courseName")({
 
 function RouteComponent() {
   const [expandedModules, setExpandedModules] = useState<string[]>([]);
-  const params = useParams({ from: "/dashboard/courses/$courseName" });
+  const params = useParams({
+    from: "/dashboard/courses/$courseName",
+    shouldThrow: false,
+  });
+
+  const { activeCourse, activeModule, activeResource } = useActiveEntities();
   const navigate = useNavigate();
   const { courses } = useLoaderData({ from: "/dashboard/courses/$courseName" });
 
@@ -61,12 +66,6 @@ function RouteComponent() {
         ? prev.filter((id) => id !== moduleId)
         : [...prev, moduleId]
     );
-
-  const handleModuleClick = (module: Module) => {
-    // Custom logic for module click (e.g., select, navigate, etc.)
-    // For now, just log
-    console.log("Module clicked:", module);
-  };
 
   const getResourceIcon = (type: string): ReactNode => {
     switch (type) {
@@ -86,10 +85,6 @@ function RouteComponent() {
         return <Bug className="w-4 h-4 text-purple-400" />;
     }
   };
-
-  const selectedCourse = courses.find(
-    (course) => course.name === params.courseName
-  );
 
   return (
     <div
@@ -119,7 +114,7 @@ function RouteComponent() {
         {/* Course Switcher */}
         <div className="p-3 border-[#3e3e42] border-b">
           <Select
-            value={selectedCourse?.name}
+            value={activeCourse?.name}
             onValueChange={(newCourseName) => {
               navigate({
                 to: "/dashboard/courses/$courseName",
@@ -149,7 +144,7 @@ function RouteComponent() {
         {/* Module Explorer */}
         <div className="flex-1 p-3 overflow-y-auto">
           <div className="space-y-1">
-            {selectedCourse?.modules.map((module) => (
+            {activeCourse?.modules.map((module) => (
               <Collapsible
                 key={module.id}
                 open={expandedModules.includes(module.id)}
@@ -157,10 +152,10 @@ function RouteComponent() {
                 <div className="flex items-center">
                   {/* Module row: now a Link for navigation */}
                   <Link
-                    to="/dashboard/courses/$courseName/module/$moduleName"
+                    to="/dashboard/courses/$courseName/module/$moduleId"
                     params={{
-                      courseName: selectedCourse.name,
-                      moduleName: module.id,
+                      courseName: activeCourse.name,
+                      moduleId: module.id,
                     }}
                     className="group flex items-center w-full cursor-pointer"
                   >
@@ -193,11 +188,11 @@ function RouteComponent() {
                   {module.resources.map((resource) => (
                     <Link
                       key={resource.id}
-                      to="/dashboard/courses/$courseName/module/$moduleName/resources/$resourceName"
+                      to="/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId"
                       params={{
-                        courseName: selectedCourse.name,
-                        moduleName: module.id,
-                        resourceName: resource.id,
+                        courseName: activeCourse.name,
+                        moduleId: module.id,
+                        resourceId: resource.id,
                       }}
                       className="flex items-center space-x-2 p-1.5 rounded-sm w-full text-left transition-colors"
                     >
@@ -232,10 +227,23 @@ function RouteComponent() {
       <div className="flex flex-col flex-1">
         {/* Breadcrumb Header */}
         <div className="bg-[#2d2d30] p-4 border-[#3e3e42] border-b">
-          {/* <BreadcrumbNav
-            items={getBreadcrumbItems()}
-            onNavigate={handleBreadcrumbNavigation}
-          /> */}
+          {activeCourse && (
+            <BreadcrumbNav
+              items={[
+                {
+                  id: activeCourse.name,
+                  name: activeCourse.name,
+                  type: "course",
+                },
+              ]}
+              onNavigate={(item) => {
+                navigate({
+                  to: "/dashboard/courses/$courseName",
+                  params: { courseName: item.name },
+                });
+              }}
+            />
+          )}
         </div>
 
         {/* Content Area */}
