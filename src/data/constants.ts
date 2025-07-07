@@ -1,5 +1,8 @@
 import React from "react";
 import TestMdx from "@/content/test.mdx";
+import JavaTestMdx from "@/content/java-test.mdx";
+import PythonTestMdx from "@/content/python-test.mdx";
+import TypeScriptTestMdx from "@/content/typescript-test.mdx";
 
 export const javaProgrammingCourse: Course = {
   name: "Java Programming",
@@ -40,11 +43,12 @@ export const javaProgrammingCourse: Course = {
       resources: [
         {
           resourceType: "guide",
-          id: "java-intro",
-          name: "Introduction to Java",
+          id: "java-programming-guide",
+          name: "Java Programming Guide",
           completed: false,
-          description: "Introduction to Java programming fundamentals.",
-          content: `# Introduction to Java\n\nLearn the basics of Java programming in this guide.`,
+          description:
+            "Comprehensive Java programming guide with syntax highlighting.",
+          content: JavaTestMdx,
         },
         {
           resourceType: "guide",
@@ -64,12 +68,11 @@ export const javaProgrammingCourse: Course = {
         },
         {
           resourceType: "guide",
-          id: "java-dev-setup",
-          name: "Java Development Setup",
+          id: "typescript-guide",
+          name: "TypeScript for Robotics",
           completed: false,
-          description:
-            "Step-by-step tutorial for setting up Java development environment.",
-          content: `# Java Development Setup\n\nThis guide will help you set up your Java development environment.\n\n## Prerequisites\n- Basic computer knowledge\n- Internet connection\n\n## Steps\n1. Download JDK from Oracle or OpenJDK\n2. Install JDK\n3. Set up environment variables\n4. Install an IDE (IntelliJ IDEA, Eclipse, or VSCode)\n5. Test your setup\n\n## Verification\n\n\`\`\`bash\njava -version\njavac -version\n\`\`\``,
+          description: "Learn TypeScript for robotics applications.",
+          content: TypeScriptTestMdx,
         },
       ],
     },
@@ -85,19 +88,19 @@ export const dummyCourse: Course = {
       resources: [
         {
           resourceType: "guide",
-          id: "python-robotics-setup",
-          name: "Python Robotics Setup Guide",
-          completed: false,
-          description: "How to set up your robotics Python environment.",
-          content: `# Python Robotics Setup\n\nInstall Python, pip, and robotics libraries like pyserial, numpy, and matplotlib.\n\n## Steps\n1. Download Python from python.org\n2. Install pip\n3. Install libraries: pip install pyserial numpy matplotlib`,
-        },
-        {
-          resourceType: "guide",
           id: "python-robotics-guide",
           name: "Python Robotics Guide",
           completed: false,
-          description: "Guide to installing Python and robotics libraries.",
-          content: `# Python Robotics Guide\n\nThis guide covers the basics of Python for robotics.`,
+          description: "Complete Python robotics programming guide.",
+          content: PythonTestMdx,
+        },
+        {
+          resourceType: "guide",
+          id: "python-robotics-setup",
+          name: "Python Setup Guide",
+          completed: false,
+          description: "How to set up your robotics Python environment.",
+          content: `# Python Robotics Setup\n\nInstall Python, pip, and robotics libraries like pyserial, numpy, and matplotlib.\n\n## Steps\n1. Download Python from python.org\n2. Install pip\n3. Install libraries: pip install pyserial numpy matplotlib`,
         },
       ],
     },

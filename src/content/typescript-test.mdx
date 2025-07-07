@@ -1,0 +1,270 @@
+# TypeScript for Robotics
+
+TypeScript brings type safety to JavaScript, making it excellent for complex robotics applications.
+
+## Basic Robot Interface
+
+Here's how to define a robot interface in TypeScript:
+
+```typescript
+interface Position {
+  x: number;
+  y: number;
+  z: number;
+}
+
+interface Velocity {
+  linear: Position;
+  angular: Position;
+}
+
+interface SensorReading {
+  timestamp: Date;
+  value: number;
+  unit: string;
+  sensorId: string;
+}
+
+class Robot {
+  private position: Position;
+  private velocity: Velocity;
+  private sensors: Map<string, SensorReading>;
+
+  constructor(
+    public readonly id: string,
+    public readonly name: string,
+    initialPosition: Position = { x: 0, y: 0, z: 0 }
+  ) {
+    this.position = initialPosition;
+    this.velocity = {
+      linear: { x: 0, y: 0, z: 0 },
+      angular: { x: 0, y: 0, z: 0 },
+    };
+    this.sensors = new Map();
+  }
+
+  moveTo(target: Position, speed: number = 1.0): Promise<void> {
+    return new Promise((resolve) => {
+      const distance = this.calculateDistance(this.position, target);
+      const time = distance / speed;
+
+      console.log(
+        `${this.name} moving to (${target.x}, ${target.y}, ${target.z})`
+      );
+
+      setTimeout(() => {
+        this.position = { ...target };
+        console.log(`${this.name} reached destination`);
+        resolve();
+      }, time * 1000);
+    });
+  }
+
+  private calculateDistance(from: Position, to: Position): number {
+    return Math.sqrt(
+      Math.pow(to.x - from.x, 2) +
+        Math.pow(to.y - from.y, 2) +
+        Math.pow(to.z - from.z, 2)
+    );
+  }
+
+  getCurrentPosition(): Position {
+    return { ...this.position };
+  }
+}
+```
+
+## Async Robot Control
+
+Modern robotics often requires asynchronous operations:
+
+```typescript
+type RobotState = "idle" | "moving" | "charging" | "error";
+
+interface RobotCommand {
+  id: string;
+  type: "move" | "rotate" | "stop" | "charge";
+  parameters: Record<string, any>;
+  priority: number;
+}
+
+class RobotController {
+  private state: RobotState = "idle";
+  private commandQueue: RobotCommand[] = [];
+  private isProcessing = false;
+
+  constructor(private robot: Robot) {}
+
+  async addCommand(command: RobotCommand): Promise<void> {
+    this.commandQueue.push(command);
+    this.commandQueue.sort((a, b) => b.priority - a.priority);
+
+    if (!this.isProcessing) {
+      await this.processCommands();
+    }
+  }
+
+  private async processCommands(): Promise<void> {
+    this.isProcessing = true;
+
+    while (this.commandQueue.length > 0) {
+      const command = this.commandQueue.shift()!;
+
+      try {
+        await this.executeCommand(command);
+      } catch (error) {
+        console.error(`Failed to execute command ${command.id}:`, error);
+        this.state = "error";
+        break;
+      }
+    }
+
+    this.isProcessing = false;
+    this.state = "idle";
+  }
+
+  private async executeCommand(command: RobotCommand): Promise<void> {
+    switch (command.type) {
+      case "move":
+        this.state = "moving";
+        await this.robot.moveTo(
+          command.parameters.target,
+          command.parameters.speed
+        );
+        break;
+      case "rotate":
+        console.log(`Rotating ${command.parameters.angle} degrees`);
+        await this.delay(1000);
+        break;
+      case "stop":
+        console.log("Emergency stop!");
+        this.commandQueue = [];
+        break;
+      case "charge":
+        this.state = "charging";
+        await this.delay(5000);
+        break;
+    }
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  getState(): RobotState {
+    return this.state;
+  }
+}
+```
+
+## React Component for Robot Control
+
+Here's a React component using TypeScript:
+
+```tsx
+import React, { useState, useEffect } from "react";
+
+interface RobotControlProps {
+  robot: Robot;
+  controller: RobotController;
+}
+
+const RobotControl: React.FC<RobotControlProps> = ({ robot, controller }) => {
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0, z: 0 });
+  const [state, setState] = useState<RobotState>("idle");
+  const [targetPosition, setTargetPosition] = useState<Position>({
+    x: 0,
+    y: 0,
+    z: 0,
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPosition(robot.getCurrentPosition());
+      setState(controller.getState());
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [robot, controller]);
+
+  const handleMove = async () => {
+    const command: RobotCommand = {
+      id: `move-${Date.now()}`,
+      type: "move",
+      parameters: { target: targetPosition, speed: 1.0 },
+      priority: 1,
+    };
+
+    await controller.addCommand(command);
+  };
+
+  const handleStop = async () => {
+    const command: RobotCommand = {
+      id: `stop-${Date.now()}`,
+      type: "stop",
+      parameters: {},
+      priority: 10,
+    };
+
+    await controller.addCommand(command);
+  };
+
+  return (
+    <div className="robot-control">
+      <h2>Robot Control Panel</h2>
+
+      <div className="status">
+        <p>
+          State: <span className={`state-${state}`}>{state}</span>
+        </p>
+        <p>
+          Position: ({position.x.toFixed(2)}, {position.y.toFixed(2)},{" "}
+          {position.z.toFixed(2)})
+        </p>
+      </div>
+
+      <div className="controls">
+        <div>
+          <label>Target X:</label>
+          <input
+            type="number"
+            value={targetPosition.x}
+            onChange={(e) =>
+              setTargetPosition({
+                ...targetPosition,
+                x: parseFloat(e.target.value) || 0,
+              })
+            }
+          />
+        </div>
+
+        <div>
+          <label>Target Y:</label>
+          <input
+            type="number"
+            value={targetPosition.y}
+            onChange={(e) =>
+              setTargetPosition({
+                ...targetPosition,
+                y: parseFloat(e.target.value) || 0,
+              })
+            }
+          />
+        </div>
+
+        <button onClick={handleMove} disabled={state !== "idle"}>
+          Move to Target
+        </button>
+
+        <button onClick={handleStop} className="emergency">
+          Emergency Stop
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default RobotControl;
+```
+
+TypeScript provides excellent tooling and type safety for robotics development!

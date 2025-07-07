@@ -1,3 +1,56 @@
+import React from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+// Custom code component with syntax highlighting
+const CodeBlock = ({ children, className, ...props }: any) => {
+  const match = /language-(\w+)/.exec(className || "");
+  const language = match ? match[1] : "";
+
+  // Map language aliases
+  const languageMap: Record<string, string> = {
+    ts: "typescript",
+    js: "javascript",
+    tsx: "typescript",
+    jsx: "javascript",
+  };
+
+  const mappedLanguage = languageMap[language] || language;
+
+  // Supported languages for syntax highlighting
+  const supportedLanguages = ["java", "python", "typescript", "javascript"];
+
+  if (mappedLanguage && supportedLanguages.includes(mappedLanguage)) {
+    return (
+      <SyntaxHighlighter
+        style={vscDarkPlus}
+        language={mappedLanguage}
+        PreTag="div"
+        className="!bg-[#1e1e1e] !border !border-[#3e3e42] rounded-lg"
+        customStyle={{
+          margin: "1.5rem 0",
+          padding: "1rem",
+          fontSize: "0.875rem",
+          lineHeight: "1.5",
+        }}
+        {...props}
+      >
+        {String(children).replace(/\n$/, "")}
+      </SyntaxHighlighter>
+    );
+  }
+
+  // Fallback for unsupported languages or inline code
+  return (
+    <code
+      className="bg-[#2d2d30] px-2 py-1 rounded font-mono text-[#ce9178] text-sm"
+      {...props}
+    >
+      {children}
+    </code>
+  );
+};
+
 // Custom MDX Components for styling markdown elements
 export const mdxComponents = {
   h1: (props: any) => (
@@ -21,18 +74,8 @@ export const mdxComponents = {
   p: (props: any) => (
     <p className="mb-4 text-[#cccccc] leading-relaxed" {...props} />
   ),
-  code: (props: any) => (
-    <code
-      className="bg-[#2d2d30] px-2 py-1 rounded font-mono text-[#ce9178] text-sm"
-      {...props}
-    />
-  ),
-  pre: (props: any) => (
-    <pre
-      className="bg-[#1e1e1e] mb-6 p-4 border border-[#3e3e42] rounded-lg overflow-x-auto"
-      {...props}
-    />
-  ),
+  code: CodeBlock,
+  pre: (props: any) => <div {...props} />,
   blockquote: (props: any) => (
     <blockquote
       className="bg-[#252526] my-4 py-2 pl-4 border-[#007acc] border-l-4 text-[#cccccc] italic"

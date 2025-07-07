@@ -27,9 +27,6 @@ function RouteComponent() {
 
   return (
     <div className="mx-auto p-8 max-w-2xl text-[#cccccc]">
-      <h1 className="mb-4 font-bold text-white text-2xl">
-        {activeResource.name}
-      </h1>
       <div className="prose-invert max-w-none prose">{renderContent()}</div>
     </div>
   );

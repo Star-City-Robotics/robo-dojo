@@ -1,0 +1,83 @@
+# Java Programming Guide
+
+Welcome to Java programming! This guide covers the basics of Java syntax and programming concepts.
+
+## Hello World Example
+
+Here's the classic "Hello World" program in Java:
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+## Variables and Data Types
+
+Java has several primitive data types:
+
+```java
+public class DataTypes {
+    public static void main(String[] args) {
+        // Integer types
+        int age = 25;
+        long population = 7800000000L;
+
+        // Floating point types
+        double price = 19.99;
+        float temperature = 36.5f;
+
+        // Character and boolean
+        char grade = 'A';
+        boolean isActive = true;
+
+        // String (reference type)
+        String name = "John Doe";
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Grade: " + grade);
+    }
+}
+```
+
+## Classes and Objects
+
+Object-oriented programming is fundamental to Java:
+
+```java
+public class Robot {
+    private String name;
+    private int batteryLevel;
+
+    // Constructor
+    public Robot(String name) {
+        this.name = name;
+        this.batteryLevel = 100;
+    }
+
+    // Methods
+    public void move(String direction) {
+        if (batteryLevel > 0) {
+            System.out.println(name + " is moving " + direction);
+            batteryLevel -= 10;
+        } else {
+            System.out.println(name + " needs charging!");
+        }
+    }
+
+    public void charge() {
+        batteryLevel = 100;
+        System.out.println(name + " is fully charged!");
+    }
+
+    // Getters
+    public int getBatteryLevel() {
+        return batteryLevel;
+    }
+}
+```
+
+This covers the basics of Java programming!
