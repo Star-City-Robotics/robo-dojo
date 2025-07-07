@@ -24,7 +24,6 @@ function RouteComponent() {
             {course.name}
           </Link>
         ))}
-        <TestMDX />
       </div>
     </div>
   );
