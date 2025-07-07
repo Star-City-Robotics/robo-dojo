@@ -32,16 +32,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { courses, javaProgrammingCourse } from "@/data/constants";
+import { courses, type Module } from "@/data/constants";
 
 export const Route = createFileRoute("/dashboard/courses/$courseName")({
   component: RouteComponent,
+  loader: () => ({ courses }),
+  params: {
+    parse: (params) => ({
+      ...params,
+      courseName: decodeURIComponent(params.courseName),
+    }),
+    stringify: (params) => ({
+      ...params,
+      courseName: encodeURIComponent(params.courseName),
+    }),
+  },
 });
 
 function RouteComponent() {
   const [expandedModules, setExpandedModules] = useState<string[]>([]);
   const params = useParams({ from: "/dashboard/courses/$courseName" });
   const navigate = useNavigate();
+  const { courses } = useLoaderData({ from: "/dashboard/courses/$courseName" });
 
   const toggleModule = (moduleId: string) =>
     setExpandedModules((prev) =>
@@ -50,9 +62,7 @@ function RouteComponent() {
         : [...prev, moduleId]
     );
 
-  const handleModuleClick = (
-    module: (typeof javaProgrammingCourse.modules)[0]
-  ) => {
+  const handleModuleClick = (module: Module) => {
     // Custom logic for module click (e.g., select, navigate, etc.)
     // For now, just log
     console.log("Module clicked:", module);

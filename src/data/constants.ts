@@ -150,17 +150,18 @@ export const dummyCourse: Course = {
   ],
 };
 
-type Module = {
+export type Module = {
   id: string;
   name: string;
   resources: Resource[];
 };
 
-type Course = {
+export type Course = {
   name: string;
   modules: Module[];
 };
-type Resource =
+
+export type Resource =
   | {
       id: string;
       name: string;

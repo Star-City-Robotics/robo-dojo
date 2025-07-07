@@ -9,26 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DummyContentRouteImport } from './routes/dummy.content'
 import { Route as DashboardCoursesCourseNameRouteImport } from './routes/dashboard/courses.$courseName'
 
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => DashboardRoute,
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DummyContentRoute = DummyContentRouteImport.update({
   id: '/dummy/content',
@@ -37,16 +31,15 @@ const DummyContentRoute = DummyContentRouteImport.update({
 } as any)
 const DashboardCoursesCourseNameRoute =
   DashboardCoursesCourseNameRouteImport.update({
-    id: '/courses/$courseName',
-    path: '/courses/$courseName',
-    getParentRoute: () => DashboardRoute,
+    id: '/dashboard/courses/$courseName',
+    path: '/dashboard/courses/$courseName',
+    getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRouteWithChildren
   '/dummy/content': typeof DummyContentRoute
-  '/dashboard/': typeof DashboardIndexRoute
+  '/dashboard': typeof DashboardIndexRoute
   '/dashboard/courses/$courseName': typeof DashboardCoursesCourseNameRoute
 }
 export interface FileRoutesByTo {
@@ -58,7 +51,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRouteWithChildren
   '/dummy/content': typeof DummyContentRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/courses/$courseName': typeof DashboardCoursesCourseNameRoute
@@ -67,16 +59,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/dashboard'
     | '/dummy/content'
-    | '/dashboard/'
+    | '/dashboard'
     | '/dashboard/courses/$courseName'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/dummy/content' | '/dashboard' | '/dashboard/courses/$courseName'
   id:
     | '__root__'
     | '/'
-    | '/dashboard'
     | '/dummy/content'
     | '/dashboard/'
     | '/dashboard/courses/$courseName'
@@ -84,19 +74,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRouteWithChildren
   DummyContentRoute: typeof DummyContentRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardCoursesCourseNameRoute: typeof DashboardCoursesCourseNameRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -106,10 +90,10 @@ declare module '@tanstack/react-router' {
     }
     '/dashboard/': {
       id: '/dashboard/'
-      path: '/'
-      fullPath: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardIndexRouteImport
-      parentRoute: typeof DashboardRoute
+      parentRoute: typeof rootRouteImport
     }
     '/dummy/content': {
       id: '/dummy/content'
@@ -120,32 +104,19 @@ declare module '@tanstack/react-router' {
     }
     '/dashboard/courses/$courseName': {
       id: '/dashboard/courses/$courseName'
-      path: '/courses/$courseName'
+      path: '/dashboard/courses/$courseName'
       fullPath: '/dashboard/courses/$courseName'
       preLoaderRoute: typeof DashboardCoursesCourseNameRouteImport
-      parentRoute: typeof DashboardRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface DashboardRouteChildren {
-  DashboardIndexRoute: typeof DashboardIndexRoute
-  DashboardCoursesCourseNameRoute: typeof DashboardCoursesCourseNameRoute
-}
-
-const DashboardRouteChildren: DashboardRouteChildren = {
-  DashboardIndexRoute: DashboardIndexRoute,
-  DashboardCoursesCourseNameRoute: DashboardCoursesCourseNameRoute,
-}
-
-const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
-  DashboardRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRouteWithChildren,
   DummyContentRoute: DummyContentRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardCoursesCourseNameRoute: DashboardCoursesCourseNameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
