@@ -70,7 +70,7 @@ export const useCommandSearch = () => {
   const navigate = useNavigate();
 
   // Search function that builds and searches the index on every call
-  const search = useCallback((query: string): SearchResult[] => {
+  const search = (query: string): SearchResult[] => {
     if (!query.trim()) return [];
 
     const results: SearchResult[] = [];
@@ -140,7 +140,7 @@ export const useCommandSearch = () => {
 
     // Sort by score (highest first) and limit to 10 results
     return results.sort((a, b) => b.score - a.score).slice(0, 10);
-  }, []);
+  };
 
   // Handle navigation
   const navigateToResult = useCallback(
