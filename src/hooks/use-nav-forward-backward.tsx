@@ -42,7 +42,7 @@ export function useNavForwardBackward(): NavigationState {
         type: "module",
         course,
         module,
-        path: `/dashboard/courses/${encodeURIComponent(course.name)}/module/${encodeURIComponent(module.id)}`,
+        path: `/dashboard/courses/${course.id}/module/${encodeURIComponent(module.id)}`,
       });
 
       // Add all resources in the module
@@ -52,7 +52,7 @@ export function useNavForwardBackward(): NavigationState {
           course,
           module,
           resource,
-          path: `/dashboard/courses/${encodeURIComponent(course.name)}/module/${encodeURIComponent(module.id)}/resources/${encodeURIComponent(resource.id)}`,
+          path: `/dashboard/courses/${course.id}/module/${module.id}/resources/${encodeURIComponent(resource.id)}`,
         });
       });
     });

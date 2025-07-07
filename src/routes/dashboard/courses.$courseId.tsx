@@ -32,6 +32,7 @@ import {
 import { courses } from "@/data/constants";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { useActiveEntities } from "@/hooks/use-active-entities";
+import { SearchIcon } from "@/components/command-search";
 
 export const Route = createFileRoute("/dashboard/courses/$courseId")({
   component: RouteComponent,
@@ -240,43 +241,48 @@ function RouteComponent() {
       <div className="flex flex-col flex-1">
         {/* Breadcrumb Header */}
         <div className="bg-[#2d2d30] p-4 border-[#3e3e42] border-b">
-          {activeCourse && (
-            <BreadcrumbNav
-              items={[
-                {
-                  id: activeCourse.name,
-                  name: activeCourse.name,
-                  type: "course" as const,
-                  link:
-                    !activeModule && !activeResource
-                      ? undefined
-                      : `/dashboard/courses/${encodeURIComponent(activeCourse.name)}`,
-                },
-                ...(activeModule
-                  ? [
-                      {
-                        id: activeModule.id,
-                        name: activeModule.name,
-                        type: "module" as const,
-                        link: !activeResource
+          <div className="flex justify-between items-center">
+            <div className="flex-1">
+              {activeCourse && (
+                <BreadcrumbNav
+                  items={[
+                    {
+                      id: activeCourse.id,
+                      name: activeCourse.name,
+                      type: "course" as const,
+                      link:
+                        !activeModule && !activeResource
                           ? undefined
-                          : `/dashboard/courses/${encodeURIComponent(activeCourse.name)}/module/${encodeURIComponent(activeModule.id)}`,
-                      },
-                    ]
-                  : []),
-                ...(activeResource
-                  ? [
-                      {
-                        id: activeResource.id,
-                        name: activeResource.name,
-                        type: "resource" as const,
-                        link: undefined, // last item, no link
-                      },
-                    ]
-                  : []),
-              ]}
-            />
-          )}
+                          : `/dashboard/courses/${activeCourse.id}`,
+                    },
+                    ...(activeModule
+                      ? [
+                          {
+                            id: activeModule.id,
+                            name: activeModule.name,
+                            type: "module" as const,
+                            link: !activeResource
+                              ? undefined
+                              : `/dashboard/courses/${activeCourse.id}/module/${activeModule.id}`,
+                          },
+                        ]
+                      : []),
+                    ...(activeResource
+                      ? [
+                          {
+                            id: activeResource.id,
+                            name: activeResource.name,
+                            type: "resource" as const,
+                            link: undefined, // last item, no link
+                          },
+                        ]
+                      : []),
+                  ]}
+                />
+              )}
+            </div>
+            <SearchIcon className="ml-4" />
+          </div>
         </div>
 
         {/* Content Area */}

@@ -14,7 +14,7 @@ import {
   useCommandSearch,
   type SearchResult,
 } from "@/hooks/use-command-search";
-import { Book, FileText, FolderOpen } from "lucide-react";
+import { Book, FileText, FolderOpen, Search } from "lucide-react";
 
 const getTypeIcon = (type: SearchResult["type"]) => {
   switch (type) {
@@ -36,6 +36,21 @@ const getTypeBadge = (type: SearchResult["type"]) => {
     resource: { text: "Resource", bg: "bg-[#581c87]", color: "text-[#c4b5fd]" },
   };
   return badges[type];
+};
+
+// Standalone search icon component
+export const SearchIcon = ({ className = "" }: { className?: string }) => {
+  const { setOpen } = useCommandSearch();
+
+  return (
+    <button
+      onClick={() => setOpen(true)}
+      className={`flex items-center justify-center p-2 bg-[#252526] hover:bg-[#2a2d2e] border border-[#3e3e42] rounded-lg transition-colors cursor-pointer ${className}`}
+      title="Search (Cmd/Ctrl + K)"
+    >
+      <Search className="w-5 h-5 text-[#569cd6]" />
+    </button>
+  );
 };
 
 export const CommandSearch = () => {
