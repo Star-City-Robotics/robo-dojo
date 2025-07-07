@@ -85,17 +85,19 @@ export const mdxComponents = {
   ),
   ul: (props: any) => (
     <ul
-      className="space-y-1 mb-4 text-[#cccccc] list-disc list-inside"
+      className="space-y-1 [&_ul]:mt-1 mb-4 [&_ul]:mb-1 [&_ul]:ml-8 text-[#cccccc] [&_ul_ul>li]:list-[square] [&_ul>li]:list-[circle] [&>li]:list-disc [&>li]:list-inside"
       {...props}
     />
   ),
   ol: (props: any) => (
     <ol
-      className="space-y-1 mb-4 text-[#cccccc] list-decimal list-inside"
+      className="space-y-1 [&_ol]:mt-1 mb-4 [&_ol]:mb-1 [&_ol]:ml-8 text-[#cccccc] [&_ol_ol>li]:list-[lower-roman] [&_ol>li]:list-[lower-alpha] [&>li]:list-decimal [&>li]:list-inside"
       {...props}
     />
   ),
-  li: (props: any) => <li className="ml-2 text-[#cccccc]" {...props} />,
+  li: (props: any) => (
+    <li className="ml-3 text-[#cccccc] leading-relaxed" {...props} />
+  ),
   a: (props: any) => (
     <a
       className="text-[#569cd6] hover:text-[#4ec9b0] underline transition-colors"
