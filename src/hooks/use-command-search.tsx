@@ -23,37 +23,37 @@ export const useCommandSearch = () => {
     courses.forEach((course) => {
       // Add course itself
       results.push({
-        id: `course-${course.name}`,
+        id: `course-${course.id}`,
         title: course.name,
         description: `Course with ${course.modules.length} modules`,
         course: course.name,
         module: "",
         type: "course",
-        url: `/dashboard/courses/${encodeURIComponent(course.name)}`,
+        url: `/dashboard/courses/${course.id}`,
       });
 
       course.modules.forEach((module) => {
         // Add module
         results.push({
-          id: `module-${course.name}-${module.id}`,
+          id: `module-${course.id}-${module.id}`,
           title: module.name,
           description: `Module with ${module.resources.length} resources`,
           course: course.name,
           module: module.name,
           type: "module",
-          url: `/dashboard/courses/${encodeURIComponent(course.name)}/module/${module.id}`,
+          url: `/dashboard/courses/${course.id}/module/${module.id}`,
         });
 
         // Add resources
         module.resources.forEach((resource) => {
           results.push({
-            id: `resource-${course.name}-${module.id}-${resource.id}`,
+            id: `resource-${course.id}-${module.id}-${resource.id}`,
             title: resource.name,
             description: resource.description,
             course: course.name,
             module: module.name,
             type: "resource",
-            url: `/dashboard/courses/${encodeURIComponent(course.name)}/module/${module.id}/resources/${resource.id}`,
+            url: `/dashboard/courses/${course.id}/module/${module.id}/resources/${resource.id}`,
           });
         });
       });
