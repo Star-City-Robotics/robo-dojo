@@ -14,12 +14,29 @@ const CodeBlock = ({ children, className, ...props }: any) => {
     js: "javascript",
     tsx: "typescript",
     jsx: "javascript",
+    md: "markdown",
+    htm: "html",
+    xml: "markup",
   };
 
   const mappedLanguage = languageMap[language] || language;
 
   // Supported languages for syntax highlighting
-  const supportedLanguages = ["java", "python", "typescript", "javascript"];
+  const supportedLanguages = [
+    "java",
+    "python",
+    "typescript",
+    "javascript",
+    "markdown",
+    "html",
+    "css",
+    "json",
+    "yaml",
+    "bash",
+    "shell",
+    "sql",
+    "markup",
+  ];
 
   if (mappedLanguage && supportedLanguages.includes(mappedLanguage)) {
     return (
