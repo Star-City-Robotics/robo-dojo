@@ -67,10 +67,10 @@ export const mdxComponents = {
     />
   ),
   h3: (props: any) => (
-    <h3 className="mt-6 mb-3 font-medium text-[#dcdcaa] text-xl" {...props} />
+    <h3 className="mt-6 mb-3 font-bold text-[#ce9178] text-xl" {...props} />
   ),
   h4: (props: any) => (
-    <h4 className="mt-4 mb-2 font-medium text-[#dcdcaa] text-lg" {...props} />
+    <h4 className="mt-4 mb-2 font-bold text-[#c586c0] text-lg" {...props} />
   ),
   p: (props: any) => (
     <p className="mb-4 text-[#cccccc] leading-relaxed" {...props} />
