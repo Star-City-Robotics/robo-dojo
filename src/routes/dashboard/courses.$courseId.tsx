@@ -33,19 +33,9 @@ import { courses } from "@/data/constants";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 
-export const Route = createFileRoute("/dashboard/courses/$courseName")({
+export const Route = createFileRoute("/dashboard/courses/$courseId")({
   component: RouteComponent,
   loader: () => ({ courses }),
-  params: {
-    parse: (params) => ({
-      ...params,
-      courseName: decodeURIComponent(params.courseName),
-    }),
-    stringify: (params) => ({
-      ...params,
-      courseName: encodeURIComponent(params.courseName),
-    }),
-  },
 });
 
 function RouteComponent() {
@@ -57,7 +47,7 @@ function RouteComponent() {
   });
 
   const navigate = useNavigate();
-  const { courses } = useLoaderData({ from: "/dashboard/courses/$courseName" });
+  const { courses } = useLoaderData({ from: "/dashboard/courses/$courseId" });
 
   // Auto-expand the module that contains the current resource (only if viewing a resource)
   useEffect(() => {
@@ -127,12 +117,12 @@ function RouteComponent() {
         {/* Course Switcher */}
         <div className="p-3 border-[#3e3e42] border-b">
           <Select
-            value={activeCourse?.name}
-            onValueChange={(newCourseName) => {
+            value={activeCourse?.id}
+            onValueChange={(newCourseId) => {
               navigate({
-                to: "/dashboard/courses/$courseName",
+                to: "/dashboard/courses/$courseId",
                 params: {
-                  courseName: newCourseName,
+                  courseId: newCourseId,
                 },
               });
             }}
@@ -143,8 +133,8 @@ function RouteComponent() {
             <SelectContent className="bg-[#3c3c3c] border-[#464647]">
               {courses.map((course) => (
                 <SelectItem
-                  key={course.name}
-                  value={course.name}
+                  key={course.id}
+                  value={course.id}
                   className="hover:bg-[#2a2d2e] text-[#cccccc] text-sm"
                 >
                   {course.name}
@@ -165,9 +155,9 @@ function RouteComponent() {
                 <div className="flex items-center">
                   {/* Module row: now a Link for navigation */}
                   <Link
-                    to="/dashboard/courses/$courseName/module/$moduleId"
+                    to="/dashboard/courses/$courseId/module/$moduleId"
                     params={{
-                      courseName: activeCourse.name,
+                      courseId: activeCourse.id,
                       moduleId: module.id,
                     }}
                     className={`group flex items-center w-full cursor-pointer py-2 px-2 rounded transition-colors ${
@@ -211,9 +201,9 @@ function RouteComponent() {
                   {module.resources.map((resource) => (
                     <Link
                       key={resource.id}
-                      to="/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId"
+                      to="/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId"
                       params={{
-                        courseName: activeCourse.name,
+                        courseId: activeCourse.id,
                         moduleId: module.id,
                         resourceId: resource.id,
                       }}

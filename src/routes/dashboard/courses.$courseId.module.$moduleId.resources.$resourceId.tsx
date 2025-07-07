@@ -6,7 +6,7 @@ import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { NavigationButtons } from "@/components/navigation-buttons";
 
 export const Route = createFileRoute(
-  "/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId"
+  "/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId"
 )({
   component: RouteComponent,
 });

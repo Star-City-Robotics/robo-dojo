@@ -4,6 +4,7 @@ import JavaTestMdx from "@/data/content/java-test.mdx";
 import TypeScriptTestMdx from "@/data/content/typescript-test.mdx";
 
 export const javaProgrammingCourse: Course = {
+  id: "java-programming",
   name: "Java Programming",
   modules: [
     {

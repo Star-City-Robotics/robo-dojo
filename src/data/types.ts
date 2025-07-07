@@ -5,6 +5,7 @@ export type Module = {
 };
 
 export type Course = {
+  id: string;
   name: string;
   modules: Module[];
 };

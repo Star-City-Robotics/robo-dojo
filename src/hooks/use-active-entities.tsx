@@ -3,14 +3,12 @@ import { useParams } from "@tanstack/react-router";
 
 export const useActiveEntities = () => {
   const params = useParams({
-    from: "/dashboard/courses/$courseName" as "/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId",
+    from: "/dashboard/courses/$courseId" as "/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId",
     shouldThrow: false,
     structuralSharing: true,
   });
 
-  const activeCourse = courses.find(
-    (course) => course.name === params?.courseName
-  );
+  const activeCourse = courses.find((course) => course.id === params?.courseId);
   const activeModule = activeCourse?.modules.find(
     (module) => module.id === params?.moduleId
   );

@@ -3,6 +3,7 @@ import PythonTestMdx from "@/data/content/python-test.mdx";
 
 export const dummyCourse: Course = {
   name: "Python Robotics",
+  id: "python-robotics",
   modules: [
     {
       id: "setup",

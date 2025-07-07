@@ -3,16 +3,16 @@ import { courses } from "@/data/constants";
 import { NavigationButtons } from "@/components/navigation-buttons";
 
 export const Route = createFileRoute(
-  "/dashboard/courses/$courseName/module/$moduleId/"
+  "/dashboard/courses/$courseId/module/$moduleId/"
 )({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   const params = useParams({
-    from: "/dashboard/courses/$courseName/module/$moduleId/",
+    from: "/dashboard/courses/$courseId/module/$moduleId/",
   });
-  const course = courses.find((c) => c.name === params.courseName);
+  const course = courses.find((c) => c.id === params.courseId);
   const module = course?.modules.find((m) => m.id === params.moduleId);
 
   if (!course || !module) {
@@ -27,9 +27,9 @@ function RouteComponent() {
         {module.resources.map((resource) => (
           <li key={resource.id}>
             <Link
-              to="/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId"
+              to="/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId"
               params={{
-                courseName: course.name,
+                courseId: course.id,
                 moduleId: module.id,
                 resourceId: resource.id,
               }}

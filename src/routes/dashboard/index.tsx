@@ -34,8 +34,8 @@ function RouteComponent() {
         {courses.map((course) => (
           <Link
             key={course.name}
-            to="/dashboard/courses/$courseName"
-            params={{ courseName: course.name }}
+            to="/dashboard/courses/$courseId"
+            params={{ courseId: course.id }}
             className="bg-[#252526] hover:bg-[#2a2d2e] px-6 py-3 border border-[#3e3e42] rounded font-medium text-[#cccccc] text-lg text-center transition-colors"
           >
             {course.name}

@@ -18,6 +18,7 @@ import GithubMarkdown from "@/data/content/github-markdown.mdx";
 import MdxFeatures from "@/data/content/mdx-features.mdx";
 
 export const howToWriteMarkdown: Course = {
+  id: "how-to-write-markdown",
   name: "How to Write Markdown",
   modules: [
     {
