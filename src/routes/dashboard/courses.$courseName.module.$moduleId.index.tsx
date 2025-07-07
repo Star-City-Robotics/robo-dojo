@@ -1,5 +1,6 @@
 import { createFileRoute, useParams, Link } from "@tanstack/react-router";
 import { courses } from "@/data/constants";
+import { NavigationButtons } from "@/components/navigation-buttons";
 
 export const Route = createFileRoute(
   "/dashboard/courses/$courseName/module/$moduleId/"
@@ -39,6 +40,8 @@ function RouteComponent() {
           </li>
         ))}
       </ul>
+
+      <NavigationButtons />
     </div>
   );
 }

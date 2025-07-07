@@ -3,6 +3,7 @@ import { courses } from "@/data/constants";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 import React from "react";
 import { MarkdownRenderer } from "@/components/markdown-renderer";
+import { NavigationButtons } from "@/components/navigation-buttons";
 
 export const Route = createFileRoute(
   "/dashboard/courses/$courseName/module/$moduleId/resources/$resourceId"
@@ -28,6 +29,8 @@ function RouteComponent() {
   return (
     <div className="mx-auto p-8 max-w-2xl text-[#cccccc]">
       <div className="prose-invert max-w-none prose">{renderContent()}</div>
+
+      <NavigationButtons />
     </div>
   );
 }
