@@ -176,10 +176,10 @@ function RouteComponent() {
                       courseName: activeCourse.name,
                       moduleId: module.id,
                     }}
-                    className={`group flex items-center w-full cursor-pointer ${
+                    className={`group flex items-center w-full cursor-pointer py-2 px-2 rounded transition-colors ${
                       activeModule?.id === module.id
                         ? "bg-[#37373d] border-l-2 border-[#007acc] pl-2"
-                        : ""
+                        : "hover:bg-[#2a2d2e]"
                     }`}
                   >
                     <Cpu className="mr-2 w-3 h-3 text-[#569cd6]" />
@@ -213,7 +213,7 @@ function RouteComponent() {
                     )}
                   </button>
                 </div>
-                <CollapsibleContent className="space-y-0.5 mt-1 ml-5">
+                <CollapsibleContent className="space-y-1 mt-1 ml-5">
                   {module.resources.map((resource) => (
                     <Link
                       key={resource.id}
@@ -223,19 +223,22 @@ function RouteComponent() {
                         moduleId: module.id,
                         resourceId: resource.id,
                       }}
-                      className={`flex items-center space-x-2 p-1.5 rounded-sm w-full text-left transition-colors ${
+                      className={`flex items-center space-x-2 py-2 px-2 rounded w-full text-left transition-colors ${
                         activeResource?.id === resource.id
                           ? "bg-[#2a2d2e] border-l-2 border-[#4ec9b0] pl-2"
                           : "hover:bg-[#2a2d2e]"
                       }`}
                     >
                       {getResourceIcon("guide")}
-                      <span className="flex-1 text-[#cccccc] text-sm truncate">
+                      <span className="flex-1 text-[#cccccc] text-sm">
                         {resource.name}
                       </span>
                       <div className="flex items-center space-x-1">
+                        {resource.completed && (
+                          <CheckCircle className="w-3 h-3 text-[#4ec9b0]" />
+                        )}
                         {resource.resourceType === "guide" && (
-                          <Badge className="bg-[#3e3e42] px-1.5 text-[#ce9178] text-sm">
+                          <Badge className="bg-[#3e3e42] px-1.5 py-0.5 text-[#ce9178] text-xs">
                             MD
                           </Badge>
                         )}
