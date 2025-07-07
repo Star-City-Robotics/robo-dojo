@@ -13,7 +13,6 @@ import {
   CheckCircle,
   ChevronDown,
   ChevronRight,
-  Clock,
   Code,
   Cpu,
   FileText,
@@ -30,7 +29,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { courses, type Module } from "@/data/constants";
+import { courses } from "@/data/constants";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 
@@ -55,11 +54,6 @@ function RouteComponent() {
   // Initialize expandedModules with the active module if we're viewing a resource
   const [expandedModules, setExpandedModules] = useState<string[]>(() => {
     return activeResource && activeModule ? [activeModule.id] : [];
-  });
-
-  const params = useParams({
-    from: "/dashboard/courses/$courseName",
-    shouldThrow: false,
   });
 
   const navigate = useNavigate();
