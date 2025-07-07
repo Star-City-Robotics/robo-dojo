@@ -108,20 +108,38 @@ export const mdxComponents = {
   em: (props: any) => <em className="text-[#ce9178] italic" {...props} />,
   hr: (props: any) => <hr className="my-8 border-[#3e3e42]" {...props} />,
   table: (props: any) => (
-    <table
-      className="my-4 border border-[#3e3e42] w-full border-collapse"
+    <div className="my-6 border border-[#3e3e42] rounded-lg overflow-x-auto">
+      <table
+        className="bg-[#1e1e1e] w-full min-w-full border-collapse"
+        {...props}
+      />
+    </div>
+  ),
+  thead: (props: any) => (
+    <thead className="top-0 z-10 sticky bg-[#2d2d30]" {...props} />
+  ),
+  tbody: (props: any) => <tbody {...props} />,
+  tr: (props: any) => (
+    <tr
+      className="hover:bg-[#252526] even:bg-[#1a1a1a] odd:bg-[#1e1e1e] border-[#3e3e42] border-b transition-colors"
       {...props}
     />
   ),
   th: (props: any) => (
     <th
-      className="bg-[#252526] px-4 py-2 border border-[#3e3e42] font-semibold text-[#dcdcaa] text-left"
+      className="px-6 py-4 border-[#007acc] border-b-2 font-semibold text-[#4ec9b0] text-sm text-left uppercase tracking-wider whitespace-nowrap"
       {...props}
     />
   ),
   td: (props: any) => (
     <td
-      className="px-4 py-2 border border-[#3e3e42] text-[#cccccc]"
+      className="px-6 py-4 border-[#3e3e42] border-r last:border-r-0 text-[#cccccc] text-sm leading-relaxed"
+      {...props}
+    />
+  ),
+  caption: (props: any) => (
+    <caption
+      className="mb-3 font-medium text-[#cccccc] text-sm text-left"
       {...props}
     />
   ),
