@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { courses } from "@/data/constants";
 import { Link } from "@tanstack/react-router";
+import TestMDX from "../../content/test.mdx";
 
 export const Route = createFileRoute("/dashboard/")({
   component: RouteComponent,
@@ -23,6 +24,7 @@ function RouteComponent() {
             {course.name}
           </Link>
         ))}
+        <TestMDX />
       </div>
     </div>
   );

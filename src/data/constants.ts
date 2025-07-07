@@ -1,4 +1,5 @@
 import React from "react";
+import TestMdx from "@/content/test.mdx";
 
 export const javaProgrammingCourse: Course = {
   name: "Java Programming",
@@ -29,7 +30,7 @@ export const javaProgrammingCourse: Course = {
           name: "Test MDX Guide",
           completed: false,
           description: "A test guide using MDX content.",
-          content: "TEST_MDX_PLACEHOLDER",
+          content: TestMdx,
         },
       ],
     },
