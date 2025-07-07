@@ -1,8 +1,8 @@
 import React from "react";
-import TestMdx from "@/content/test.mdx";
-import JavaTestMdx from "@/content/java-test.mdx";
-import PythonTestMdx from "@/content/python-test.mdx";
-import TypeScriptTestMdx from "@/content/typescript-test.mdx";
+import TestMdx from "@/data/content/test.mdx";
+import JavaTestMdx from "@/data/content/java-test.mdx";
+import PythonTestMdx from "@/data/content/python-test.mdx";
+import TypeScriptTestMdx from "@/data/content/typescript-test.mdx";
 
 export const javaProgrammingCourse: Course = {
   name: "Java Programming",
