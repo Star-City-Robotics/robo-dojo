@@ -155,41 +155,51 @@ function RouteComponent() {
                 open={expandedModules.includes(module.id)}
               >
                 <div className="flex items-center">
-                  {/* Module row: triggers your custom function */}
-                  <div
+                  {/* Module row: now a Link for navigation */}
+                  <Link
+                    to="/dashboard/courses/$courseName/module/$moduleName"
+                    params={{
+                      courseName: selectedCourse.name,
+                      moduleName: module.id,
+                    }}
                     className="group flex items-center w-full cursor-pointer"
-                    onClick={() => handleModuleClick(module)}
                   >
                     <Cpu className="mr-2 w-3 h-3 text-[#569cd6]" />
                     <span className="flex-1 font-medium text-[#cccccc] group-hover:text-[#b5cea8] text-sm text-left group-hover:underline transition-colors">
                       {module.name}
                     </span>
-                    {/* Chevron: only toggles collapse, now on the right */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleModule(module.id);
-                      }}
-                      className="bg-transparent hover:bg-[#232325] ml-2 p-1 rounded focus:outline-none focus:ring-[#007acc] focus:ring-2 transition-colors"
-                      aria-label={
-                        expandedModules.includes(module.id)
-                          ? "Collapse"
-                          : "Expand"
-                      }
-                    >
-                      {expandedModules.includes(module.id) ? (
-                        <ChevronDown className="w-3 h-3 text-[#cccccc]" />
-                      ) : (
-                        <ChevronRight className="w-3 h-3 text-[#cccccc]" />
-                      )}
-                    </button>
-                  </div>
+                  </Link>
+                  {/* Chevron: only toggles collapse, now on the right */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleModule(module.id);
+                    }}
+                    className="bg-transparent hover:bg-[#232325] ml-2 p-1 rounded focus:outline-none focus:ring-[#007acc] focus:ring-2 transition-colors"
+                    aria-label={
+                      expandedModules.includes(module.id)
+                        ? "Collapse"
+                        : "Expand"
+                    }
+                  >
+                    {expandedModules.includes(module.id) ? (
+                      <ChevronDown className="w-3 h-3 text-[#cccccc]" />
+                    ) : (
+                      <ChevronRight className="w-3 h-3 text-[#cccccc]" />
+                    )}
+                  </button>
                 </div>
                 <CollapsibleContent className="space-y-0.5 mt-1 ml-5">
                   {module.resources.map((resource) => (
-                    <button
+                    <Link
                       key={resource.id}
-                      className={`flex items-center space-x-2 w-full p-1.5 rounded-sm text-left transition-colors ${""}`}
+                      to="/dashboard/courses/$courseName/module/$moduleName/resources/$resourceName"
+                      params={{
+                        courseName: selectedCourse.name,
+                        moduleName: module.id,
+                        resourceName: resource.id,
+                      }}
+                      className="flex items-center space-x-2 p-1.5 rounded-sm w-full text-left transition-colors"
                     >
                       {getResourceIcon(resource.type)}
                       <span className="flex-1 text-[#cccccc] text-sm truncate">
@@ -209,7 +219,7 @@ function RouteComponent() {
                           </Badge>
                         )}
                       </div>
-                    </button>
+                    </Link>
                   ))}
                 </CollapsibleContent>
               </Collapsible>
