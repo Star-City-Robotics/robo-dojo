@@ -21,7 +21,7 @@ import {
   Video,
   Zap,
 } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useState, useEffect } from "react";
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import {
   Select,
@@ -50,15 +50,34 @@ export const Route = createFileRoute("/dashboard/courses/$courseName")({
 });
 
 function RouteComponent() {
-  const [expandedModules, setExpandedModules] = useState<string[]>([]);
+  const { activeCourse, activeModule, activeResource } = useActiveEntities();
+
+  // Initialize expandedModules with the active module if we're viewing a resource
+  const [expandedModules, setExpandedModules] = useState<string[]>(() => {
+    return activeResource && activeModule ? [activeModule.id] : [];
+  });
+
   const params = useParams({
     from: "/dashboard/courses/$courseName",
     shouldThrow: false,
   });
 
-  const { activeCourse, activeModule, activeResource } = useActiveEntities();
   const navigate = useNavigate();
   const { courses } = useLoaderData({ from: "/dashboard/courses/$courseName" });
+
+  // Auto-expand the module that contains the current resource (only if viewing a resource)
+  useEffect(() => {
+    if (
+      activeResource &&
+      activeModule &&
+      !expandedModules.includes(activeModule.id)
+    ) {
+      setExpandedModules((prev) => {
+        if (prev.includes(activeModule.id)) return prev;
+        return [...prev, activeModule.id];
+      });
+    }
+  }, [activeResource?.id, activeModule?.id]); // Only expand when viewing a resource
 
   const toggleModule = (moduleId: string) =>
     setExpandedModules((prev) =>
@@ -157,10 +176,20 @@ function RouteComponent() {
                       courseName: activeCourse.name,
                       moduleId: module.id,
                     }}
-                    className="group flex items-center w-full cursor-pointer"
+                    className={`group flex items-center w-full cursor-pointer ${
+                      activeModule?.id === module.id
+                        ? "bg-[#37373d] border-l-2 border-[#007acc] pl-2"
+                        : ""
+                    }`}
                   >
                     <Cpu className="mr-2 w-3 h-3 text-[#569cd6]" />
-                    <span className="flex-1 font-medium text-[#cccccc] group-hover:text-[#b5cea8] text-sm text-left group-hover:underline transition-colors">
+                    <span
+                      className={`flex-1 font-medium text-sm text-left group-hover:underline transition-colors ${
+                        activeModule?.id === module.id
+                          ? "text-[#4ec9b0]"
+                          : "text-[#cccccc] group-hover:text-[#b5cea8]"
+                      }`}
+                    >
                       {module.name}
                     </span>
                   </Link>
@@ -194,9 +223,13 @@ function RouteComponent() {
                         moduleId: module.id,
                         resourceId: resource.id,
                       }}
-                      className="flex items-center space-x-2 p-1.5 rounded-sm w-full text-left transition-colors"
+                      className={`flex items-center space-x-2 p-1.5 rounded-sm w-full text-left transition-colors ${
+                        activeResource?.id === resource.id
+                          ? "bg-[#2a2d2e] border-l-2 border-[#4ec9b0] pl-2"
+                          : "hover:bg-[#2a2d2e]"
+                      }`}
                     >
-                      {getResourceIcon(resource.resourceType)}
+                      {getResourceIcon("guide")}
                       <span className="flex-1 text-[#cccccc] text-sm truncate">
                         {resource.name}
                       </span>
