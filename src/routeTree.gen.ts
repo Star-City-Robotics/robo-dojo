@@ -8,70 +8,126 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as DashboardRouteImport } from "./routes/dashboard";
-import { Route as IndexRouteImport } from "./routes/index";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as DummyContentRouteImport } from './routes/dummy.content'
+import { Route as DashboardCoursesCourseNameRouteImport } from './routes/dashboard/courses.$courseName'
 
 const DashboardRoute = DashboardRouteImport.update({
-	id: "/dashboard",
-	path: "/dashboard",
-	getParentRoute: () => rootRouteImport,
-} as any);
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
-	id: "/",
-	path: "/",
-	getParentRoute: () => rootRouteImport,
-} as any);
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DummyContentRoute = DummyContentRouteImport.update({
+  id: '/dummy/content',
+  path: '/dummy/content',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardCoursesCourseNameRoute =
+  DashboardCoursesCourseNameRouteImport.update({
+    id: '/courses/$courseName',
+    path: '/courses/$courseName',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-	"/": typeof IndexRoute;
-	"/dashboard": typeof DashboardRoute;
+  '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/dummy/content': typeof DummyContentRoute
+  '/dashboard/courses/$courseName': typeof DashboardCoursesCourseNameRoute
 }
 export interface FileRoutesByTo {
-	"/": typeof IndexRoute;
-	"/dashboard": typeof DashboardRoute;
+  '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/dummy/content': typeof DummyContentRoute
+  '/dashboard/courses/$courseName': typeof DashboardCoursesCourseNameRoute
 }
 export interface FileRoutesById {
-	__root__: typeof rootRouteImport;
-	"/": typeof IndexRoute;
-	"/dashboard": typeof DashboardRoute;
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/dummy/content': typeof DummyContentRoute
+  '/dashboard/courses/$courseName': typeof DashboardCoursesCourseNameRoute
 }
 export interface FileRouteTypes {
-	fileRoutesByFullPath: FileRoutesByFullPath;
-	fullPaths: "/" | "/dashboard";
-	fileRoutesByTo: FileRoutesByTo;
-	to: "/" | "/dashboard";
-	id: "__root__" | "/" | "/dashboard";
-	fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/dummy/content'
+    | '/dashboard/courses/$courseName'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/dashboard' | '/dummy/content' | '/dashboard/courses/$courseName'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/dummy/content'
+    | '/dashboard/courses/$courseName'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-	IndexRoute: typeof IndexRoute;
-	DashboardRoute: typeof DashboardRoute;
+  IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  DummyContentRoute: typeof DummyContentRoute
 }
 
-declare module "@tanstack/react-router" {
-	interface FileRoutesByPath {
-		"/dashboard": {
-			id: "/dashboard";
-			path: "/dashboard";
-			fullPath: "/dashboard";
-			preLoaderRoute: typeof DashboardRouteImport;
-			parentRoute: typeof rootRouteImport;
-		};
-		"/": {
-			id: "/";
-			path: "/";
-			fullPath: "/";
-			preLoaderRoute: typeof IndexRouteImport;
-			parentRoute: typeof rootRouteImport;
-		};
-	}
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dummy/content': {
+      id: '/dummy/content'
+      path: '/dummy/content'
+      fullPath: '/dummy/content'
+      preLoaderRoute: typeof DummyContentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/courses/$courseName': {
+      id: '/dashboard/courses/$courseName'
+      path: '/courses/$courseName'
+      fullPath: '/dashboard/courses/$courseName'
+      preLoaderRoute: typeof DashboardCoursesCourseNameRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+  }
 }
+
+interface DashboardRouteChildren {
+  DashboardCoursesCourseNameRoute: typeof DashboardCoursesCourseNameRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardCoursesCourseNameRoute: DashboardCoursesCourseNameRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
-	IndexRoute: IndexRoute,
-	DashboardRoute: DashboardRoute,
-};
+  IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  DummyContentRoute: DummyContentRoute,
+}
 export const routeTree = rootRouteImport
-	._addFileChildren(rootRouteChildren)
-	._addFileTypes<FileRouteTypes>();
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
