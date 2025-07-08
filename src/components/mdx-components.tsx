@@ -1,6 +1,8 @@
 import React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { useState } from "react";
+import { Check, Copy } from "lucide-react";
 import { MDXVideo } from "@/components/mdx/MDXVideo";
 
 // Custom code component with syntax highlighting
@@ -23,6 +25,19 @@ const CodeBlock = ({ children, className, ...props }: any) => {
 
   // Special handling for markdown to preserve table formatting
   if (mappedLanguage === "markdown") {
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = async () => {
+      const text = String(children).replace(/\n$/, "");
+      try {
+        await navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        console.error("Failed to copy text: ", err);
+      }
+    };
+
     // Simple syntax highlighting for markdown
     const highlightMarkdown = (text: string) => {
       return (
@@ -57,6 +72,23 @@ const CodeBlock = ({ children, className, ...props }: any) => {
       <div className="bg-[#1e1e1e] my-6 border border-[#3e3e42] rounded-lg overflow-x-auto">
         <div className="flex justify-between items-center bg-[#2d2d30] px-4 py-2 border-[#3e3e42] border-b">
           <span className="font-medium text-[#cccccc] text-sm">MARKDOWN</span>
+          <button
+            onClick={handleCopy}
+            className="flex items-center gap-1.5 hover:bg-[#3e3e42] px-2 py-1 rounded text-[#cccccc] hover:text-white text-xs transition-colors"
+            title={copied ? "Copied!" : "Copy to clipboard"}
+          >
+            {copied ? (
+              <>
+                <Check size={14} />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy size={14} />
+                <span>Copy</span>
+              </>
+            )}
+          </button>
         </div>
         <pre className="p-4 overflow-x-auto">
           <code
