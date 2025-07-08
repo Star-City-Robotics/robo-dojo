@@ -1,5 +1,5 @@
 import { Check, Copy } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { MDXChart } from "@/components/mdx/MDXChart";
@@ -159,7 +159,7 @@ const CodeBlock = ({ children, className, ...props }: CodeBlockProps) => {
               fontVariantLigatures: "none",
               letterSpacing: "0",
             }}
-            // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: We need this form markdown
             dangerouslySetInnerHTML={{
               __html: highlightMarkdown(String(children).replace(/\n$/, "")),
             }}
