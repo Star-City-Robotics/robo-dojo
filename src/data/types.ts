@@ -20,7 +20,7 @@ export type Resource = {
   name: string;
   completed: boolean;
   description: string;
-  content: string | React.ComponentType;
+  content: React.ComponentType;
   icon?: keyof typeof RESOURCE_ICONS;
   iconColor?: keyof typeof RESOURCE_ICON_COLORS;
 };

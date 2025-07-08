@@ -1,8 +1,6 @@
-import { createFileRoute, useParams } from "@tanstack/react-router";
-import { courses } from "@/data/constants";
+import { createFileRoute } from "@tanstack/react-router";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 import React from "react";
-import { MarkdownRenderer } from "@/components/markdown-renderer";
 import { NavigationButtons } from "@/components/navigation-buttons";
 
 export const Route = createFileRoute(
@@ -19,11 +17,7 @@ function RouteComponent() {
   }
 
   const renderContent = () => {
-    if (typeof activeResource.content === "function") {
-      return React.createElement(activeResource.content);
-    } else {
-      return <MarkdownRenderer content={activeResource.content} />;
-    }
+    return React.createElement(activeResource.content);
   };
 
   return (
