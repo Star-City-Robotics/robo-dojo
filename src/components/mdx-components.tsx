@@ -129,6 +129,41 @@ const CodeBlock = ({ children, className, ...props }: any) => {
     "markup",
   ];
 
+  // Check if this is a code block (has newlines) vs inline code
+  const isCodeBlock =
+    String(children).includes("\n") || className?.startsWith("language-");
+
+  if (
+    isCodeBlock &&
+    (!mappedLanguage || !supportedLanguages.includes(mappedLanguage))
+  ) {
+    // Handle unmarked code blocks or unsupported languages with same styling as syntax highlighted blocks
+    return (
+      <div className="bg-[#1e1e1e] my-6 border border-[#3e3e42] rounded-lg overflow-x-auto">
+        <div className="flex justify-between items-center bg-[#2d2d30] px-4 py-2 border-[#3e3e42] border-b">
+          <span className="font-medium text-[#cccccc] text-sm">
+            {mappedLanguage ? mappedLanguage.toUpperCase() : "CODE"}
+          </span>
+        </div>
+        <pre className="p-4 overflow-x-auto">
+          <code
+            className="block text-[#cccccc] text-sm leading-relaxed"
+            style={{
+              fontFamily:
+                "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
+              whiteSpace: "pre",
+              wordBreak: "normal",
+              wordWrap: "normal",
+              tabSize: 2,
+            }}
+          >
+            {String(children).replace(/\n$/, "")}
+          </code>
+        </pre>
+      </div>
+    );
+  }
+
   if (mappedLanguage && supportedLanguages.includes(mappedLanguage)) {
     return (
       <SyntaxHighlighter
@@ -149,7 +184,7 @@ const CodeBlock = ({ children, className, ...props }: any) => {
     );
   }
 
-  // Fallback for unsupported languages or inline code
+  // Fallback for inline code
   return (
     <code
       className="bg-[#2d2d30] px-2 py-1 rounded text-[#ce9178] text-sm"
