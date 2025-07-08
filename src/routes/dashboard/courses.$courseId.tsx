@@ -151,51 +151,49 @@ function RouteComponent() {
                 key={module.id}
                 open={expandedModules.includes(module.id)}
               >
-                <div className="flex items-center">
-                  {/* Module row: now a Link for navigation */}
-                  <Link
-                    to="/dashboard/courses/$courseId/module/$moduleId"
-                    params={{
-                      courseId: activeCourse.id,
-                      moduleId: module.id,
-                    }}
-                    className={`group flex items-center w-full cursor-pointer py-2 px-2 rounded transition-colors ${
+                {/* Module row with integrated chevron */}
+                <Link
+                  to="/dashboard/courses/$courseId/module/$moduleId"
+                  params={{
+                    courseId: activeCourse.id,
+                    moduleId: module.id,
+                  }}
+                  className={`group flex items-center w-full cursor-pointer py-2 px-2 rounded transition-colors ${
+                    activeModule?.id === module.id
+                      ? "bg-[#37373d] border-l-2 border-[#007acc] pl-2"
+                      : "hover:bg-[#2a2d2e]"
+                  }`}
+                  onClick={(e) => {
+                    // Check if the click was on the chevron area (right side)
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const isChevronClick = clickX > rect.width - 40; // Last 40px is chevron area
+
+                    if (isChevronClick) {
+                      e.preventDefault();
+                      toggleModule(module.id);
+                    }
+                  }}
+                >
+                  <Cpu className="mr-2 w-3 h-3 text-[#569cd6]" />
+                  <span
+                    className={`flex-1 font-medium text-sm text-left group-hover:underline transition-colors ${
                       activeModule?.id === module.id
-                        ? "bg-[#37373d] border-l-2 border-[#007acc] pl-2"
-                        : "hover:bg-[#2a2d2e]"
+                        ? "text-[#4ec9b0]"
+                        : "text-[#cccccc] group-hover:text-[#b5cea8]"
                     }`}
                   >
-                    <Cpu className="mr-2 w-3 h-3 text-[#569cd6]" />
-                    <span
-                      className={`flex-1 font-medium text-sm text-left group-hover:underline transition-colors ${
-                        activeModule?.id === module.id
-                          ? "text-[#4ec9b0]"
-                          : "text-[#cccccc] group-hover:text-[#b5cea8]"
-                      }`}
-                    >
-                      {module.name}
-                    </span>
-                  </Link>
-                  {/* Chevron: only toggles collapse, now on the right */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleModule(module.id);
-                    }}
-                    className="bg-transparent hover:bg-[#232325] ml-2 p-1 rounded focus:outline-none focus:ring-[#007acc] focus:ring-2 transition-colors"
-                    aria-label={
-                      expandedModules.includes(module.id)
-                        ? "Collapse"
-                        : "Expand"
-                    }
-                  >
+                    {module.name}
+                  </span>
+                  {/* Chevron inside the module element */}
+                  <div className="hover:bg-[#232325] ml-2 p-1 rounded transition-colors">
                     {expandedModules.includes(module.id) ? (
                       <ChevronDown className="w-3 h-3 text-[#cccccc]" />
                     ) : (
                       <ChevronRight className="w-3 h-3 text-[#cccccc]" />
                     )}
-                  </button>
-                </div>
+                  </div>
+                </Link>
                 <CollapsibleContent className="space-y-1 mt-1 ml-5">
                   {module.resources.map((resource) => (
                     <Link
