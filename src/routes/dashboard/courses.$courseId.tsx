@@ -4,6 +4,7 @@ import {
   Outlet,
   useLoaderData,
   useNavigate,
+  useParams,
 } from "@tanstack/react-router";
 import {
   Badge,
@@ -32,6 +33,7 @@ import { courses } from "@/data/constants";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 import { SearchIcon } from "@/components/command-search";
+import { RobEBlinkButton } from "@/components/rob-e-blink-button";
 
 export const Route = createFileRoute("/dashboard/courses/$courseId")({
   component: RouteComponent,
@@ -96,20 +98,17 @@ function RouteComponent() {
     >
       {/* VSCode-style Sidebar */}
       <div className="flex flex-col bg-[#252526] border-[#3e3e42] border-r w-72">
-        {/* SCAROB Branding */}
+        {/* RoboDOJO Branding with ROB-E */}
         <div className="p-4 border-[#3e3e42] border-b">
-          <div className="flex items-center space-x-2">
-            <div className="relative flex justify-center items-center bg-[#007acc] rounded-sm w-8 h-8">
-              <Bug className="w-5 h-5 text-white" />
-              <div className="-top-0.5 -right-0.5 absolute bg-[#4ec9b0] rounded-full w-1.5 h-1.5"></div>
-            </div>
+          <div className="flex items-center space-x-3">
+            <RobEBlinkButton
+              className="flex-shrink-0 w-14 h-14"
+              onClick={() => navigate({ to: "/dashboard" })}
+            />
             <div>
               <h1 className="font-bold text-[#cccccc] text-xl tracking-wider">
                 RoboDOJO
               </h1>
-              <p className="-mt-0.5 text-[#6a9955] text-xs">
-                Master the Art of Robotics Programming
-              </p>
             </div>
           </div>
         </div>
