@@ -13,6 +13,7 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardCoursesCourseIdRouteImport } from './routes/dashboard/courses.$courseId'
+import { Route as DashboardCoursesCourseIdIndexRouteImport } from './routes/dashboard/courses.$courseId.index'
 import { Route as DashboardCoursesCourseIdModuleModuleIdIndexRouteImport } from './routes/dashboard/courses.$courseId.module.$moduleId.index'
 import { Route as DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRouteImport } from './routes/dashboard/courses.$courseId.module.$moduleId.resources.$resourceId'
 
@@ -37,6 +38,12 @@ const DashboardCoursesCourseIdRoute =
     path: '/courses/$courseId',
     getParentRoute: () => DashboardRoute,
   } as any)
+const DashboardCoursesCourseIdIndexRoute =
+  DashboardCoursesCourseIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => DashboardCoursesCourseIdRoute,
+  } as any)
 const DashboardCoursesCourseIdModuleModuleIdIndexRoute =
   DashboardCoursesCourseIdModuleModuleIdIndexRouteImport.update({
     id: '/module/$moduleId/',
@@ -55,13 +62,14 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRouteWithChildren
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/courses/$courseId': typeof DashboardCoursesCourseIdRouteWithChildren
+  '/dashboard/courses/$courseId/': typeof DashboardCoursesCourseIdIndexRoute
   '/dashboard/courses/$courseId/module/$moduleId': typeof DashboardCoursesCourseIdModuleModuleIdIndexRoute
   '/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId': typeof DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardIndexRoute
-  '/dashboard/courses/$courseId': typeof DashboardCoursesCourseIdRouteWithChildren
+  '/dashboard/courses/$courseId': typeof DashboardCoursesCourseIdIndexRoute
   '/dashboard/courses/$courseId/module/$moduleId': typeof DashboardCoursesCourseIdModuleModuleIdIndexRoute
   '/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId': typeof DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRoute
 }
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRouteWithChildren
   '/dashboard/': typeof DashboardIndexRoute
   '/dashboard/courses/$courseId': typeof DashboardCoursesCourseIdRouteWithChildren
+  '/dashboard/courses/$courseId/': typeof DashboardCoursesCourseIdIndexRoute
   '/dashboard/courses/$courseId/module/$moduleId/': typeof DashboardCoursesCourseIdModuleModuleIdIndexRoute
   '/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId': typeof DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRoute
 }
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/'
     | '/dashboard/courses/$courseId'
+    | '/dashboard/courses/$courseId/'
     | '/dashboard/courses/$courseId/module/$moduleId'
     | '/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId'
   fileRoutesByTo: FileRoutesByTo
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dashboard/'
     | '/dashboard/courses/$courseId'
+    | '/dashboard/courses/$courseId/'
     | '/dashboard/courses/$courseId/module/$moduleId/'
     | '/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId'
   fileRoutesById: FileRoutesById
@@ -135,6 +146,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardCoursesCourseIdRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/courses/$courseId/': {
+      id: '/dashboard/courses/$courseId/'
+      path: '/'
+      fullPath: '/dashboard/courses/$courseId/'
+      preLoaderRoute: typeof DashboardCoursesCourseIdIndexRouteImport
+      parentRoute: typeof DashboardCoursesCourseIdRoute
+    }
     '/dashboard/courses/$courseId/module/$moduleId/': {
       id: '/dashboard/courses/$courseId/module/$moduleId/'
       path: '/module/$moduleId'
@@ -153,12 +171,14 @@ declare module '@tanstack/react-router' {
 }
 
 interface DashboardCoursesCourseIdRouteChildren {
+  DashboardCoursesCourseIdIndexRoute: typeof DashboardCoursesCourseIdIndexRoute
   DashboardCoursesCourseIdModuleModuleIdIndexRoute: typeof DashboardCoursesCourseIdModuleModuleIdIndexRoute
   DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRoute: typeof DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRoute
 }
 
 const DashboardCoursesCourseIdRouteChildren: DashboardCoursesCourseIdRouteChildren =
   {
+    DashboardCoursesCourseIdIndexRoute: DashboardCoursesCourseIdIndexRoute,
     DashboardCoursesCourseIdModuleModuleIdIndexRoute:
       DashboardCoursesCourseIdModuleModuleIdIndexRoute,
     DashboardCoursesCourseIdModuleModuleIdResourcesResourceIdRoute:
