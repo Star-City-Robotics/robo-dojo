@@ -29,11 +29,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { courses } from "@/data/constants";
+import { courses, RESOURCE_ICONS } from "@/data/constants";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 import { SearchIcon } from "@/components/command-search";
 import { RobEBlinkButton } from "@/components/rob-e-blink-button";
+import type { Resource } from "@/data/types";
 
 export const Route = createFileRoute("/dashboard/courses/$courseId")({
   component: RouteComponent,
@@ -72,18 +73,15 @@ function RouteComponent() {
         : [...prev, moduleId]
     );
 
-  const getResourceIcon = (type: string): ReactNode => {
-    switch (type) {
-      case "video":
-        return <Video className="w-4 h-4 text-red-400" />;
-      case "document":
-        return <FileText className="w-4 h-4 text-blue-400" />;
-      case "code":
-        return <Code className="w-4 h-4 text-green-400" />;
-      case "assignment":
-        return <Zap className="w-4 h-4 text-yellow-400" />;
-      case "playground":
-        return <Terminal className="w-4 h-4 text-purple-400" />;
+  const getResourceIcon = (resource: Resource): ReactNode => {
+    // If resource has a custom icon, use it
+    if (resource.icon && RESOURCE_ICONS[resource.icon]) {
+      const IconComponent = RESOURCE_ICONS[resource.icon];
+      return <IconComponent className="w-4 h-4 text-[#4ec9b0]" />;
+    }
+
+    // Fallback to default icons based on resource type
+    switch (resource.resourceType) {
       case "guide":
         return <BookOpen className="w-4 h-4 text-orange-400" />;
       default:
@@ -210,7 +208,7 @@ function RouteComponent() {
                           : "hover:bg-[#2a2d2e]"
                       }`}
                     >
-                      {getResourceIcon("guide")}
+                      {getResourceIcon(resource)}
                       <span className="flex-1 text-[#cccccc] text-sm">
                         {resource.name}
                       </span>

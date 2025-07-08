@@ -38,6 +38,7 @@ export const howToWriteMarkdown: Course = {
           completed: false,
           description: "Introduction to Markdown and its core concepts.",
           content: WhatIsMarkdownMdx,
+          icon: "lightbulb",
         },
         {
           resourceType: "guide",
@@ -46,6 +47,7 @@ export const howToWriteMarkdown: Course = {
           completed: false,
           description: "Learn how Markdown speeds up your writing workflow.",
           content: FastToWriteMdx,
+          icon: "rocket",
         },
         {
           resourceType: "guide",
@@ -55,6 +57,7 @@ export const howToWriteMarkdown: Course = {
           description:
             "Discover why AI tools excel at generating Markdown content.",
           content: AiCanWriteItMdx,
+          icon: "brain",
         },
         {
           resourceType: "guide",
@@ -64,6 +67,7 @@ export const howToWriteMarkdown: Course = {
           description:
             "Understand Markdown's cross-platform compatibility advantages.",
           content: EasilyPortableMdx,
+          icon: "smartphone",
         },
         {
           resourceType: "guide",
@@ -73,6 +77,7 @@ export const howToWriteMarkdown: Course = {
           description:
             "Explore how Markdown transforms into various output formats.",
           content: MarkdownFormatsMdx,
+          icon: "globe",
         },
       ],
     },
@@ -89,6 +94,7 @@ export const howToWriteMarkdown: Course = {
           completed: false,
           description: "Master document structure with Markdown headers.",
           content: HeadersMdx,
+          icon: "layers",
         },
         {
           resourceType: "guide",
@@ -98,6 +104,7 @@ export const howToWriteMarkdown: Course = {
           description:
             "Learn bold, italic, strikethrough, and other text styles.",
           content: TextFormattingMdx,
+          icon: "penTool",
         },
         {
           resourceType: "guide",
@@ -107,6 +114,7 @@ export const howToWriteMarkdown: Course = {
           description:
             "Create ordered, unordered, and nested lists effectively.",
           content: ListsMdx,
+          icon: "folder",
         },
         {
           resourceType: "guide",
@@ -115,6 +123,7 @@ export const howToWriteMarkdown: Course = {
           completed: false,
           description: "Master internal and external linking techniques.",
           content: LinksMdx,
+          icon: "globe",
         },
         {
           resourceType: "guide",
@@ -123,6 +132,7 @@ export const howToWriteMarkdown: Course = {
           completed: false,
           description: "Embed and display images in your Markdown documents.",
           content: ImagesMdx,
+          icon: "image",
         },
         {
           resourceType: "guide",
@@ -131,6 +141,7 @@ export const howToWriteMarkdown: Course = {
           completed: false,
           description: "Display code with syntax highlighting and formatting.",
           content: CodeBlocksMdx,
+          icon: "code",
         },
         {
           resourceType: "guide",

@@ -1,3 +1,5 @@
+import type { RESOURCE_ICONS } from "./constants";
+
 export type Module = {
   id: string;
   name: string;
@@ -19,4 +21,5 @@ export type Resource = {
   completed: boolean;
   description: string;
   content: string | React.ComponentType;
+  icon?: keyof typeof RESOURCE_ICONS;
 };
