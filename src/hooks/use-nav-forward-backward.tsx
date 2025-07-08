@@ -1,112 +1,112 @@
 import { useNavigate } from "@tanstack/react-router";
-import { useActiveEntities } from "./use-active-entities";
 import type { Course, Module, Resource } from "@/data/types";
+import { useActiveEntities } from "./use-active-entities";
 
 interface NavigationItem {
-  type: "module" | "resource";
-  course: Course;
-  module: Module;
-  resource?: Resource;
-  path: string;
+	type: "module" | "resource";
+	course: Course;
+	module: Module;
+	resource?: Resource;
+	path: string;
 }
 
 interface NavigationState {
-  canGoNext: boolean;
-  canGoPrevious: boolean;
-  goNext: () => void;
-  goPrevious: () => void;
-  nextItem?: NavigationItem;
-  previousItem?: NavigationItem;
+	canGoNext: boolean;
+	canGoPrevious: boolean;
+	goNext: () => void;
+	goPrevious: () => void;
+	nextItem?: NavigationItem;
+	previousItem?: NavigationItem;
 }
 
 export function useNavForwardBackward(): NavigationState {
-  const { activeCourse, activeModule, activeResource } = useActiveEntities();
-  const navigate = useNavigate();
+	const { activeCourse, activeModule, activeResource } = useActiveEntities();
+	const navigate = useNavigate();
 
-  if (!activeCourse) {
-    return {
-      canGoNext: false,
-      canGoPrevious: false,
-      goNext: () => {},
-      goPrevious: () => {},
-    };
-  }
+	if (!activeCourse) {
+		return {
+			canGoNext: false,
+			canGoPrevious: false,
+			goNext: () => {},
+			goPrevious: () => {},
+		};
+	}
 
-  // Build a flat list of all navigation items in order
-  const buildNavigationList = (course: Course): NavigationItem[] => {
-    const items: NavigationItem[] = [];
+	// Build a flat list of all navigation items in order
+	const buildNavigationList = (course: Course): NavigationItem[] => {
+		const items: NavigationItem[] = [];
 
-    course.modules.forEach((module) => {
-      // Add the module itself
-      items.push({
-        type: "module",
-        course,
-        module,
-        path: `/dashboard/courses/${course.id}/module/${encodeURIComponent(module.id)}`,
-      });
+		course.modules.forEach((module) => {
+			// Add the module itself
+			items.push({
+				type: "module",
+				course,
+				module,
+				path: `/dashboard/courses/${course.id}/module/${encodeURIComponent(module.id)}`,
+			});
 
-      // Add all resources in the module
-      module.resources.forEach((resource) => {
-        items.push({
-          type: "resource",
-          course,
-          module,
-          resource,
-          path: `/dashboard/courses/${course.id}/module/${module.id}/resources/${encodeURIComponent(resource.id)}`,
-        });
-      });
-    });
+			// Add all resources in the module
+			module.resources.forEach((resource) => {
+				items.push({
+					type: "resource",
+					course,
+					module,
+					resource,
+					path: `/dashboard/courses/${course.id}/module/${module.id}/resources/${encodeURIComponent(resource.id)}`,
+				});
+			});
+		});
 
-    return items;
-  };
+		return items;
+	};
 
-  const navigationList = buildNavigationList(activeCourse);
+	const navigationList = buildNavigationList(activeCourse);
 
-  // Find current item index
-  const getCurrentIndex = (): number => {
-    if (activeResource && activeModule) {
-      // We're viewing a resource
-      return navigationList.findIndex(
-        (item) =>
-          item.type === "resource" &&
-          item.module.id === activeModule.id &&
-          item.resource?.id === activeResource.id
-      );
-    } else if (activeModule) {
-      // We're viewing a module
-      return navigationList.findIndex(
-        (item) => item.type === "module" && item.module.id === activeModule.id
-      );
-    }
-    return -1;
-  };
+	// Find current item index
+	const getCurrentIndex = (): number => {
+		if (activeResource && activeModule) {
+			// We're viewing a resource
+			return navigationList.findIndex(
+				(item) =>
+					item.type === "resource" &&
+					item.module.id === activeModule.id &&
+					item.resource?.id === activeResource.id,
+			);
+		} else if (activeModule) {
+			// We're viewing a module
+			return navigationList.findIndex(
+				(item) => item.type === "module" && item.module.id === activeModule.id,
+			);
+		}
+		return -1;
+	};
 
-  const currentIndex = getCurrentIndex();
-  const nextItem =
-    currentIndex >= 0 && currentIndex < navigationList.length - 1
-      ? navigationList[currentIndex + 1]
-      : undefined;
-  const previousItem =
-    currentIndex > 0 ? navigationList[currentIndex - 1] : undefined;
+	const currentIndex = getCurrentIndex();
+	const nextItem =
+		currentIndex >= 0 && currentIndex < navigationList.length - 1
+			? navigationList[currentIndex + 1]
+			: undefined;
+	const previousItem =
+		currentIndex > 0 ? navigationList[currentIndex - 1] : undefined;
 
-  const goNext = () => {
-    if (nextItem) {
-      navigate({ to: nextItem.path as any });
-    }
-  };
+	const goNext = () => {
+		if (nextItem) {
+			navigate({ to: nextItem.path as any });
+		}
+	};
 
-  const goPrevious = () => {
-    if (previousItem) {
-      navigate({ to: previousItem.path as any });
-    }
-  };
+	const goPrevious = () => {
+		if (previousItem) {
+			navigate({ to: previousItem.path as any });
+		}
+	};
 
-  return {
-    canGoNext: !!nextItem,
-    canGoPrevious: !!previousItem,
-    goNext,
-    goPrevious,
-    nextItem,
-    previousItem,
-  };
+	return {
+		canGoNext: !!nextItem,
+		canGoPrevious: !!previousItem,
+		goNext,
+		goPrevious,
+		nextItem,
+		previousItem,
+	};
 }

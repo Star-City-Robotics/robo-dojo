@@ -1,30 +1,30 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useActiveEntities } from "@/hooks/use-active-entities";
 import React from "react";
 import { NavigationButtons } from "@/components/navigation-buttons";
+import { useActiveEntities } from "@/hooks/use-active-entities";
 
 export const Route = createFileRoute(
-  "/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId"
+	"/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId",
 )({
-  component: RouteComponent,
+	component: RouteComponent,
 });
 
 function RouteComponent() {
-  const { activeCourse, activeModule, activeResource } = useActiveEntities();
+	const { activeCourse, activeModule, activeResource } = useActiveEntities();
 
-  if (!activeCourse || !activeModule || !activeResource) {
-    return <div className="p-8 text-[#cccccc]">Resource not found.</div>;
-  }
+	if (!activeCourse || !activeModule || !activeResource) {
+		return <div className="p-8 text-[#cccccc]">Resource not found.</div>;
+	}
 
-  const renderContent = () => {
-    return React.createElement(activeResource.content);
-  };
+	const renderContent = () => {
+		return React.createElement(activeResource.content);
+	};
 
-  return (
-    <div className="mx-auto p-8 max-w-2xl text-[#cccccc]">
-      <div className="prose-invert max-w-none prose">{renderContent()}</div>
+	return (
+		<div className="mx-auto p-8 max-w-2xl text-[#cccccc]">
+			<div className="prose-invert max-w-none prose">{renderContent()}</div>
 
-      <NavigationButtons />
-    </div>
-  );
+			<NavigationButtons />
+		</div>
+	);
 }

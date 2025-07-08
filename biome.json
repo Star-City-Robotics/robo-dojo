@@ -6,8 +6,7 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-		"ignoreUnknown": false,
-		"includes": ["!src/components/markdown-renderer.tsx"]
+		"ignoreUnknown": false
 	},
 	"formatter": {
 		"enabled": true,

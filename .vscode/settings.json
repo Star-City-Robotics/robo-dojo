@@ -1,8 +1,8 @@
 {
-  // settings.json
-  "files.associations": {
-    "*.css": "tailwindcss" // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#files.associations
-  },
-  "cSpell.words": ["Embla", "robo"],
-  "editor.formatOnSave": true
+	// settings.json
+	"files.associations": {
+		"*.css": "tailwindcss" // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#files.associations
+	},
+	"cSpell.words": ["Embla", "robo"],
+	"editor.formatOnSave": true
 }

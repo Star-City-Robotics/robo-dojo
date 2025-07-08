@@ -1,7 +1,7 @@
-import { useState, useMemo } from "react";
+import { Book, FileText, FolderOpen, Search } from "lucide-react";
+import { useMemo, useState } from "react";
 import { groupBy } from "remeda";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -11,10 +11,9 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import {
-  useCommandSearch,
   type SearchResult,
+  useCommandSearch,
 } from "@/hooks/use-command-search";
-import { Book, FileText, FolderOpen, Search } from "lucide-react";
 
 const getTypeIcon = (type: SearchResult["type"]) => {
   switch (type) {
@@ -44,6 +43,7 @@ export const SearchIcon = ({ className = "" }: { className?: string }) => {
 
   return (
     <button
+      type="button"
       onClick={() => setOpen(true)}
       className={`flex items-center justify-center p-2 bg-[#252526] hover:bg-[#2a2d2e] border border-[#3e3e42] rounded-lg transition-colors cursor-pointer ${className}`}
       title="Search (Cmd/Ctrl + K)"

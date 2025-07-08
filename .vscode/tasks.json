@@ -9,18 +9,23 @@
         "kind": "build",
         "isDefault": true
       },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
       "problemMatcher": {
         "owner": "biome",
         "fileLocation": ["relative", "${workspaceFolder}"],
         "pattern": {
-          "regexp": "^(.+):(\\d+):(\\d+): (error|warning) (.+)$",
+          "regexp": "^(.+):(\\d+):(\\d+) (.+)$",
           "file": 1,
           "line": 2,
           "column": 3,
-          "severity": 4,
-          "message": 5
+          "message": 4
         }
       }
     }
   ]
-} 
+}

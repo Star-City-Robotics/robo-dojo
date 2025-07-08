@@ -15,8 +15,8 @@
 			"@/*": ["./src/*"]
 		},
 		"strictNullChecks": true,
-		"skipLibCheck": true,
+		"skipLibCheck": true
 	},
 	"include": ["**/*.ts", "**/*.tsx"],
-	"exclude": ["dist", "node_modules"],
+	"exclude": ["dist", "node_modules"]
 }
