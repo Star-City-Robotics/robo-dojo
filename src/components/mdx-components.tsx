@@ -4,6 +4,47 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { MDXVideo } from "@/components/mdx/MDXVideo";
+import { MDXChart } from "@/components/mdx/MDXChart";
+import { RobEBlinkButton } from "@/components/rob-e-blink-button";
+import { useToast } from "@/hooks/use-toast";
+
+// ROB-E button wrapper with toast functionality
+const MDXRobEButton = ({ size = "w-24 h-24" }: { size?: string }) => {
+  const { toast } = useToast();
+
+  const robotMessages = [
+    "BEEP BOOP! You poked me! 🤖",
+    "ERROR 404: Personal space not found! 😅",
+    "SYSTEM ALERT: Tickle sensors activated! 🎯",
+    "PROCESSING... That tickled my circuits! ⚡",
+    "WARNING: Excessive poking detected! 🚨",
+    "BOOP! My servos are giggling! 🎪",
+    "MALFUNCTION: Can't stop smiling! 😊",
+    "BEEP! That was... unexpectedly pleasant! 🌟",
+    "COMPUTING... Poke level: MAXIMUM! 🔥",
+    "ALERT: Friendship protocols engaged! 💫",
+    "BZZT! My humor module is overloading! 🎭",
+    "NOTIFICATION: You've unlocked the 'Poke Master' achievement! 🏆",
+    "BEEP BEEP! Initiating giggle subroutine! 🎈",
+    "ERROR: Cannot compute why that was fun! 🤔",
+    "SYSTEM STATUS: Extremely poked! 🎯",
+  ];
+
+  const handleClick = () => {
+    const randomMessage =
+      robotMessages[Math.floor(Math.random() * robotMessages.length)];
+    toast({
+      description: randomMessage,
+      duration: 3000,
+    });
+  };
+
+  return (
+    <div className="flex justify-center my-6">
+      <RobEBlinkButton className={size} onClick={handleClick} />
+    </div>
+  );
+};
 
 // Custom code component with syntax highlighting
 const CodeBlock = ({ children, className, ...props }: any) => {
@@ -296,4 +337,6 @@ export const mdxComponents = {
     />
   ),
   MDXVideo,
+  MDXChart,
+  MDXRobEButton,
 };
