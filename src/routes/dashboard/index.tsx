@@ -122,17 +122,6 @@ function RouteComponent() {
                 (sum, module) => sum + module.resources.length,
                 0
               );
-              const completedResources = course.modules.reduce(
-                (sum, module) =>
-                  sum +
-                  module.resources.filter((resource) => resource.completed)
-                    .length,
-                0
-              );
-              const progressPercentage =
-                resourceCount > 0
-                  ? Math.round((completedResources / resourceCount) * 100)
-                  : 0;
 
               return (
                 <Link
@@ -153,7 +142,7 @@ function RouteComponent() {
                   </p>
 
                   {/* Course Stats */}
-                  <div className="flex items-center gap-4 mb-4 text-sm">
+                  <div className="flex items-center gap-4 text-sm">
                     <div className="flex items-center gap-1 text-[#569cd6]">
                       <BookOpen className="w-4 h-4" />
                       <span>{moduleCount} modules</span>
@@ -165,24 +154,6 @@ function RouteComponent() {
                     <div className="flex items-center gap-1 text-[#ce9178]">
                       <Users className="w-4 h-4" />
                       <span>Beginner-Friendly</span>
-                    </div>
-                  </div>
-
-                  {/* Progress Bar */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="opacity-75 text-[#cccccc]">
-                        Progress
-                      </span>
-                      <span className="font-medium text-[#4ec9b0]">
-                        {progressPercentage}%
-                      </span>
-                    </div>
-                    <div className="bg-[#3e3e42] rounded-full w-full h-2">
-                      <div
-                        className="bg-gradient-to-r from-[#4ec9b0] to-[#569cd6] rounded-full h-2 transition-all duration-500"
-                        style={{ width: `${progressPercentage}%` }}
-                      />
                     </div>
                   </div>
                 </Link>

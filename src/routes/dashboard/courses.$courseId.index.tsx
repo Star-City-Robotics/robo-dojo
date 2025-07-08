@@ -68,13 +68,6 @@ function RouteComponent() {
                         {module.resources.length !== 1 ? "s" : ""}
                       </span>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <span className="bg-[#4ec9b0] rounded-full w-2 h-2"></span>
-                      <span>
-                        {module.resources.filter((r) => r.completed).length}{" "}
-                        completed
-                      </span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -84,7 +77,7 @@ function RouteComponent() {
       </div>
 
       {/* Course Stats */}
-      <div className="gap-4 grid grid-cols-1 md:grid-cols-3">
+      <div className="gap-4 grid grid-cols-1 md:grid-cols-2">
         <div className="bg-[#252526] p-4 border border-[#3e3e42] rounded-lg text-center">
           <div className="font-bold text-[#4ec9b0] text-2xl">
             {course.modules.length}
@@ -99,24 +92,6 @@ function RouteComponent() {
             )}
           </div>
           <div className="text-[#6a6a6a] text-sm">Resources</div>
-        </div>
-        <div className="bg-[#252526] p-4 border border-[#3e3e42] rounded-lg text-center">
-          <div className="font-bold text-[#b5cea8] text-2xl">
-            {Math.round(
-              (course.modules.reduce(
-                (total, module) =>
-                  total + module.resources.filter((r) => r.completed).length,
-                0
-              ) /
-                course.modules.reduce(
-                  (total, module) => total + module.resources.length,
-                  0
-                )) *
-                100
-            )}
-            %
-          </div>
-          <div className="text-[#6a6a6a] text-sm">Complete</div>
         </div>
       </div>
     </div>

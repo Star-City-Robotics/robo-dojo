@@ -230,16 +230,6 @@ function RouteComponent() {
                       <span className="flex-1 text-[#cccccc] text-sm">
                         {resource.name}
                       </span>
-                      <div className="flex items-center space-x-1">
-                        {resource.completed && (
-                          <CheckCircle className="w-3 h-3 text-[#4ec9b0]" />
-                        )}
-                        {resource.resourceType === "guide" && (
-                          <Badge className="bg-[#3e3e42] px-1.5 py-0.5 text-[#ce9178] text-xs">
-                            MD
-                          </Badge>
-                        )}
-                      </div>
                     </Link>
                   ))}
                 </CollapsibleContent>
