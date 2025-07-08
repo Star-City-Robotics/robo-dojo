@@ -4,7 +4,6 @@ import {
   Outlet,
   useLoaderData,
   useNavigate,
-  useParams,
 } from "@tanstack/react-router";
 import {
   Badge,
@@ -106,10 +105,10 @@ function RouteComponent() {
             </div>
             <div>
               <h1 className="font-bold text-[#cccccc] text-xl tracking-wider">
-                SCAROB
+                RoboDOJO
               </h1>
               <p className="-mt-0.5 text-[#6a9955] text-xs">
-                Star City Robotic Foundation
+                Master the Art of Robotics Programming
               </p>
             </div>
           </div>
