@@ -21,13 +21,72 @@ const CodeBlock = ({ children, className, ...props }: any) => {
 
   const mappedLanguage = languageMap[language] || language;
 
+  // Special handling for markdown to preserve table formatting
+  if (mappedLanguage === "markdown") {
+    // Simple syntax highlighting for markdown
+    const highlightMarkdown = (text: string) => {
+      return (
+        text
+          // Highlight pipe characters in tables
+          .replace(/\|/g, '<span style="color: #569cd6;">|</span>')
+          // Highlight table separators
+          .replace(/-{3,}/g, '<span style="color: #6a6a6a;">$&</span>')
+          // Highlight headers
+          .replace(
+            /^(#{1,6})\s+(.+)$/gm,
+            '<span style="color: #4ec9b0;">$1</span> <span style="color: #dcdcaa;">$2</span>'
+          )
+          // Highlight bold
+          .replace(
+            /\*\*([^*]+)\*\*/g,
+            '<span style="color: #dcdcaa;">**$1**</span>'
+          )
+          // Highlight italic
+          .replace(/\*([^*]+)\*/g, '<span style="color: #ce9178;">*$1*</span>')
+          // Highlight inline code
+          .replace(/`([^`]+)`/g, '<span style="color: #ce9178;">`$1`</span>')
+          // Highlight links
+          .replace(
+            /\[([^\]]+)\]\(([^)]+)\)/g,
+            '<span style="color: #569cd6;">[$1]($2)</span>'
+          )
+      );
+    };
+
+    return (
+      <div className="bg-[#1e1e1e] my-6 border border-[#3e3e42] rounded-lg overflow-x-auto">
+        <div className="flex justify-between items-center bg-[#2d2d30] px-4 py-2 border-[#3e3e42] border-b">
+          <span className="font-medium text-[#cccccc] text-sm">MARKDOWN</span>
+        </div>
+        <pre className="p-4 overflow-x-auto">
+          <code
+            className="block text-[#cccccc] text-sm leading-relaxed"
+            style={{
+              fontFamily:
+                "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
+              whiteSpace: "pre",
+              wordBreak: "normal",
+              wordWrap: "normal",
+              tabSize: 2,
+              fontFeatureSettings: '"liga" 0, "calt" 0',
+              fontVariantLigatures: "none",
+              letterSpacing: "0",
+            }}
+            dangerouslySetInnerHTML={{
+              __html: highlightMarkdown(String(children).replace(/\n$/, "")),
+            }}
+          />
+        </pre>
+      </div>
+    );
+  }
+
   // Supported languages for syntax highlighting
   const supportedLanguages = [
     "java",
     "python",
     "typescript",
     "javascript",
-    "markdown",
     "html",
     "css",
     "json",
@@ -61,7 +120,11 @@ const CodeBlock = ({ children, className, ...props }: any) => {
   // Fallback for unsupported languages or inline code
   return (
     <code
-      className="bg-[#2d2d30] px-2 py-1 rounded font-mono text-[#ce9178] text-sm"
+      className="bg-[#2d2d30] px-2 py-1 rounded text-[#ce9178] text-sm"
+      style={{
+        fontFamily:
+          "'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
+      }}
       {...props}
     >
       {children}
@@ -127,11 +190,8 @@ export const mdxComponents = {
   em: (props: any) => <em className="text-[#ce9178] italic" {...props} />,
   hr: (props: any) => <hr className="my-8 border-[#3e3e42]" {...props} />,
   table: (props: any) => (
-    <div className="my-6 border border-[#3e3e42] rounded-lg overflow-x-auto">
-      <table
-        className="bg-[#1e1e1e] w-full min-w-full border-collapse"
-        {...props}
-      />
+    <div className="bg-[#1e1e1e] my-6 border border-[#3e3e42] rounded-lg overflow-x-auto">
+      <table className="w-full min-w-full border-collapse" {...props} />
     </div>
   ),
   thead: (props: any) => (
@@ -140,19 +200,25 @@ export const mdxComponents = {
   tbody: (props: any) => <tbody {...props} />,
   tr: (props: any) => (
     <tr
-      className="hover:bg-[#252526] even:bg-[#1a1a1a] odd:bg-[#1e1e1e] border-[#3e3e42] border-b transition-colors"
+      className="hover:bg-[#252526] even:bg-[#1a1a1a] odd:bg-[#1e1e1e] border-[#3e3e42] border-b last:border-b-0 transition-colors"
       {...props}
     />
   ),
   th: (props: any) => (
     <th
       className="px-6 py-4 border-[#007acc] border-b-2 font-semibold text-[#4ec9b0] text-sm text-left uppercase tracking-wider whitespace-nowrap"
+      style={{
+        textAlign: props.style?.textAlign || "left",
+      }}
       {...props}
     />
   ),
   td: (props: any) => (
     <td
       className="px-6 py-4 border-[#3e3e42] border-r last:border-r-0 text-[#cccccc] text-sm leading-relaxed"
+      style={{
+        textAlign: props.style?.textAlign || "left",
+      }}
       {...props}
     />
   ),
