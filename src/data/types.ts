@@ -1,12 +1,14 @@
 export type Module = {
   id: string;
   name: string;
+  description: string;
   resources: Resource[];
 };
 
 export type Course = {
   id: string;
   name: string;
+  description: string;
   modules: Module[];
 };
 

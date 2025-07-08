@@ -22,10 +22,19 @@ function RouteComponent() {
   return (
     <div className="mx-auto p-8 max-w-2xl text-[#cccccc]">
       <h1 className="mb-4 font-bold text-2xl">{module.name}</h1>
-      <h2 className="mb-2 font-semibold text-lg">Resources</h2>
-      <ul className="space-y-2">
+
+      {/* Module Description */}
+      <div className="bg-[#252526] mb-6 p-4 border border-[#3e3e42] rounded-lg">
+        <p className="text-[#cccccc] leading-relaxed">{module.description}</p>
+      </div>
+
+      <h2 className="mb-4 font-semibold text-lg">Resources</h2>
+      <ul className="space-y-3">
         {module.resources.map((resource) => (
-          <li key={resource.id}>
+          <li
+            key={resource.id}
+            className="bg-[#252526] hover:bg-[#2a2d2e] p-3 border border-[#3e3e42] rounded-lg transition-colors"
+          >
             <Link
               to="/dashboard/courses/$courseId/module/$moduleId/resources/$resourceId"
               params={{
@@ -33,9 +42,14 @@ function RouteComponent() {
                 moduleId: module.id,
                 resourceId: resource.id,
               }}
-              className="text-[#4ec9b0] hover:underline"
+              className="block"
             >
-              {resource.name}
+              <div className="mb-1 font-medium text-[#4ec9b0] hover:underline">
+                {resource.name}
+              </div>
+              <div className="text-[#6a6a6a] text-sm">
+                {resource.description}
+              </div>
             </Link>
           </li>
         ))}

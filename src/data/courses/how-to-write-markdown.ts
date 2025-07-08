@@ -1,179 +1,193 @@
 import type { Course } from "../types";
-import WhatIsMarkdown from "@/data/content/what-is-markdown.mdx";
-import FastToWrite from "@/data/content/fast-to-write.mdx";
-import AiCanWriteIt from "@/data/content/ai-can-write-it.mdx";
-import EasilyPortable from "@/data/content/easily-portable.mdx";
-import MarkdownFormats from "@/data/content/markdown-formats.mdx";
-import Headers from "@/data/content/headers.mdx";
-import TextFormatting from "@/data/content/text-formatting.mdx";
-import Lists from "@/data/content/lists.mdx";
-import Links from "@/data/content/links.mdx";
-import Images from "@/data/content/images.mdx";
-import CodeBlocks from "@/data/content/code-blocks.mdx";
-import Tables from "@/data/content/tables.mdx";
-import Blockquotes from "@/data/content/blockquotes.mdx";
-import HorizontalRules from "@/data/content/horizontal-rules.mdx";
-import SpecialRenderers from "@/data/content/special-renderers.mdx";
-import GithubMarkdown from "@/data/content/github-markdown.mdx";
-import MdxFeatures from "@/data/content/mdx-features.mdx";
+
+// Import all the MDX content
+import WhatIsMarkdownMdx from "@/data/content/what-is-markdown.mdx";
+import FastToWriteMdx from "@/data/content/fast-to-write.mdx";
+import AiCanWriteItMdx from "@/data/content/ai-can-write-it.mdx";
+import EasilyPortableMdx from "@/data/content/easily-portable.mdx";
+import MarkdownFormatsMdx from "@/data/content/markdown-formats.mdx";
+import HeadersMdx from "@/data/content/headers.mdx";
+import TextFormattingMdx from "@/data/content/text-formatting.mdx";
+import ListsMdx from "@/data/content/lists.mdx";
+import LinksMdx from "@/data/content/links.mdx";
+import ImagesMdx from "@/data/content/images.mdx";
+import CodeBlocksMdx from "@/data/content/code-blocks.mdx";
+import TablesMdx from "@/data/content/tables.mdx";
+import BlockquotesMdx from "@/data/content/blockquotes.mdx";
+import HorizontalRulesMdx from "@/data/content/horizontal-rules.mdx";
+import SpecialRenderersMdx from "@/data/content/special-renderers.mdx";
+import GithubMarkdownMdx from "@/data/content/github-markdown.mdx";
+import MdxFeaturesMdx from "@/data/content/mdx-features.mdx";
 
 export const howToWriteMarkdown: Course = {
   id: "how-to-write-markdown",
   name: "How to Write Markdown",
+  description:
+    "Master the art of writing in Markdown - the universal markup language. Learn to create beautiful, structured documents that work everywhere from GitHub to documentation sites.",
   modules: [
     {
       id: "why-markdown",
       name: "Why Markdown?",
+      description:
+        "Discover the power and versatility of Markdown as a writing format. Understand why it's become the standard for technical documentation and content creation.",
       resources: [
         {
+          resourceType: "guide",
           id: "what-is-markdown",
-          completed: false,
-          content: WhatIsMarkdown,
-          description: "Understanding what Markdown is and its purpose",
           name: "What is Markdown?",
-          resourceType: "guide",
+          completed: false,
+          description: "Introduction to Markdown and its core concepts.",
+          content: WhatIsMarkdownMdx,
         },
         {
+          resourceType: "guide",
           id: "fast-to-write",
-          completed: false,
-          content: FastToWrite,
-          description:
-            "Learn why Markdown is faster to write than HTML or rich text",
           name: "Fast to Write",
-          resourceType: "guide",
+          completed: false,
+          description: "Learn how Markdown speeds up your writing workflow.",
+          content: FastToWriteMdx,
         },
         {
+          resourceType: "guide",
           id: "ai-can-write-it",
-          completed: false,
-          content: AiCanWriteIt,
-          description: "How AI tools excel at generating Markdown content",
           name: "AI Can Write It Quickly",
-          resourceType: "guide",
-        },
-        {
-          id: "easily-portable",
           completed: false,
-          content: EasilyPortable,
           description:
-            "Why Markdown content is easily portable across platforms",
-          name: "Easily Portable",
-          resourceType: "guide",
+            "Discover why AI tools excel at generating Markdown content.",
+          content: AiCanWriteItMdx,
         },
         {
-          id: "markdown-formats",
-          completed: false,
-          content: MarkdownFormats,
-          description: "How Markdown transforms into different output formats",
-          name: "Markdown as a Universal Format",
           resourceType: "guide",
+          id: "easily-portable",
+          name: "Easily Portable",
+          completed: false,
+          description:
+            "Understand Markdown's cross-platform compatibility advantages.",
+          content: EasilyPortableMdx,
+        },
+        {
+          resourceType: "guide",
+          id: "markdown-formats",
+          name: "Markdown as a Universal Format",
+          completed: false,
+          description:
+            "Explore how Markdown transforms into various output formats.",
+          content: MarkdownFormatsMdx,
         },
       ],
     },
     {
       id: "markdown-syntax",
       name: "Markdown Syntax",
+      description:
+        "Learn all the essential Markdown syntax elements from basic formatting to advanced features like tables and code blocks.",
       resources: [
         {
+          resourceType: "guide",
           id: "headers",
-          completed: false,
-          content: Headers,
-          description: "Learn how to create headings and document structure",
           name: "Headers and Headings",
-          resourceType: "guide",
+          completed: false,
+          description: "Master document structure with Markdown headers.",
+          content: HeadersMdx,
         },
         {
+          resourceType: "guide",
           id: "text-formatting",
-          completed: false,
-          content: TextFormatting,
-          description: "Bold, italic, strikethrough, and other text formatting",
           name: "Text Formatting",
-          resourceType: "guide",
+          completed: false,
+          description:
+            "Learn bold, italic, strikethrough, and other text styles.",
+          content: TextFormattingMdx,
         },
         {
+          resourceType: "guide",
           id: "lists",
-          completed: false,
-          content: Lists,
-          description: "Creating ordered and unordered lists",
           name: "Lists",
-          resourceType: "guide",
+          completed: false,
+          description:
+            "Create ordered, unordered, and nested lists effectively.",
+          content: ListsMdx,
         },
         {
+          resourceType: "guide",
           id: "links",
-          completed: false,
-          content: Links,
-          description: "Adding links and references to your content",
           name: "Links and References",
-          resourceType: "guide",
+          completed: false,
+          description: "Master internal and external linking techniques.",
+          content: LinksMdx,
         },
         {
+          resourceType: "guide",
           id: "images",
-          completed: false,
-          content: Images,
-          description: "Embedding images and media in Markdown",
           name: "Images and Media",
-          resourceType: "guide",
+          completed: false,
+          description: "Embed and display images in your Markdown documents.",
+          content: ImagesMdx,
         },
         {
+          resourceType: "guide",
           id: "code-blocks",
-          completed: false,
-          content: CodeBlocks,
-          description: "Inline code and code blocks with syntax highlighting",
           name: "Code Blocks",
-          resourceType: "guide",
+          completed: false,
+          description: "Display code with syntax highlighting and formatting.",
+          content: CodeBlocksMdx,
         },
         {
+          resourceType: "guide",
           id: "tables",
-          completed: false,
-          content: Tables,
-          description: "Creating tables and organizing data",
           name: "Tables",
-          resourceType: "guide",
+          completed: false,
+          description: "Create structured data tables with proper alignment.",
+          content: TablesMdx,
         },
         {
+          resourceType: "guide",
           id: "blockquotes",
-          completed: false,
-          content: Blockquotes,
-          description: "Using blockquotes for emphasis and citations",
           name: "Blockquotes",
-          resourceType: "guide",
+          completed: false,
+          description: "Use blockquotes for emphasis and citations.",
+          content: BlockquotesMdx,
         },
         {
-          id: "horizontal-rules",
-          completed: false,
-          content: HorizontalRules,
-          description: "Adding dividers and section breaks",
-          name: "Horizontal Rules",
           resourceType: "guide",
+          id: "horizontal-rules",
+          name: "Horizontal Rules",
+          completed: false,
+          description: "Add visual section breaks with horizontal rules.",
+          content: HorizontalRulesMdx,
         },
       ],
     },
     {
       id: "markdown-flavors",
       name: "Different Flavors of Markdown",
+      description:
+        "Explore various Markdown implementations and extensions including GitHub Flavored Markdown and MDX for React components.",
       resources: [
         {
+          resourceType: "guide",
           id: "special-renderers",
-          completed: false,
-          content: SpecialRenderers,
-          description: "Understanding how different renderers extend Markdown",
           name: "Special Renderers",
-          resourceType: "guide",
+          completed: false,
+          description: "Learn about platform-specific Markdown extensions.",
+          content: SpecialRenderersMdx,
         },
         {
+          resourceType: "guide",
           id: "github-markdown",
-          completed: false,
-          content: GithubMarkdown,
-          description: "GitHub Flavored Markdown features and extensions",
           name: "GitHub Flavored Markdown",
-          resourceType: "guide",
+          completed: false,
+          description:
+            "Master GitHub's enhanced Markdown features and integrations.",
+          content: GithubMarkdownMdx,
         },
         {
-          id: "mdx-features",
-          completed: false,
-          content: MdxFeatures,
-          description: "MDX: Markdown with React components",
-          name: "MDX Features",
           resourceType: "guide",
+          id: "mdx-features",
+          name: "MDX Features",
+          completed: false,
+          description: "Combine React components with Markdown using MDX.",
+          content: MdxFeaturesMdx,
         },
       ],
     },
