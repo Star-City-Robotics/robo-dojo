@@ -1,6 +1,6 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useActiveEntities } from "./use-active-entities";
-import type { Course, Module, Resource } from "@/data/constants";
+import type { Course, Module, Resource } from "@/data/types";
 
 interface NavigationItem {
   type: "module" | "resource";
