@@ -29,7 +29,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { courses, RESOURCE_ICONS } from "@/data/constants";
+import {
+  courses,
+  RESOURCE_ICONS,
+  RESOURCE_ICON_COLORS,
+} from "@/data/constants";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { useActiveEntities } from "@/hooks/use-active-entities";
 import { SearchIcon } from "@/components/command-search";
@@ -77,15 +81,29 @@ function RouteComponent() {
     // If resource has a custom icon, use it
     if (resource.icon && RESOURCE_ICONS[resource.icon]) {
       const IconComponent = RESOURCE_ICONS[resource.icon];
-      return <IconComponent className="w-4 h-4 text-[#4ec9b0]" />;
+      const iconColor = resource.iconColor
+        ? RESOURCE_ICON_COLORS[resource.iconColor]
+        : RESOURCE_ICON_COLORS.green; // Default to VS Code green
+
+      return <IconComponent className="w-4 h-4" style={{ color: iconColor }} />;
     }
 
     // Fallback to default icons based on resource type
     switch (resource.resourceType) {
       case "guide":
-        return <BookOpen className="w-4 h-4 text-orange-400" />;
+        return (
+          <BookOpen
+            className="w-4 h-4"
+            style={{ color: RESOURCE_ICON_COLORS.orange }}
+          />
+        );
       default:
-        return <Bug className="w-4 h-4 text-purple-400" />;
+        return (
+          <Bug
+            className="w-4 h-4"
+            style={{ color: RESOURCE_ICON_COLORS.purple }}
+          />
+        );
     }
   };
 

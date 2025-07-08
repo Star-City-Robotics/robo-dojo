@@ -1,4 +1,4 @@
-import type { RESOURCE_ICONS } from "./constants";
+import type { RESOURCE_ICONS, RESOURCE_ICON_COLORS } from "./constants";
 
 export type Module = {
   id: string;
@@ -22,4 +22,5 @@ export type Resource = {
   description: string;
   content: string | React.ComponentType;
   icon?: keyof typeof RESOURCE_ICONS;
+  iconColor?: keyof typeof RESOURCE_ICON_COLORS;
 };

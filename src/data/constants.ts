@@ -84,7 +84,27 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export const courses = [javaProgrammingCourse, dummyCourse, howToWriteMarkdown];
+// VS Code theme colors for resource icons
+export const RESOURCE_ICON_COLORS = {
+  // Primary theme colors
+  blue: "#569cd6", // VS Code blue (keywords, types)
+  green: "#4ec9b0", // VS Code teal/green (strings, success)
+  orange: "#ce9178", // VS Code orange (strings, numbers)
+  yellow: "#dcdcaa", // VS Code yellow (functions)
+  purple: "#c586c0", // VS Code purple (keywords, control flow)
+  red: "#f44747", // VS Code red (errors, warnings)
+
+  // Secondary colors
+  lightBlue: "#9cdcfe", // VS Code light blue (variables)
+  lightGreen: "#b5cea8", // VS Code light green (comments)
+  lightOrange: "#d7ba7d", // VS Code light orange
+  lightPurple: "#dbb7d4", // VS Code light purple
+
+  // Neutral colors
+  white: "#cccccc", // VS Code main text
+  gray: "#6a6a6a", // VS Code muted text
+  darkGray: "#3e3e42", // VS Code borders
+} as const;
 
 // Comprehensive icon set for resources
 export const RESOURCE_ICONS = {
@@ -191,3 +211,5 @@ export const RESOURCE_ICONS = {
   bug: Bug,
   fileCode: FileCode,
 } as const;
+
+export const courses = [javaProgrammingCourse, dummyCourse, howToWriteMarkdown];
