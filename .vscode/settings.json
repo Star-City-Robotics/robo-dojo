@@ -3,6 +3,6 @@
   "files.associations": {
     "*.css": "tailwindcss" // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss#files.associations
   },
-  "cSpell.words": ["BZZT", "Embla", "mbed", "nums", "robo"],
+  "cSpell.words": ["bunx", "BZZT", "Embla", "mbed", "nums", "robo"],
   "editor.formatOnSave": true
 }
