@@ -8,8 +8,9 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "start": "bun run .output/server/index.mjs",
     "type-check": "tsc --noEmit",
-    "check-lint": "biome check"
+    "check-lint": "bunx biome check"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.0",
@@ -73,6 +74,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.0.6",
     "@types/bun": "latest",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

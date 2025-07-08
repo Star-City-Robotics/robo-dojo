@@ -4,23 +4,12 @@ import {
   Outlet,
   useLoaderData,
   useNavigate,
-  useParams,
 } from "@tanstack/react-router";
-import {
-  Badge,
-  BookOpen,
-  Bug,
-  CheckCircle,
-  ChevronDown,
-  ChevronRight,
-  Code,
-  Cpu,
-  FileText,
-  Terminal,
-  Video,
-  Zap,
-} from "lucide-react";
-import { type ReactNode, useState, useEffect } from "react";
+import { BookOpen, Bug, ChevronDown, ChevronRight, Cpu } from "lucide-react";
+import { type ReactNode, useEffect, useState } from "react";
+import { BreadcrumbNav } from "@/components/breadcrumb-nav";
+import { SearchIcon } from "@/components/command-search";
+import { RobEBlinkButton } from "@/components/rob-e-blink-button";
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import {
   Select,
@@ -31,14 +20,11 @@ import {
 } from "@/components/ui/select";
 import {
   courses,
-  RESOURCE_ICONS,
   RESOURCE_ICON_COLORS,
+  RESOURCE_ICONS,
 } from "@/data/constants";
-import { BreadcrumbNav } from "@/components/breadcrumb-nav";
-import { useActiveEntities } from "@/hooks/use-active-entities";
-import { SearchIcon } from "@/components/command-search";
-import { RobEBlinkButton } from "@/components/rob-e-blink-button";
 import type { Resource } from "@/data/types";
+import { useActiveEntities } from "@/hooks/use-active-entities";
 
 export const Route = createFileRoute("/dashboard/courses/$courseId")({
   component: RouteComponent,

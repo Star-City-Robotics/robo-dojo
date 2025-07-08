@@ -1,16 +1,15 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { courses } from "@/data/constants";
-import { Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Search,
   BookOpen,
-  Clock,
-  Users,
-  Trophy,
   ChevronRight,
+  Clock,
+  Search,
+  Trophy,
+  Users,
 } from "lucide-react";
-import { useCommandSearch } from "@/hooks/use-command-search";
 import { RobEBlinkButton } from "@/components/rob-e-blink-button";
+import { courses } from "@/data/constants";
+import { useCommandSearch } from "@/hooks/use-command-search";
 
 export const Route = createFileRoute("/dashboard/")({
   component: RouteComponent,
@@ -96,6 +95,7 @@ function RouteComponent() {
           <button
             onClick={() => setOpen(true)}
             className="group inline-flex items-center gap-3 bg-[#252526] hover:bg-[#2a2d2e] px-6 py-3 border border-[#3e3e42] hover:border-[#569cd6] rounded-lg transition-all duration-200"
+            type="button"
           >
             <Search className="w-5 h-5 text-[#569cd6] group-hover:scale-110 transition-transform" />
             <span className="text-[#cccccc] text-base">

@@ -1,17 +1,17 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { MDXProvider } from "@mdx-js/react";
-import { mdxComponents } from "@/components/mdx-components";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { CommandSearch } from "@/components/command-search";
+import { mdxComponents } from "@/components/mdx-components";
 
 export const Route = createFileRoute("/dashboard")({
-  component: RouteComponent,
+	component: RouteComponent,
 });
 
 function RouteComponent() {
-  return (
-    <MDXProvider components={mdxComponents}>
-      <CommandSearch />
-      <Outlet />
-    </MDXProvider>
-  );
+	return (
+		<MDXProvider components={mdxComponents}>
+			<CommandSearch />
+			<Outlet />
+		</MDXProvider>
+	);
 }

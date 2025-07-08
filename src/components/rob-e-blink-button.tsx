@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-
 import ROBEClosed from "public/assets/ROB-E-CLOSED.png?url";
 import ROBEOpen from "public/assets/ROB-E-OPEN.png?url";
+import { useEffect, useRef, useState } from "react";
 
 interface RobEBlinkButtonProps {
   className?: string;
@@ -70,6 +69,7 @@ export const RobEBlinkButton = ({
 
   return (
     <button
+      type="button"
       className={`relative transition-transform hover:scale-105 active:scale-95 ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

@@ -1,5 +1,5 @@
-import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import type React from "react";
 import { useNavForwardBackward } from "@/hooks/use-nav-forward-backward";
 
 export const NavigationButtons: React.FC = () => {
@@ -16,6 +16,7 @@ export const NavigationButtons: React.FC = () => {
     <div className="flex justify-between items-center mt-8 pt-6 border-[#3e3e42] border-t">
       {/* Previous Button */}
       <button
+        type="button"
         onClick={goPrevious}
         disabled={!canGoPrevious}
         className={`flex items-center space-x-2 px-4 py-2 rounded transition-colors ${
@@ -39,6 +40,7 @@ export const NavigationButtons: React.FC = () => {
       {/* Next Button */}
       <button
         onClick={goNext}
+        type="button"
         disabled={!canGoNext}
         className={`flex items-center space-x-2 px-4 py-2 rounded transition-colors ${
           canGoNext

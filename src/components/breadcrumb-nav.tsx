@@ -1,6 +1,5 @@
-import { ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
+import { ChevronRight } from "lucide-react";
 
 interface BreadcrumbItem {
   id: string;

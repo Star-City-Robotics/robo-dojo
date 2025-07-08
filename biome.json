@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["!src/components/markdown-renderer.tsx"]
+		"includes": ["src/**/*.ts", "!src/routeTree.gen.ts"]
 	},
 	"formatter": {
 		"enabled": true,

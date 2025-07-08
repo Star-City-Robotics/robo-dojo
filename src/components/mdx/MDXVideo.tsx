@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 
 interface MDXVideoProps {
   title: string;
@@ -17,10 +17,10 @@ export const MDXVideo: React.FC<MDXVideoProps> = ({
   const getEmbedUrl = (youtubeUrl: string): string => {
     // Handle different YouTube URL formats
     const regex =
-      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
     const match = youtubeUrl.match(regex);
 
-    if (match && match[1]) {
+    if (match?.[1]) {
       return `https://www.youtube.com/embed/${match[1]}`;
     }
 

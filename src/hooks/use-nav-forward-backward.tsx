@@ -1,6 +1,7 @@
+/** biome-ignore-all lint/suspicious/noExplicitAny: We'll be doing some file path stuff */
 import { useNavigate } from "@tanstack/react-router";
-import { useActiveEntities } from "./use-active-entities";
 import type { Course, Module, Resource } from "@/data/types";
+import { useActiveEntities } from "./use-active-entities";
 
 interface NavigationItem {
   type: "module" | "resource";

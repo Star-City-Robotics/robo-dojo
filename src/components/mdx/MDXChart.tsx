@@ -1,21 +1,22 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: Charts need to index by number */
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Line,
+  LineChart,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  LineChart,
-  Line,
 } from "recharts";
 
 interface ChartProps {
   type?: "bar" | "pie" | "line";
-  data?: any[];
+  data?: unknown[];
   title?: string;
   width?: number;
   height?: number;
@@ -78,11 +79,11 @@ export const MDXChart = ({
               fill="#8884d8"
               dataKey="value"
             >
-              {chartData.map((entry: any, index: number) => (
+              {chartData.map((entry: unknown, index: number) => (
                 <Cell
                   key={`cell-${index}`}
                   fill={
-                    entry.color ||
+                    (entry as { color?: string }).color ||
                     `#${Math.floor(Math.random() * 16777215).toString(16)}`
                   }
                 />
