@@ -1,5 +1,8 @@
 # dependencies (bun install)
 node_modules
+.nitro/
+.output/
+.tanstack/
 
 # output
 out

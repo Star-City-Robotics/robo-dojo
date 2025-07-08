@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "start": "bun run .output/server/index.mjs",
     "type-check": "tsc --noEmit",
     "check-lint": "bunx biome check"
   },
