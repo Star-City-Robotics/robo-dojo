@@ -1,0 +1,41 @@
+# Compilers and Interpreters
+
+## Introduction
+
+This lesson is optional.  It does provide information that is useful in the
+**Class vs Object** lesson.  If you are already familiar with the differences
+between compilers and interpreters, you may skip the lesson.  If you skip
+this lesson you can always come back to it later.
+
+## Compilers and Interpreters: What are they and what is the difference.
+
+Before a program can be run, it must first be compiled and turned into
+machine code.  An Interpreter is basically a compiler that runs at the
+same time as the program and compiles the program as it runs.  One of the
+jobs of a compiler is to determine which parts of the source code are
+executable statements, which one define data types, and which ones are
+variables.
+
+The primary difference between a compiler and an interpreter is the output.
+The compiler output is a file that can be executed by itself over and over
+again.  An interpreter output is a program that executes within the
+interpreter and only runs once.  Each time a script is to be executed,
+it must be run through the interpreter again and again.
+
+Compiled programs run faster than interpreted programs, up to a 1000 times
+faster.  So why not use just compiled programs written in languages like
+Java, C++, and FORTRAN.   Scripted programs have the advantage that it is
+faster to change a script and see if it runs than a compiled language.
+Also, with small programs or scripts, the difference of execution time
+may be too short to notice the difference.
+
+A Java compiler is a bit different than a compiler for other languages such as
+C++.  A Java compiler does not turn the source code into machince code that
+can run on the native hardware.  Instead, the Java compiler turns the source
+code into something called **pcode**.  This is because Java does not run
+directly on the computer hardware.  It runs in a virtual machine where
+pcode is its equivalent to machine code.  This is for the Java feature of
+_write once --> run everywhere_.  The Java virtual machine, also known as the
+**JVM**, is ported to each type of computer system and the JVM translate the
+pcode into the local machine code.
+
