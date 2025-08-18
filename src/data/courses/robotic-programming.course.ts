@@ -3,11 +3,11 @@ import TypeScriptTestMdx from "@/data/content/typescript-test.mdx";
 import VideoTestMdx from "@/data/content/video-test.mdx";
 import type { Course } from "../types";
 
-export const javaProgrammingCourse: Course = {
-	id: "java-programming",
-	name: "Java Programming",
+export const roboticProgrammingCourse: Course = {
+	id: "robotic-programming",
+	name: "Robotic Programming",
 	description:
-		"Learn the fundamentals of Java programming for robotics applications. Master object-oriented programming, syntax, and build real-world robotic systems.",
+		"Learn the fundamentals of programming an FRC Robot in Java.  This course will include working with XRP and WPILib.",
 	modules: [
 		{
 			id: "install",
