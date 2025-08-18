@@ -1,54 +1,50 @@
+import VideoTestMdx from "@/data/content/video-test.mdx";
 import JavaTestMdx from "@/data/content/java-test.mdx";
 import TypeScriptTestMdx from "@/data/content/typescript-test.mdx";
-import VideoTestMdx from "@/data/content/video-test.mdx";
+
+import OOProgrammingMdx from "@/data/content/object-oriented-programming.mdx";
+import ClassVsObjectMdx from "../content/class-vs-object.mdx";
+
+
 import type { Course } from "../types";
 
 export const javaProgrammingCourse: Course = {
 	id: "java-programming",
 	name: "Java Programming",
 	description:
-		"Learn the fundamentals of Java programming for robotics applications. Master object-oriented programming, syntax, and build real-world robotic systems.",
+		"Learn the fundamentals of Java programming. Master object-oriented design, programming, and syntax.",
 	modules: [
-		{
-			id: "install",
-			name: "How to install stuff",
+	    {
+			id:         "object-oriented-programming",
+			name:       "Object Oriented Programming",
 			description:
-				"Set up your development environment with essential tools and software for Java robotics programming.",
-			resources: [
+				"Object Oriented Programming Module",
+			resources:
+			[
 				{
-					resourceType: "guide",
-					id: "video-tutorial-guide",
-					name: "Video Tutorial Guide",
-					completed: false,
-					description: "A guide with embedded video content.",
-					content: VideoTestMdx,
-				},
-			],
-		},
-		{
-			id: "basics",
-			name: "Java Basics",
-			description:
-				"Master the core concepts of Java programming including syntax, data types, control structures, and object-oriented principles.",
-			resources: [
-				{
-					resourceType: "guide",
-					id: "java-programming-guide",
-					name: "Java Programming Guide",
-					completed: false,
+					resourceType:  "guide",
+					id: "object-oriented-introduction",
+					name: "Object Oriented Programming Introduction",
 					description:
-						"Comprehensive Java programming guide with syntax highlighting.",
-					content: JavaTestMdx,
-				},
-				{
-					resourceType: "guide",
-					id: "typescript-guide",
-					name: "TypeScript for Robotics",
+						"What does Object Oriented Programming means.",
+					content: OOProgrammingMdx,
+					icon:    "book",
+					iconColor: "purple",
 					completed: false,
-					description: "Learn TypeScript for robotics applications.",
-					content: TypeScriptTestMdx,
-				},
+				},   // end of Object Oriented Programming module
+				{
+					resourceType:  "guide",
+					id:    "class-vs-object",
+					name:  "Class vs Object",
+					description:
+						"What is the difference between a class and an object.  With discussion on compilers and memory usage.",
+					content:    ClassVsObjectMdx,
+					icon:       "book",
+					iconColor:  "red",
+					completed:  false,
+				},   // end of Class vs Object module
 			],
-		},
+		},   // end of Object Oriented Programming Module
+
 	],
 };
