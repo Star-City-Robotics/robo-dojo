@@ -211,4 +211,8 @@ export const RESOURCE_ICONS = {
 	fileCode: FileCode,
 } as const;
 
-export const courses = [roboticProgrammingCourse, dummyCourse, howToWriteMarkdown];
+export const courses = [
+	roboticProgrammingCourse,
+	dummyCourse,
+	howToWriteMarkdown,
+];
