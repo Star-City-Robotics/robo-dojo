@@ -1,0 +1,74 @@
+# Variables
+
+## Introductions
+
+A variable is any data that is stored in memory and has an identifier or name.
+The data is either an object or a primitive data type such as int and boolean.
+
+Java is a strict typing language which means that all variables must be a
+data type.  That data type can be a primitive data type or a class.
+
+All variables are declared inside class data types.  In other words,
+there are no global variables allowed in Java.  The closest thing in
+Java to a global variable is a static data member defined in a class.
+Such a variable can be referenced as:
+
+>***\<class type\>.\<variable identifier\>***
+
+## Declaring Variables
+
+Every variable must be declared before it can be used.  Every variable
+must be defined before it can be used.  The first step is the is to
+declare the variable.  This step tells the compiler how to create
+and initialize the variable at the appropriate time.
+
+The syntax for declaring a variable is:
+
+>***[static] \<access modifier\> \<data type\> \<identifier\> 
+[ = \<value\>]***
+
+### static
+
+The static keyword is optional, hence being in square brackets.  
+A static variable can be modified.  The static keyword means that
+there is only one instance of the variable shared between all the
+objects of that class type.
+
+### Access Modifier
+
+The possible access modifiers are: ***public***, ***protected***,
+***private***, and default access.  The access modifer determines
+what other code can access the variable directly.
+
+See the lesson on Access Modifiers for more details.
+
+### Data Type
+
+Any data type can be used.  The data type must be known to the
+compiler.  This restricts the data types to primitive data types,
+class data types defined in the same package, and class data types
+imported from other packages.
+
+### Identifier
+
+Any valid identifer can be used so long as it is unique within the
+class declaration.
+
+### Initialion
+
+A variable can be initialize where it is being declared.  This is
+done by using an equal sign followed by an expression.  The
+expression is evaluated to the value.  The expression can be
+a constant, an object, a new object, or an expression whose
+evaluated value matches the variable's data type.
+
+Initializing in a variable declaration is optional except in
+the case of static variables.  Static variables must be initialized
+in the declaration statement.  This is because static variables
+are defined when a program starts running, before any object of
+the class type is defined.
+
+All non-static variables are initialized when the object is defined,
+when it is created.  These data member variables can be initialized
+by the value in their declaration statements or by the class
+construct.
