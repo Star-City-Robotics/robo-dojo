@@ -1,0 +1,91 @@
+# Documenting Code
+
+## Introduction
+
+Programs are written for a purpose.  The purpose of each program will vary.
+Why a program is written will also vary.  Some programs are written to be
+used once or twice by the programmer while other programs are written to be
+used by others and used multiple times.  The documentation needed for each
+program will depend on that purpose and the end users.
+
+Source code that is not documented well quickly become useless for future
+programmers.  It becomes hard to read and understand and, thus, becomes
+more diffficult to modify and fix as times goes by.
+
+## End User
+
+When programming, keep in mind who your end users are. The types of
+comments needed will depend on the life span of the code.
+
+### One Use Code
+
+Sometimes a programmer will write code that is only intended to be used
+once and thrown out.  This type of code does not need documentation since
+it will only be used one, assumably by the programmer, and discard, never
+to be seen again.
+
+### Team Projects
+
+Team Projects tend to be code that is written once, used many times,
+modified in the future and has a long life span.  For an FRC Robotics
+Team, the life span of a product is about one year.  After that time,
+the same code may be modified for the next year's project.  So, while
+the life span of each team project is about one year, the source code
+may have a lifespan of years or even decades.
+
+End Users for this type of source code are:
+
+- The programmer who writes the initial code.
+- Other programmers working on other parts of the project, especially
+  if they need to use the initial code.
+- Maintainers, those who keep the code running.  The fix bugs that show
+  up when running the robots in the field.
+- Future Programmers:
+  - New programmers who join the team
+  - Programmers who join the team after the original programmers are no
+    longer around.
+  - The **Original Programmers**.  It is easy to read and understand your
+    own code when you are writing it.  Come back to that same code after
+	a month or two have passed and you will find yourself in the position
+	of a new programmer trying to understand what you did before.
+
+## What to Comment
+
+There are some parts of source code that are important to make sure are
+documented.  The bigger the programming team, the more important it is
+to document your code.
+
+### Table 1: What parts of source code need to be documented.
+
+| Where | Description |
+| ------- | ----------- |
+| File | At the top of every source code file, there should be a comment that describes what the file is for. This documentation should include a list of all the programmers who have edited the file, the date when the file was last checked into GIT (hopefully, the data should be added automatically by GIT during the checkin process), version number of the project/code, and a copyright message.  Any other useful information can placed here as well. |
+| Class | Before each class statement there should be a comment that states the purpose of the class and the intended uses of objects of this type.  Other information that is relavent should also be included, such as any pre-conditions that may need to be met before creating a object of this class, any post-conditions that need to be met after using this class, are the objects of this class thread-safe, any resources that an object of this class may use, etc. |
+| Data Members | Data members should have a comment describing what the purpose of the variable is, how it should be used assuming the variable has restrictions, etc.  This is not necessary for all data members and may be a comment for a group of related data members. |
+| Methods | The comment before each method is a contract.  It tells the user who invokes the method (calls the method) what is expected.  This comment should include a list of each parameter or argument passed to the method is for and any relative information such as legal range of values, assumed units such as seconds or minute, feet or meters.  Any pre-conditions should be document such as you must invoke the read() method before this method can be used.  Also any post-conditions such as for the read() method that after it is called, the data is available.  What the return value means.  A list of any exceptions thrown by the method. |
+
+## What not to comment
+
+What not to comment is subjective.  The obvious things are simple code with
+trivial comments such as `added A to B`.  That comment tells the programmer
+nothing that is not obvious in the code.  While a comment that states why
+A and B are added to gether might be a useful comment.
+
+The rule of thumb is to not comment source code line by line with trival
+comments.
+
+## Documentation Tools
+
+The recommended tool to use in documenting the source code is to use
+***doxygen*** style comments.  Doxygen comments need to be added to the
+source code manually with the IDE or editor of your choice.  Once these
+comments are in place, programmers reading the code should be able to
+figure out what is going on.
+
+Another advantage is the doxygen program can scan the source code
+and generate online documentation with UML diagrams.  This makes
+it easier to uses classes written by other programmers in the project
+without having to read the source code, line by line.
+
+
+>See the ***Doxygen: A Documentation Tool*** module for details about the tool.
