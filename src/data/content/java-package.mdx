@@ -1,0 +1,48 @@
+# Package
+
+## Introduction
+
+One of the problems in programming is identifier conflicts.  This conflict
+arises when two or more elements have the same identifier or name.  This
+is not allowed in programming because the compiler or interpretor cannot
+determine which element is being referenced.
+
+It is up to the programmers it make sure that the same identifier is not
+used for multiple elements within the program.  The problem comes when
+a program uses third party libraries or Java libraries.  The programmer
+has no control of what identifiers were used in third party code.
+
+For example, let say the program has a class called Shape which is the
+parent or base class for classes such as Square, Triangle, and Circle.
+The class Shape may also be declared in third party code.  When this
+occurs, the source code cannot be compiled successfully.
+
+## Package
+
+Java solution to identifier conflict also known as identifier resolution
+is to place source code into packages.  A package can be thought as a
+container of related software.  The compiler will automatically use
+the package name and the identifier together to create a unique name
+for the element.
+
+## Unique Package Naming
+
+The is no way to strictly enforce the use of unique package names. therefore
+there is a convention used by Java Programmers to hopefully come up with
+a unique package name.
+
+In most cases, every programming project is associated with an Internet
+Domain.  The convention is to use that reverse of the domain name.  This
+does not mean completely reversing the letters and dots.  It means that
+each component of the domain name is used and appear in the reverse order.
+Added to the end of that sequence, could be team and/or project name,
+followed by subproject names.
+
+>***\<reverse domain\>.\<team\>.\<project\>.\<subproject\>***
+
+For example, let the domain name used for a project is _my.domain.com_, the
+team name is _SCAROB_, the project is _Cresendo_, and the subproject is the
+drive system.  This could result in a package name of:
+
+>***com.domain.my.scarob.cresendo.drivesystem***
+
