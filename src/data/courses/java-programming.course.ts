@@ -12,6 +12,7 @@ import CompilersMdx      from "../content/compilers-and-interpreters.mdx";
 import OperatorsMdx      from "../content/java-operators.mdx";
 import TerminologyMdx    from "../content/terms-and-definitions.mdx";
 import PackageMdx        from "../content/java-package.mdx";
+import ClassesMdx        from "../content/declare-class.mdx";
 
 
 import type { Course } from "../types";
@@ -93,7 +94,7 @@ export const javaProgrammingCourse: Course = {
 					completed:      false,
 					icon:           "book",
 					iconColor:      "orange",
-				},   // end of Primative Types module
+				},   // end of Primative Types lesson
 				{
 					resourceType:   "guide",
 					id:             "java-operators",
@@ -103,17 +104,7 @@ export const javaProgrammingCourse: Course = {
 					completed:      false,
 					icon:           "book",
 					iconColor:      "orange",
-				},   // end of Java Operators module
-				{
-					resourceType:   "guide",
-					id:             "terms-and-definitions",
-					name:           "Programming Terminology",
-					description:    "A table of programming terminology",
-					content:        TerminologyMdx,
-					completed:      false,
-					icon:           "brain",
-					iconColor:      "gray",
-				},
+				},   // end of Java Operators lesson
 				{
 					resourceType:   "guide",
 					id:             "java-package",
@@ -123,7 +114,27 @@ export const javaProgrammingCourse: Course = {
 					completed:      false,
 					icon:           "book",
 					iconColor:      "orange",
-				},
+				},   // end of Java Package lesson
+				{
+					resourceType:   "guide",
+					id:             "declaring classes",
+					name:           "Classes",
+					description:    "Covers declaring classes and what goes inside them.",
+					content:        ClassesMdx,
+					completed:      false,
+					icon:           "book",
+					iconColor:      "purple",
+				},   // end of Declaring Classes lesson
+				{
+					resourceType:   "guide",
+					id:             "terms-and-definitions",
+					name:           "Appendix A: Programming Terminology",
+					description:    "A table of programming terminology",
+					content:        TerminologyMdx,
+					completed:      false,
+					icon:           "brain",
+					iconColor:      "gray",
+				},   // end of Terms and Definition Appendix
 			],
 		},   // end of Java Programming Language
 
