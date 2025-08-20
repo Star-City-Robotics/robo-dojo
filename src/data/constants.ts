@@ -83,8 +83,11 @@ import {
 import { dummyCourse } from "./courses/dummy.course";
 import { howToWriteMarkdown } from "./courses/how-to-write-markdown";
 import { roboticProgrammingCourse } from "./courses/robotic-programming.course";
+<<<<<<< HEAD
 import { javaProgrammingCourse }    from "./courses/java-programming.course";
 import { bestPracticesCourse }      from "./courses/best-practices.course";
+=======
+>>>>>>> origin/main
 
 // VS Code theme colors for resource icons
 export const RESOURCE_ICON_COLORS = {
@@ -219,3 +222,4 @@ export const courses = [roboticProgrammingCourse,
 	   		 		    dummyCourse,
 						howToWriteMarkdown,
 						javaProgrammingCourse];
+
