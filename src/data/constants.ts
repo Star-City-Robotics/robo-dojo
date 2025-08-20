@@ -79,10 +79,12 @@ import {
 	Wrench,
 	Zap,
 } from "lucide-react";
+
 import { dummyCourse } from "./courses/dummy.course";
 import { howToWriteMarkdown } from "./courses/how-to-write-markdown";
 import { roboticProgrammingCourse } from "./courses/robotic-programming.course";
-import { javaProgrammingCourse } from "./courses/java-programming.course";
+import { javaProgrammingCourse }    from "./courses/java-programming.course";
+import { bestPracticesCourse }      from "./courses/best-practices.course";
 
 // VS Code theme colors for resource icons
 export const RESOURCE_ICON_COLORS = {
@@ -213,6 +215,7 @@ export const RESOURCE_ICONS = {
 } as const;
 
 export const courses = [roboticProgrammingCourse,
+	   		 		    bestPracticesCourse,
 	   		 		    dummyCourse,
 						howToWriteMarkdown,
 						javaProgrammingCourse];
