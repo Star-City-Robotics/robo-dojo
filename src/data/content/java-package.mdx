@@ -46,3 +46,38 @@ drive system.  This could result in a package name of:
 
 >***com.domain.my.scarob.cresendo.drivesystem***
 
+## Using Packages
+
+When creating a new file for Java source code, begin by placing the package
+statement as the first line of source code.  This first line should follow
+the file comment.
+
+The syntax of the package statement is:
+
+>***package \<your package name\>;***
+
+In a file, it will look like this:
+
+```
+/**
+ * File Header Comment...
+ */
+
+package com.domain.my.scarob.cresendo.drivesystem;
+
+import ...
+```
+
+Each source code file in the package must have the same package statement.
+
+All new elements declared after the package statement will belong to that
+package. The compiler will then use their full name when resolving their
+identifiers.
+
+For example, assume that the package statement in a source code file is
+`package frc.robotic.scarob` and the class `MyDrive` is declared in that
+same file.  When the compiler reads ***MyDrive*** in that file, the compiler
+will use the identifier of ***frc.robotic.scarob.MyDrive***.  The code
+can still refer to the element as ***MyDrive***.  The only time the code
+might need to use the full identifier is when the compiler cannot resolve
+the identifier because there are more than one element with the same one.
