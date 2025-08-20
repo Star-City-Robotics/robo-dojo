@@ -79,6 +79,7 @@ import {
 	Wrench,
 	Zap,
 } from "lucide-react";
+import { bestPracticesCourse } from "./courses/best-practices.course";
 import { dummyCourse } from "./courses/dummy.course";
 import { howToWriteMarkdown } from "./courses/how-to-write-markdown";
 import { roboticProgrammingCourse } from "./courses/robotic-programming.course";
@@ -213,6 +214,7 @@ export const RESOURCE_ICONS = {
 
 export const courses = [
 	roboticProgrammingCourse,
+	bestPracticesCourse,
 	dummyCourse,
 	howToWriteMarkdown,
 ];
