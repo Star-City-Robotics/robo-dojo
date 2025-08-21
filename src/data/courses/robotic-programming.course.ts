@@ -36,6 +36,7 @@ export const roboticProgrammingCourse: Course = {
 					id: "java-programming-guide",
 					name: "Java Programming Guide",
 					completed: false,
+					icon: "brain",
 					description:
 						"Comprehensive Java programming guide with syntax highlighting.",
 					content: JavaTestMdx,

@@ -1,5 +1,5 @@
-import ROBEClosed from "public/assets/ROB-E-CLOSED.png?url";
-import ROBEOpen from "public/assets/ROB-E-OPEN.png?url";
+import ROBEClosed from "/assets/ROB-E-CLOSED.png?url";
+import ROBEOpen from "/assets/ROB-E-OPEN.png?url";
 import { useEffect, useRef, useState } from "react";
 
 interface RobEBlinkButtonProps {

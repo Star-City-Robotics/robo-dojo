@@ -5,8 +5,8 @@ import {
   useLoaderData,
   useNavigate,
 } from "@tanstack/react-router";
-import { BookOpen, Bug, ChevronDown, ChevronRight, Cpu } from "lucide-react";
-import { type ReactNode, useEffect, useState } from "react";
+import { ChevronDown, ChevronRight, Cpu } from "lucide-react";
+import { useEffect, useState } from "react";
 import { BreadcrumbNav } from "@/components/breadcrumb-nav";
 import { SearchIcon } from "@/components/command-search";
 import { RobEBlinkButton } from "@/components/rob-e-blink-button";
@@ -25,6 +25,7 @@ import {
 } from "@/data/constants";
 import type { Resource } from "@/data/types";
 import { useActiveEntities } from "@/hooks/use-active-entities";
+import { ResourceIcon } from "@/components/resource-icon";
 
 export const Route = createFileRoute("/dashboard/courses/$courseId")({
   component: RouteComponent,
@@ -62,36 +63,6 @@ function RouteComponent() {
         ? prev.filter((id) => id !== moduleId)
         : [...prev, moduleId]
     );
-
-  const getResourceIcon = (resource: Resource): ReactNode => {
-    // If resource has a custom icon, use it
-    if (resource.icon && RESOURCE_ICONS[resource.icon]) {
-      const IconComponent = RESOURCE_ICONS[resource.icon];
-      const iconColor = resource.iconColor
-        ? RESOURCE_ICON_COLORS[resource.iconColor]
-        : RESOURCE_ICON_COLORS.green; // Default to VS Code green
-
-      return <IconComponent className="w-4 h-4" style={{ color: iconColor }} />;
-    }
-
-    // Fallback to default icons based on resource type
-    switch (resource.resourceType) {
-      case "guide":
-        return (
-          <BookOpen
-            className="w-4 h-4"
-            style={{ color: RESOURCE_ICON_COLORS.orange }}
-          />
-        );
-      default:
-        return (
-          <Bug
-            className="w-4 h-4"
-            style={{ color: RESOURCE_ICON_COLORS.purple }}
-          />
-        );
-    }
-  };
 
   return (
     <div
@@ -212,7 +183,7 @@ function RouteComponent() {
                           : "hover:bg-[#2a2d2e]"
                       }`}
                     >
-                      {getResourceIcon(resource)}
+                      <ResourceIcon resource={resource} />
                       <span className="flex-1 text-[#cccccc] text-sm">
                         {resource.name}
                       </span>
