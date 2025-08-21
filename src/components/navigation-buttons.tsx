@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type React from "react";
 import { useNavForwardBackward } from "@/hooks/use-nav-forward-backward";
+import { ResourceIcon } from "./resource-icon";
 
 export const NavigationButtons: React.FC = () => {
   const {
@@ -30,7 +31,9 @@ export const NavigationButtons: React.FC = () => {
           <div className="opacity-70 text-xs">Previous</div>
           {previousItem && (
             <div className="font-medium text-sm">
-              {previousItem.type === "module" ? "📚" : "📄"}{" "}
+              {previousItem.resource && (
+                <ResourceIcon resource={previousItem.resource} />
+              )}
               {previousItem.resource?.name || previousItem.module.name}
             </div>
           )}
@@ -52,7 +55,9 @@ export const NavigationButtons: React.FC = () => {
           <div className="opacity-70 text-xs">Next</div>
           {nextItem && (
             <div className="font-medium text-sm">
-              {nextItem.type === "module" ? "📚" : "📄"}{" "}
+              {nextItem.resource && (
+                <ResourceIcon resource={nextItem?.resource} />
+              )}
               {nextItem.resource?.name || nextItem.module.name}
             </div>
           )}
