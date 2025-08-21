@@ -1,0 +1,231 @@
+# Classes
+
+## Introduction
+
+The most important part of programming in Java and other object oriented
+languages is the **Class**.  In writing a Java program, you declare a
+class.  A class is then used to define variables and objects.  When something
+is declared, the element is used by the compiler while the code is being
+compiled. When an element is defined, memory is allocated for it in the
+running program's memory.
+
+A class is a data type.  The class declaration tells the compiler how
+to create an object of that class type.  The declaration states what
+data members are in each object, what data members are shared between
+all objects of that type, what methods are contained in each object that
+have direct access to the data members, and which methods are shared
+by all objects of that class type.
+
+**Note:** An ***object*** is also called an ***instance***.  While the
+two terms mean the same, the ***instance*** implies that there are
+objects of the same class type.
+
+## Declaring a class
+
+The following code example shows the basic form of a class.  We are
+assuming that ***OtherClass*** is a class type declared elsewhere.
+
+### Example Code 1
+
+```
+/**
+ * Class Documentation comment.
+ */
+public class MyClass
+{
+	private int         size;
+	private OtherClass  data;
+
+    public MyClass()
+	{
+		this.size = 0;
+		this.data = null;
+	}
+
+    public MyClass( int mysize, OtherClass mydata )
+	{
+		this.size = mysize;
+		this.data = mydata;
+	}
+
+	public int getSize()
+	{
+		return this.size;
+	}
+
+	public void setSize( int newSize )
+	{
+		this.size = newSize;
+
+		return;
+	}
+
+	private boolean haveData()
+	{
+		// See ternary operator in the lesson on Java Operators
+		return ( (this.data != null) ? true : false ;
+	}
+
+	public int foobar()
+	{
+	   if ( !haveData )
+	   {
+			// Throw exception because we cannot get the information
+	   }
+
+	   return data.getValue();
+	}
+
+
+}  // end of MyClass
+```
+
+### Class Documentation
+
+Every class declaration should start with a comment that describes what
+the class is, what is it used for, and any other useful information.
+
+This comment is optional though it is strongly recommended since the
+class will be used by other programmers and other programmers may also
+modify this class declaration.
+
+It is also strongly recommend to use Doxygen tags in this comment so
+that documentation can be generated without having to write the same
+information in more than one place.
+
+### Class Statement
+
+The class statement begins with the line of code that specifies the
+identifier for the class.  In its basic form, the syntax of this
+statement is:
+
+>\<access modifier\> **class** \<ClassName\>
+
+There are four access modifiers available in Java: ***public***,
+***protected***, ***private***, and no modifier, which is referred
+to as the default access.  More information will be provided in
+the lesson on ***Access Control***.
+
+For now, the two access modifiers that will be used in this lesson
+are ***public*** which means that everyone can access it and
+***private*** which means that only software inside the class can
+access it.
+
+There are other variations of the class statement that will be
+discussed in future lessons.
+
+### Data Members
+
+Data members are variables contain in each object of this class.  They
+can be primitive data types like int or boolean or they can objects.
+
+The syntax is:
+
+>\<access modifier\> \<data type\> \<identifier\> [ = \< value \>];
+
+Data members can be ***private*** so that they can only be accessed
+from within the class code, and they can be ***public*** so that any
+other code can access them by using the object identifier dot data
+member identifier.  The ***protected*** and default access modifier
+will be discussed in the lesson on ***Access Control***.
+
+There is a missing optional keyword in the syntax.  That is the keyword
+***static***, which can be placed before the data type or before the
+access modifier.  A static data member only exists once and is shared
+between all the instances of the class.  Each object has access
+to a static data member.
+
+The ***[]*** represent an optional part of the statement.  A variable
+can be assigned a value in the declaration.  This will cause the data
+member to be initialized when the object is first created, before any
+other code (See ***Constructors*** below).  In the case of a static
+data member, it is initialized when the program loads.  Therefore,
+a static data member must be assigned a value when it is declared.
+
+Data members are usually declared at the beginning of a class declaration
+though they can be placed anywhere in the class between methods.
+
+### Constructors
+
+A constructor is a special method that is used to initialize each
+object when it is created.  Constructor methods do not have a return
+value as other methods have and their identifiers are the same as
+the class identifier.
+
+Almost always a constructor has the ***public*** access modifier.  If
+it does not only an instance of the class can create an instance.  The
+instance that creates the other instances cannot be created.  There
+are cases where the ***private*** access modifer can be used under
+very specific conditions.  The use of ***private*** constructors
+will be explained in the ***Singleton Pattern*** lesson (to be written).
+
+A class can have more than one constructor so long as the list of
+parameters passed to it are different.  The compiler can determine
+which constructor to use based on the parameters used in creating
+a new object.
+
+The constructor with no parameters is know as the default constructor.
+
+There are also specialty constructors such as the copy or assignment
+constructor which has a single parameter that is an object of the
+same class type.
+
+*** Methods
+
+Methods are functions that are declared with a class.  They are the
+code that results in the behavior of each object.
+
+Syntax:
+
+```
+[static] <access modifier> <data type> <identifier> ( [<parameters>] )
+{
+	// some code
+}
+```
+
+The ***static*** keyword is optional.  When it is not present, the
+method is a class method with access to all data members and methods
+declared in the class, including the ones marked ***private***.
+There is actually one one copy of a class method code stored in
+the running program memory.  In order to access other methods and
+data members in an object, the method is passed a hidden parameter
+named ***this***.  An element declared within a class can always
+be referenced by `***this***.\<identifier\> if any identifier resolution
+issues arise.
+
+When the ***static*** keyword is present, no hidden parameter is passed
+to the static method.  Therefore as static method cannot access any
+non-static data members or methods declared in the class.  It can access
+any static data member or static method in the class.
+
+A common use for static methods is in a class that provides utility
+methods.  An example is the class Math which provides static methods
+to square a number or raise a number to a power.
+
+The identifier should be unique within the class.  The exception
+to this rule is that there can be several methods using the same
+identifier so long have a different ***signature*** which in this case
+would depend on unique lists of parameters.  While the return type
+is also part of a method signature, this may not resolve the
+conflict since one data type returned could be automatically
+converted to another data type.
+This is known as ***overloading***.  It is strongly recommended to
+only overload methods that do the same thing even if they do it
+in different ways.
+
+The parameters, when present is a comma separated list of data type
+identifier combinations.  If no parameters are passed, the method
+declaration is an empty set of paratheses, ***()***.
+
+### Best Practice Tip
+
+#### End Comments
+
+When coding large blocks where a block begins and ends with a curly bracket,
+***{}***, it is recommend to place a comment at the end of the block so
+that it is easy to know what the ending bracket belongs to.
+
+When is a block large?  IMHO, a block is large and should have and end
+comment when both the beginning and ending brackets cannot fit on the
+screen of your editor.

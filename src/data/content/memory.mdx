@@ -1,0 +1,100 @@
+# Computer Memory
+
+## Introduction
+
+This lesson is optional.  It does provide information that is useful in the
+**Class vs Object** lesson.  If you are already familiar with the differences
+between compilers and interpreters, you may skip the lesson.  If you skip
+this lesson you can always come back to it later.
+
+## Memory
+
+An executable program, one that has already been compiled, is stored in memory.
+Normally, it is stored in a disk file in a shorten form.  The shorten form
+will only include the static parts of the program, the machine code, static
+data such as strings and constants, along with data that the program will use
+during execution that can be determined and set by the compiler.
+
+Each unit of memory has an address used to locate it.  In most computers, a
+unit of memory is a byte which is itself comprised of 8 bits.  There are some
+computers that use a word as its unit of memory.  A word is comprised of a
+number of bytes.  In the old days, the size of a word could vary from computer
+to computer.  The size of a word is usually based on the number of data lines
+the computer data bus had for transporting data.  Older PCs had a 16 bit data
+bus and its word size was 2 bytes.  Today, the standards are 32 bit and 64 bit
+data buses where the word size can range from 4 bytes to 8 bytes.
+
+There have been other computers that use unique word sizes.  The Harris
+H-Series had a word size of 24 bits or 3 bytes.  A CDC series computer had
+a word size of 60 bits or 10 6 bit bytes.  The CDC computers were used before
+32 bit data buses were common.
+
+### Program Layout
+
+When a compiled program is about to be executed, it is first copied from disk
+into memory.  More memory will be assigned to the program than was needed to
+store it in a disk file.  That extra memory is used for dynamic objects and
+call stacks.  The compiled program, also called the executable, references
+memory starting at zero.  When it is placed in memory, its first memory
+address will be a random value that is not zero.  To get around this problem,
+an executable will be assigned virtual memory.  Virtual memory is stored in
+real memory with the addresses in virtual memory starting at zero.  The program
+address its virtual memory space and the operating system will translate
+virtual memory addresses into real memory addresses.
+
+Looking at Figure 1, to the right, the first set of addresses store the
+machine code of the program.  This is referred to as the Code Segment.
+The next two sections contain data, both initialized and uninitialized.
+The order of these two data segments can be reversed or even mixed.  These
+segments contain the data that does not change size: constants, strings,
+predefined global variables.
+
+### Figure 1: Program Execution Memory
+
+![Program Memory](@data/content/images/Executable-Virtual-Memory.png "Figure 1: Program Memory")
+
+The rest of the virtual memory is used to store dynamic data and call stacks.
+This is data that is created while the program is running.  This segment is
+divided into three parts: the Heap at one end, the Stack at the other end, and
+free or unused memory in the middle.
+
+The Stack is used to store variables and objects used that are not created
+using the ***new*** keyword.  It also stores the call stack whenever execution
+jumps to a function or method.  The call stack contains the return value from
+the method, the parameters passed to the method, and other information needed by
+the computer to jump to the correct machine code and return when the method is
+done.   All variables declared in the scope of the meyhod are also pushed onto
+the stack.  When execution leaves a scope, all the variables declared in that
+scope are popped off the Stack. When the function exits, the return value is
+placed in the call stack.  All remaining variables used by the function are
+popped off the Stack.  The caller of the function can then access the return
+value before it too can be popped off the stack.
+
+The Heap is used to used to store dynamically created variables and objects.
+In Java, any object created with the ***new*** keyword is a dynamic variable.
+Memory from the Heap is allocated starting with the beginning of the Heap.
+If there are no free or unused chunk of memory within the Heap that is large
+enough to contain the variable, the Heap will grow and allocate memory that
+was from the free space.
+
+The Stack is a memory where all the memory is used.  In other words, there are
+no chunks of unused memory in the Stack.  The Stack grows, increases in size,
+as needed and it shrinks, decreases in size, as data is no longer used.  The
+Heap, on the other hand, cannot grow and shrink like the Stack because dynamic
+variables can still exist when the function that created them returns.  As
+dynamic variables are released, the memory used to store them is marked as
+available.  This results in holes in the Heap where dynamic memory has been
+released and no new dynamic variables have been created that will fit in the
+available space.
+
+There is a potential problem with using this Stack/Heap model.  Each program
+is allocated a fixed amount of memory to use for the Stack and Heap.  If this
+memory runs out, in other words, the Stack meets the Heap, the program will
+crash.  The actual size allocated for the Stack and Heap can be changed though
+not when the program is executing.  Sometimes, the Stack/Heap space can be
+defined as a command line parameter when the program is run.  Sometimes, it
+can be specified when compiling the program, and at other times, with changes
+to the operating system configuration.  Regardless of how Stack/Heap space can
+be changed, if your program does not have enough, it will crash and lose all
+the data that is still in memory.
+

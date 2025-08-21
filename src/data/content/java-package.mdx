@@ -1,0 +1,87 @@
+# Package
+
+## Introduction
+
+One of the problems in programming is identifier conflicts.  This conflict
+arises when two or more elements have the same identifier or name.  This
+is not allowed in programming because the compiler or interpretor cannot
+determine which element is being referenced.
+
+It is up to the programmers it make sure that the same identifier is not
+used for multiple elements within the program.  The problem comes when
+a program uses third party libraries or Java libraries.  The programmer
+has no control of what identifiers were used in third party code.
+
+For example, let say the program has a class called Shape which is the
+parent or base class for classes such as Square, Triangle, and Circle.
+The class Shape may also be declared in third party code.  When this
+occurs, the source code cannot be compiled successfully.
+
+## Package
+
+Java solution to identifier conflict also known as identifier resolution
+is to place source code into packages.  A package can be thought as a
+container of related software.  The compiler will automatically use
+the package name and the identifier together to create a unique name
+for the element.
+
+**Note:** Other programming languages may use a similar technique for
+preventing duplicate identifiers from happening.  C++ uses the keyword
+***namespace*** instead of ***package*** to do the same thing.
+
+## Unique Package Naming
+
+The is no way to strictly enforce the use of unique package names. therefore
+there is a convention used by Java Programmers to hopefully come up with
+a unique package name.
+
+In most cases, every programming project is associated with an Internet
+Domain.  The convention is to use that reverse of the domain name.  This
+does not mean completely reversing the letters and dots.  It means that
+each component of the domain name is used and appear in the reverse order.
+Added to the end of that sequence, could be team and/or project name,
+followed by subproject names.
+
+>***\<reverse domain\>.\<team\>.\<project\>.\<subproject\>***
+
+For example, let the domain name used for a project is _my.domain.com_, the
+team name is _SCAROB_, the project is _Cresendo_, and the subproject is the
+drive system.  This could result in a package name of:
+
+>***com.domain.my.scarob.cresendo.drivesystem***
+
+## Using Packages
+
+When creating a new file for Java source code, begin by placing the package
+statement as the first line of source code.  This first line should follow
+the file comment.
+
+The syntax of the package statement is:
+
+>***package \<your package name\>;***
+
+In a file, it will look like this:
+
+```
+/**
+ * File Header Comment...
+ */
+
+package com.domain.my.scarob.cresendo.drivesystem;
+
+import ...
+```
+
+Each source code file in the package must have the same package statement.
+
+All new elements declared after the package statement will belong to that
+package. The compiler will then use their full name when resolving their
+identifiers.
+
+For example, assume that the package statement in a source code file is
+`package frc.robotic.scarob` and the class `MyDrive` is declared in that
+same file.  When the compiler reads ***MyDrive*** in that file, the compiler
+will use the identifier of ***frc.robotic.scarob.MyDrive***.  The code
+can still refer to the element as ***MyDrive***.  The only time the code
+might need to use the full identifier is when the compiler cannot resolve
+the identifier because there are more than one element with the same one.

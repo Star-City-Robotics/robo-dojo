@@ -1,0 +1,73 @@
+# Java Primitive Data Types
+
+## Why Java uses its own primitive data types
+
+The Java language makes no assumptions about the physical hardware that it
+runs on.  Therefore, it cannot depend on the memory sizes of standard data
+types.  Java defines its primitive data types using the only unit of memory
+that is guaranteed to exist on all digital computers and that is the single bit.
+
+While some common memory units do exist in computer science such as the byte
+and the word.  The number of bits in these units vary from hardware platform
+to hardware platforms.  The most common units are 8 bit bytes and 32 bit words.
+Older computers used different sizes such as 6 bit bytes, 16 bit words,
+60 bit words, and 64 bit word sizes. The 64 bit word is becoming more
+popular.  There is also a series of computers that used 24 bit words.
+
+Java eliminates the variation of hardware by defining its using its own
+set of primitive data types.  The JVM handles the difference between
+Java primitive data types and what the hardware actually uses so the
+programming does not have to worry about the portability of the Java code.
+
+## Primitive Data Types
+
+Java only supports signed numerical primitive data types.  This means that
+a variable of these types can have positive and negative values.  The two
+non-numerical types, **boolean** and **char**, are technically unsigned
+values.
+
+### Table 1: Primitive Data Type
+
+| Keyword | Size | Description |
+| ------- | ---- | ----------- |
+| **byte** | 8 bits | Signed integer |
+| **short** | 16 bits | Signed integer |
+| **int** | 32 bits | Signed integer, usually the default choice for signed integer values |
+| **long** | 64 bits | Signed integer, used when an **int** is too somall |
+| **float** | 32 bits | Floating point numbers a.k.a real numbers | 
+| **double** | 64 bits | Floating point numbers, a.k.a. real numbers. Used for real numbers that require more significant digits than a **float**|
+| **boolean** | ? bits | A logical or boolean value, can be either ***true*** or ***false*** |
+| **char** | 16 bits | A Unicode character |
+
+**Note:** The size of the **boolean** is not specified in the Java Language
+Specification.  Instead, its size is dependent on the specific JVM it is
+running on.  A **boolean** technically only needs a single bit with its
+***true*** or ***false*** value.  Java may store multible **boolean** variables
+in a single byte or word or it may use a single byte or word to store a
+single **boolean** variable.
+
+
+## Primitive Data Types as Objects
+
+There will come a time where you want to pass a variable of a primitive data
+type to a method that only allows objects to passed to it.  Java has a
+solution for this.  Java defines classes for each primitive data type.  These
+classes are referred to as ***wrapper classes*** because they _wrap_ a
+primitive data value in an object.
+
+### Table 2: Wrapper Classes
+
+| Class | Primitive Data Type |
+| ----- | ------------------- |
+| **Byte** | **byte** |
+| **Short** | **short** |
+| **Integer** | **int** |
+| **Long** | **long** |
+| **Float** | **float** |
+| **Long**  | **long** |
+| **Double** | **double** |
+| **Boolean** | **boolean** |
+| **Character** | **char** |
+
+With the exception of **int** and **char**, the wrapper classes uses the
+primitive data type with the first letter in upper case.

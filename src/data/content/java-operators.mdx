@@ -1,0 +1,220 @@
+# Java Operators
+
+Operators are special symbols used to perform specific operations on one
+or more objects.  They are the basic way of manipulating data.
+
+Java has several categories of operators based on their functionality.
+
+## Operands
+
+Before describing the various operators used in Java, we need to know the
+terminology.  Every operator requires one or two operands.  If the operand
+appears to the left of the operator, it is called a ***left operand***.
+If the operand appears to the right of the operator, it is called a
+***right operand***.
+
+An operand is a constant, a variable/object, or an expression.  An operand,
+with its left and right operands forms an expression and the value of
+the expression is the results of the operator.  An expression is always
+evaluated and the resulting value is used.
+
+## Use of parentheses
+
+Parentheses, "**()**", are used to define the order in which operations
+are performed.  There are rules that define the order of operations when
+parentheses are not used.  It is easy to make mistakes on what the order
+of operations will result in so the use of parentheses makes the code
+easier to control.
+
+Will `2 + 3 * 4` evaluate to 20 or 14?  Using parentheses makes it easier
+to read the code.  In other words, `(2 + 3) * 4` is 20 while `2 + (3 * 4)`
+is 14.
+
+Based on Java's ***order of operations***, the expression `2 + 3 * 4` is
+14 because __*__ has a higher order than __+__ and is done first.  Operators
+at the same level or order are evaluated left to right.
+
+## Arithmetic Operators
+
+As the name implies, arithmetic operators perform mathematical functions.
+These operators take two variables, called ***operands***, and performs
+the appropriate mathematical operations.  Neither of the operands are
+changed.  The results of the mathematical operation is used in place of the
+expression.
+
+**Note:** Operands are referred to _left operand_ and _right operand_ based
+on which side of the operator they reside.
+
+### Table 1: Arithmetic Operators
+
+| Symbol | Purpose | Description |
+| ------ | ------- | ----------- |
+| **+** | addition | Adds two operands and returns the sum. For example: 7.5 + 8.5 ==> 16.0 |
+| **-** | subtraction | Subtracts the right operand from the left operand. For example: 10 - 13 ==> -3 |
+| __*__ | multiplication | Multiplys two operands and returns the product.  For example:  2 * 5 ==> 10 |
+| **/** | division | Divides the left operand from the right operand and returns the results.  In the case of integer division, any remaining fraction is truncated (ignored) For examples:  12 / 5 ==> 2 and 12.0 / 5.0 ==> 2.4 |
+| **%** | modulo | Performs division between two integer values and returns the remainder of the operation.  For example: 12 % 5 ==> 2 |
+
+## Assignment Operators
+
+Assignment operators are used to set a value to the left operand.  There may be
+additional mathematical operations performed to determine what the value is.
+
+In a sense, there is only one assignment operator and it is the __=__.  The
+rest of the assignment operators use two symbols, a mathematical operator
+and the __=__.  These are short cuts for `A Z= B` ==> `A = (A Z B)` where **Z**
+is the mathematical operator.  In these cases, the value is obtained using
+the origanal value of the left operand, _A_ in this case.
+
+**Note:** Restriction: The left operator of an assignment operator must be
+a variable or object.  It cannot be a constant or an expression because
+the value of a constant or an expression cannot be changed.
+
+### Table 2: Assignment Operators
+
+| Symbol | Description | Example |
+| ------ | ----------- | ------- |
+| __=__ | Changes the left operand to the value of the right operand.  | A = B | 
+| __+=__ | Changes the left operand to the value of the expression of the left operand added to the right operand. | A = (A + B) |
+| __-=__ | Changes the left operand to the value of the expression of the right operand subtracted from the left operand. | A = (A - B) |
+| __*=__ |  Changes the left operand to the value of the expression of the left operand multiplied by the right operand. | A = (A * B) |
+| __/=__ | Changes the left operand to the value of the expression of the left operand divided by the right operand. | A = (A / B) |
+| __%=__ | Changes the left operand to the value of the expression of the left operand modulo the right operand. | A = (A % B) |
+
+## Boolean Operators
+
+Boolean operators perform boolean operations on two operands.  When an
+expression using boolean operators is evaluated, the results is either
+***true*** or ***false***.
+
+### Table 3: Boolean Operators
+
+| Symbol | Purpose | Description |
+| ------ | ------- | ----------- |
+| __==__ | equal to | Compares two operands.  If they have the same value, a ***true*** is returned. |
+| __!=__ | not equal to | Compares two operands.  If they are not the same value, a ***true*** is returned. |
+| __&gt;__ | greater than | Compares two operands and returns ***true*** if the left operand has a greater value than the right operand. |
+| __&lt;__ | less than | Compares two operands and returns ***true*** if the left operand has a lesser value than the right operand |
+| __&gt;=__ | greater than or equal to | Compares two operands and returns ***true*** if the right operand is less than the left operand.  This is equivalent to _not less than_.  |
+| __&lt;=__ | less than or equal to | Compares two operands and returns ***true*** if the right operand is greater than the left operand.  This is equivalent to _not greater than_. |
+
+## Logical Operators
+
+Logical operators performs boolean operations on boolean operands or expressions
+that evaluate to a boolean value.
+
+The evaluation of a logical operator expression only returns ***true*** or ***false***.
+
+Logical operators do not change any variable or object. They just return a boolean value.
+
+### Table 4: Logical Operators
+
+| Symbol | Purpose | Description |
+| ------ | ------- | ----------- |
+| __&&__ | Logical AND | Returns ***true*** only if both the operands are ***true***. |
+| __\|\|__ | Logical OR  | Returns ***true*** if one or both of the operands is ***true*** |
+| __!__  | Logical NOT | Returns the opposite boolean value of the right operand.  This operator only uses a right operand. |
+
+## Unary Operators
+
+Unary Operators operator on a single operand.  The behavior of the operation
+will vary depending on whether the operand is a left or right operand.
+
+Both the increment and decrement operators will change the value of its operand.
+
+### Table 5: Unary Operators
+
+| Symbol | Purpose | Description |
+| ------ | ------- | ----------- |
+| __+__  | unary plus |  This is an advance operator that will not be discussed here. |
+| __-__  | unary minus | This is an advance operator that will not be discussed here. |
+| __++__ | increment | The behavior of this operator depends on whether a left operand or a right operand is used.  In both cases, the operand value is incremented by 1.  In the case of a left operand, `variable++`, the original value of the variable is returned and then the variable is incremented by 1. This is known as ***post-increment***.  In the case of the right operand, `++variable`, the variable is incremented by 1 and the new value is returned.  This is known as ***pre-increment***  |
+| __--__ | decrement | The behavior of this operator depends on whether a left operand or a right operand is used.  In both cases, the operand value is decreased by 1.  In the case of a left operand, `variable--`, the original value of the variable is returned and then the variable is decreased by 1. This is known as ***postfix decrement***.  In the case of the right operand, `--variable`, the variable is decreased by 1 and the new value is returned.  This is known as ***prefix decrement***  |
+| __!__  | Logical NOT | This is the same logical operator described above.   Returns the opposite boolean value of the right operand.  This operator only uses a right operand. |
+
+## Bitwise Operators
+
+Bitwise operators operate on the individual bits of an integer variable.
+The operation is performed on each bit in the operand and the bit in the
+same position in the other operand.  The results of a bitwise operation is
+to set each bit in the resulting value to either 1 or 0.
+
+In Java, the order of bits goes from the ***MSB*** is on the left and
+the ***LSB*** is on the right.  If you were to number the positions of the bits,
+the ***LSB***, a.k.a. the Least Significant Bit, is in position 0. The position
+of each bit to the left increments by 1 until reaching ther ***MSB***, a.k.a.
+the Most Significant Bit, is in position (_N_ - 1) where _N_ is the number of
+bits in the unit of memory.
+
+When the unit of memory holds a signed integer, the ***MSB*** holds the sign
+bit.  It is 0 for positive numbers and 1 for negative numbers.  This is
+important with the bit shifting operators.
+
+### Table 6: Bitwise Operators
+
+| Symbol | Purpose | Description |
+| ------ | ------- | ----------- |
+| __&__  | bitwise AND  | Each resulting bit is set to 1 if bits in both operands are also 1. |
+| __\|__ | bitwise OR   | Each resulting bit is set to 1 if one or both bits in both operands are set to 1. |
+| __^__  | bitwise XOR  | Each resulting bit is set to 1 if the bit in one operand is 1 and the other one is 0. |
+| __~__  | bitwise NOT  | This operator works on a single right operand.  Each resulting bit is set to the opposite value of the bit in the operand. |
+| __&lt;&lt;__ | left shift  | The resulting bits are the bits of the left operand shifted from ***LSB*** towards the ***MSB*** by the number of bits represented by the right operand.  Each time the bits are shifted to the left, the ***MSB*** are dropped and the ***LSB*** are set to 0. |
+| __&gt;&gt;__ | signed right shift | The resulting bits are the bits of the left operand shifted from ***MSB*** towards the ***LSB*** by the number of bits represented by the right operand.  The bits shifted past the ***LSB*** are dropped.  The ***MSB*** bits that are vacated by the shift are set to the value of the sign bit.  This means that after the shift, a negative number remains negative and a positive number remains positive. |
+| __&gt;&gt;&gt;__ | unsigned right shift | The unsigned right shift is almost the same as a signed right shift.  The differences is that the ***MSB*** are set to 0.  This means that a positive value remains positive while a starting negative value becomes positive. |
+
+
+## Ternary (Conditional) Operator
+
+Unlike the other operators, the ternary operator takes three operands.  This
+operator is basically shorthand for a simple:
+
+***if (condition) valueIfTrue else valueIfFalse***
+
+Where condition is a boolean expression and valueIfTrue and valueIfFalse
+are expressions to be evaluated.
+
+The syntax of this operator is
+
+***condition __\?_ valueIfTrue __:__ valueIfFalse***
+
+The primary use of the ternary operator is provide a notation that allows
+a value that is depended on a boolean expression to be used where a
+temporary variable would be needed.
+
+Exampe:
+```
+int value = 0;
+
+if ( A && B )
+{
+    value = C + D;
+}
+else
+{
+    value = C - D;
+}
+
+foobar(value);
+```
+verses this
+```
+foobar( (A && B) ? (C + D) : (C - D) );
+```
+
+## Order of Operators
+
+This tutorial will not go into the order of operators.  This information
+is available on the web by searching ***Java Order of Operators***.
+
+The following are some references:
+
+- [Operator Precedence in Java](https://introcs.cs.princeton.edu/java/11precedence/)
+- [Java Operator Precedence Table](https://www.cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html)
+
+
+## References
+
+The following links provide more information on Java Operators.
+
+- [Java Operators - w3school](https://www.w3schools.com/java/java_operators.asp)
+- [Java Operators - GeeksforGeeks](https://www.geeksforgeeks.org/java/operators-in-java/)
