@@ -81,7 +81,7 @@ export const javaProgrammingCourse: Course = {
 			description: "Learning Java as a programming language",
 			resources: [
 				{
-					resourseType: "guide",
+					resourceType: "guide",
 					id: "primitive types",
 					name: "Privative Data Types",
 					description: "The basic types of data used in Java",
