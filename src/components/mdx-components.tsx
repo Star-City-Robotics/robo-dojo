@@ -344,6 +344,12 @@ export const mdxComponents = {
       {...props}
     />
   ),
+  img: (props: BaseProps) => (
+    <img
+      className="rounded-lg border border-[#3e3e42] max-w-full h-auto my-6 mx-auto block"
+      {...props}
+    />
+  ),
   MDXVideo,
   MDXChart,
   MDXRobEButton,
