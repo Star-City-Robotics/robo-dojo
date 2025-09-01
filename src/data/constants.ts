@@ -81,6 +81,7 @@ import {
 } from "lucide-react";
 import { bestPracticesCourse } from "./courses/best-practices.course";
 import { dummyCourse } from "./courses/dummy.course";
+import { gitCourse } from "./courses/git.course";
 import { howToWriteMarkdown } from "./courses/how-to-write-markdown";
 import { javaProgrammingCourse } from "./courses/java-programming.course";
 import { roboticProgrammingCourse } from "./courses/robotic-programming.course";
@@ -216,6 +217,7 @@ export const RESOURCE_ICONS = {
 export const courses = [
 	roboticProgrammingCourse,
 	bestPracticesCourse,
+	gitCourse,
 	dummyCourse,
 	howToWriteMarkdown,
 	javaProgrammingCourse,
