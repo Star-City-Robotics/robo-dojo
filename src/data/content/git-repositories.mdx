@@ -1,0 +1,53 @@
+# Git Repositories
+
+Repositories are the heart of how git manages source control.  Repositories are
+where source code and associate files are stored along with changes made to these
+files.  Repositories are basically disk storage.  Wherever you have a repository,
+disk space is used.
+
+## Remote Repository
+
+There are two types of repositories used in a project.  The first is the remote 
+repository.  This is where the primary copy of the source code resides.  This is the 
+master code base.  Remote repositories are handled by the git server.  Normally,
+the git server is on a remote computer.  In other words, on a computer where 
+the programmers are not doing any development.  Our remote repositories 
+are on the GitHub.com.
+
+## Local Repository
+
+The other type of repository is a local repository.  Each programmer 
+creates one or more local repositories on their personal computer/laptop.  Each local 
+repository is initially populated from the remote repository using the ‘git clone’ command, 
+more about ‘git clone’ later.  All new code and modified code is done in local repositories. 
+All changes to the source code are tested and debugged on the programmers’ laptop. 
+The programmer can commit changes to their local repository as they are working on changes.  
+Once the new and modified code has been tested and verified and committed to the local 
+repository, the changes are then merged with the remote repository.  Once the new code 
+has been merged with the remote repository, it becomes available to the other programmers 
+on the team.
+
+### Multiple Local Repositories
+
+A programmer may have more than one local repository that is cloned (based on) the
+same remote repository.  This is done for multiple reasons.  The primary reason is
+that allows the programmer to make different sets of unrelated changes, one set
+per local repository.
+
+Another primary reason is that there may be multiple branches (more on branches in
+a future lesson) and the programmer has a separate local repository for each branch.
+Branches are a way to keep separate developement separate.  For instance, one branch
+may be for developing feature A and another branch for developing Feature B.
+
+## Tutorials on Branches and their usage
+
+The following links provide more information on Branch, both the how and why:
+
+[Branches in a Nutshell by Git](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell "Branches in a Nutshell")
+
+[Understanding Git Branching](https://medium.com/@jacoblogan98/understanding-git-branching-5d01f3dda541 "Understanding Git Branching")
+
+[Video: Working with Branches](https://www.youtube.com/watch?v=JTE2Fn_sCZs "Working with Branches")
+
+[Video: Branching Strategies Explained](https://www.youtube.com/watch?v=U_IFGpJDbeU "Branching Strategies")
+

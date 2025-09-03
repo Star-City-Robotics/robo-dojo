@@ -1,0 +1,67 @@
+# Git Branching
+
+## What is a Branch
+
+Branching is a technique used in SCM to allow different versions of the same
+source code to exist in a single repository.  A branch is a complete set of
+all the source code files and associated files that form one version of
+the source code.
+
+Every repository has at least one branch.  That branch is usually named ***main*** 
+in a git repository.  All other branches derive from ***main*** or branches derived
+from ***main***.  In this sense, ***main*** is the root branch.  The ***main*** 
+branch is also referred to as the ***Master Branch***.
+
+A branch contain a sequence of changes called ***commits*** (see next lesson for
+more details on commits).  A branch can be represented as a line with a series of
+dots or circles.  Each dot or circle represents a commit to the branch.
+
+![Figure 1: Git Branch and Its Operation](/assets/GIT-Branch-and-its-Operations.webp "GBAIO")
+<br />From: [GIT Branch and its Operations - An Easy Understanding - Digital Varys](
+    https://digitalvarys.com/git-branch-and-its-operations/  "GIT Branch and its Operations - An Easy Understanding - Digital Varys")
+
+A new branch is created as a copy of its parent branch from the most recent commit
+on the parent branch.  The most recent commit is referred to as the ***head*** of the
+branch.  The new branch is also called a ***child branch***.
+
+When the code in the branch is working and tested, the code can be merged back into
+its parent branch, through a ***pull request*** (see future lesson for more details
+on GitHub Pull Requests).
+
+Likewise, the branch can be brought up to date with its parent branch by pulling
+or fetching the changes made to parent branch since the branch was created or
+the last time changes were fetched.  This is merging the parent branch into the
+\[child\] branch.
+
+## Why use Branches
+
+Branches are used to isolate code changes that is under development and therefore
+may break the current release of the software.  Development can occur on a child
+branch without damaging the release branch.  Once the development is done and the
+code has been tested, the development \[child\] branch can be merged back into
+the release \[parent\] branch.
+
+Branches can also be used to separate the development of new features that are
+independent of each other.  This allows one group of programers to work on one
+feature while other groups of programmers work on other features.
+
+Another use of branches is to allow the support of previous releases of the
+software.  Each release would have its own ***Master Branch***.  This allows
+for bug fixes to applied to older releases while still developing the next
+release.
+
+## Tutorials and References
+
+The following links provide more information about branching in SCM and Git.
+
+[Git Branching - Branches in a Nutshell](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell "Git Branching")
+
+[Understanding Git Branching](https://medium.com/@jacoblogan98/understanding-git-branching-5d01f3dda541 "Understanding Git Branching")
+
+[GIT Branch and its Operations - An Easy Understanding](
+    https://digitalvarys.com/git-branch-and-its-operations/  
+    "GIT Branch and its Operations - An Easy Understanding - Digital Varys")
+
+[Video: GIT: Working with Branches](https://www.youtube.com/watch?v=JTE2Fn_sCZs "Working with Branches")
+
+[Video: Branching Strategies Explained](https://www.youtube.com/watch?v=U_IFGpJDbeU "Branching Strategies")

@@ -1,0 +1,27 @@
+# Commiting
+
+As you modify code and add code in your local repository, these changes
+are not actually in the local repository.  In other words, the local repository
+does not know what the new changes are. 
+
+Modified and new files must be commited to the local repository.  This is done
+with two commands: ***git add*** and ***git commit***.  The add command marks
+which files are to commited.  A list of new and modified files can be listed
+using the ***git status*** command.
+
+Once one or more files have been flagged for being commited, run the
+***git commit*** command.  This command will request a message that describes
+the changes made.  When this command is run, git will make a snapshot of the
+current changes being commited, store the commit message and create a set
+of deltas or patches that allow for any future attempt to get a copy of
+the branch at one of the previous commit nodes.
+
+Files that are commited to the local repository can only been seen on the
+local repository.  In order for other programmers to see these changes, the
+remote repository will need to be updated.  This is done using the
+***git push*** command.  This command will sync the remote repository with
+the local repository.
+
+See the ***Git CLI Commands*** lesson for details on the git commands
+listed above.
+

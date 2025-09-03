@@ -1,0 +1,46 @@
+# Merging
+
+Whenever local repository is updated with changes in its remote repository
+with a ***git push*** command, the local repository is updated with the
+changes in the remote repository with the ***git pull*** command, or
+one branch is updated with changes in another branch, git attempts to
+automatically merge the changes into the destination repository or 
+branch.
+
+Most of the time, this merger is successful and nothing else needs to be done.
+Sometimes, there are conflicts with the changes.  This often occurs when two
+programmers are working on the same branch in the same section of code.
+Git does not try to resolve these conflicts because it cannot tell which
+changes are more important than others.
+
+It is up to the programmer to resolve any merging conflicts manually.
+Git will mark the conflict by leaving both sets of changes in the 
+source code.  The two conflicting sections of code will be between
+the following three lines:
+
+- \<\<\<\<\<\<\<
+- =======
+- \>\>\>\>\>\>\>
+
+The merge conflicts will be in the files in the local repositiory.
+When merge conflicts occur, the programmer needs to search for these
+conflicts and resolve the code so that the two conflicting sections
+become one section.
+
+Once all the conflicts are resolved and commited to the local repository,
+the git command that found the conflicts needs to be rerun.  
+
+See the ***Git CLI Commands*** lesson for details on the git commands
+listed above.
+
+## References
+
+The following links provide more references to merging:
+
+[Git - Basic Branching and Merging](https://git-scm.com/docs "Basic Merging")
+
+[Git Branching and Merging: A Step-By-Step Guide](
+    https://www.varonis.com/blog/git-branching "Branching and Merging Guide")
+
+[Git Merge Tutorial: A Comprehensive Guide with Examples](
+    https://www.datacamp.com/tutorial/git-merge "Merge Tutorial")
