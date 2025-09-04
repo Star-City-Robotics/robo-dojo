@@ -4,18 +4,18 @@
 // both coding and design and how to program using Java.
 //
 
-import OOProgrammingMdx from "@/data/content/object-oriented-programming.mdx";
-import ClassVsObjectMdx from "../content/class-vs-object.mdx";
-import CompilersMdx from "../content/compilers-and-interpreters.mdx";
-import ClassesMdx from "../content/declare-class.mdx";
-import DeclaringVariablesMdx from "../content/declaring-variables.mdx";
+import OOProgrammingMdx from "../content/object-oriented-programming.mdx";
+import ClassVsObjectMdx from "../content/oo-class-vs-object.mdx";
+import CompilersMdx from "../content/oo-compilers-and-interpreters.mdx";
+import ClassesMdx from "../content/java-declare-class.mdx";
+import DeclaringVariablesMdx from "../content/java-declaring-variables.mdx";
 import OperatorsMdx from "../content/java-operators.mdx";
 import PackageMdx from "../content/java-package.mdx";
 import JavaReferencesMdx from "../content/java-references.mdx";
-import ComputerMemoryMdx from "../content/memory.mdx";
-import PrimitiveTypesMdx from "../content/primitive-types.mdx";
-import TerminologyMdx from "../content/terms-and-definitions.mdx";
-import VariableVsObjectMdx from "../content/variable-vs-object.mdx";
+import ComputerMemoryMdx from "../content/oo-memory.mdx";
+import PrimitiveTypesMdx from "../content/java-primitive-types.mdx";
+import TerminologyMdx from "../content/java-terms-and-definitions.mdx";
+import VariableVsObjectMdx from "../content/java-variable-vs-object.mdx";
 
 import type { Course } from "../types";
 
