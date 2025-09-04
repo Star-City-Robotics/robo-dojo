@@ -5,6 +5,31 @@ it is important to understand what the commands are.  Most, if not all,
 Git GUIs use these commands to perform the git tasks that the GUI offers.
 Knowing the basics of the CLI will make using Git GUI like VSCode easier.
 
+## Overview
+
+```mermaid
+sequenceDiagram
+    worktree ->> index: `git add`
+    Note over worktree,index: Stage files<br>or changes
+    index ->> local repository: `git commit`
+    Note over index,local repository: Commit staged changes
+    worktree ->> local repository: `git commit -a`
+    Note over worktree,local repository: Commit all unstaged changes (please don't use this)
+    local repository ->> remote repository: `git push`
+    Note over local repository, remote repository: Push current branch<br>to the default remote<br>See examples<br>in `man git-push`
+    remote repository ->> worktree: git pull
+    remote repository ->> local repository: `git fetch`
+    Note over remote repository, local repository: Synchronize local repository<br>with remote repository
+    index ->> worktree: `git checkout [-b] $branch`
+    Note over index,worktree: Switch to branch.<br>Use -b to create a new branch.<br>If there conflicts in your worktree,<br>this will fail.
+    worktree --> local repository: `git diff`
+    Note over worktree,local repository:  shows all changes, including unstaged
+    index --> local repository: `git diff HEAD`
+    Note over index,local repository: shows only *staged* changes
+    worktree --> index: `git diff --staged HEAD`
+    Note over worktree,index: shows only *unstaged* changes
+```
+
 ## git clone
 
 The ***git clone*** command is used to create a local repository.  This command
