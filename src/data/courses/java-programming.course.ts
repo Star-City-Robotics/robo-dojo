@@ -4,18 +4,18 @@
 // both coding and design and how to program using Java.
 //
 
-import OOProgrammingMdx from "../content/object-oriented-programming.mdx";
-import ClassVsObjectMdx from "../content/oo-class-vs-object.mdx";
-import CompilersMdx from "../content/oo-compilers-and-interpreters.mdx";
 import ClassesMdx from "../content/java-declare-class.mdx";
 import DeclaringVariablesMdx from "../content/java-declaring-variables.mdx";
 import OperatorsMdx from "../content/java-operators.mdx";
 import PackageMdx from "../content/java-package.mdx";
-import JavaReferencesMdx from "../content/java-references.mdx";
-import ComputerMemoryMdx from "../content/oo-memory.mdx";
 import PrimitiveTypesMdx from "../content/java-primitive-types.mdx";
+import JavaReferencesMdx from "../content/java-references.mdx";
 import TerminologyMdx from "../content/java-terms-and-definitions.mdx";
 import VariableVsObjectMdx from "../content/java-variable-vs-object.mdx";
+import OOProgrammingMdx from "../content/object-oriented-programming.mdx";
+import ClassVsObjectMdx from "../content/oo-class-vs-object.mdx";
+import CompilersMdx from "../content/oo-compilers-and-interpreters.mdx";
+import ComputerMemoryMdx from "../content/oo-memory.mdx";
 
 import type { Course } from "../types";
 
